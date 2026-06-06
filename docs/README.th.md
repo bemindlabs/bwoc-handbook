@@ -23,6 +23,17 @@
 | 🕷️ **Crawler / ตัว index** | [TH](crawler/HANDBOOK.th.md) · [`EN`](crawler/HANDBOOK.en.md) + [`robots.txt`](robots.txt) + [`sitemap.md`](sitemap.md) | นโยบายเก็บข้อมูล สัญญาณความสด index อะไรบ้าง |
 | 🧩 **อยากเห็นภาพทั้งตระกูล** — ทุกโปรเจกต์ BWOC & `bwoc-*` | [TH](ecosystem/HANDBOOK.th.md) · [`EN`](ecosystem/HANDBOOK.en.md) | แต่ละโปรเจกต์คืออะไร ใช้ stack อะไร เชื่อมกับ core ยังไง |
 
+บทเพิ่มเติม:
+
+| หัวข้อ | เปิด | สรุปสั้น |
+|---|---|---|
+| 🚀 **Quickstart** — สร้าง agent แรกใน ~10 นาที | [TH](quickstart/HANDBOOK.th.md) · [`EN`](quickstart/HANDBOOK.en.md) | ครบจบ: install → init → new → run → team → retire |
+| 🛡️ **Security & ทีม tianting** | [TH](security/HANDBOOK.th.md) · [`EN`](security/HANDBOOK.en.md) | threat model, Sīla 5, trust ลงนาม, ทีม security 8 องค์ |
+| 🌐 **ข้าม workspace & โปรโตคอล** | [TH](cross-workspace/HANDBOOK.th.md) · [`EN`](cross-workspace/HANDBOOK.en.md) | `bwoc peer`, A2A, MQTT — เอเจนต์ข้ามเครื่อง |
+| 🖥️ **โฮสต์เอง (Harness)** | [TH](harness/HANDBOOK.th.md) · [`EN`](harness/HANDBOOK.en.md) | รันบน Ollama / OpenAI-compatible ผ่าน `bwoc-harness` |
+| 🛰️ **ปฏิบัติการระดับฝูง** | [TH](fleet-ops/HANDBOOK.th.md) · [`EN`](fleet-ops/HANDBOOK.en.md) | รันหลายเอเจนต์: fleet health, supervise, sessions, doctor |
+| ❓ **FAQ & แก้ปัญหา** | [TH](faq/HANDBOOK.th.md) · [`EN`](faq/HANDBOOK.en.md) | คำถามบ่อย + ตาราง อาการ→สาเหตุ→วิธีแก้ |
+
 เปิดหาความหมายศัพท์: [TH](glossary.th.md) · [`EN`](glossary.en.md)
 
 ---

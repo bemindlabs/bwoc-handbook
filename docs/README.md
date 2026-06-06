@@ -23,6 +23,17 @@ This handbook is **role-indexed and bilingual**. English is primary (canonical);
 | 🕷️ **Web crawler / indexer** | [`crawler/HANDBOOK.en.md`](crawler/HANDBOOK.en.md) · [TH](crawler/HANDBOOK.th.md) + [`robots.txt`](robots.txt) + [`sitemap.md`](sitemap.md) | Crawl policy, freshness signals, what to index vs skip |
 | 🧩 **Anyone mapping the family** — every BWOC & `bwoc-*` project | [`ecosystem/HANDBOOK.en.md`](ecosystem/HANDBOOK.en.md) · [TH](ecosystem/HANDBOOK.th.md) | What each project is, its stack, and how it connects to the core |
 
+More chapters:
+
+| Topic | Read | One-liner |
+|---|---|---|
+| 🚀 **Quickstart** — first agent in ~10 min | [`quickstart/HANDBOOK.en.md`](quickstart/HANDBOOK.en.md) · [TH](quickstart/HANDBOOK.th.md) | Guided end-to-end: install → init → new → run → team → retire |
+| 🛡️ **Security & the tianting team** | [`security/HANDBOOK.en.md`](security/HANDBOOK.en.md) · [TH](security/HANDBOOK.th.md) | Threat model, Sīla 5, signed trust, the 8-agent security team |
+| 🌐 **Cross-workspace & protocols** | [`cross-workspace/HANDBOOK.en.md`](cross-workspace/HANDBOOK.en.md) · [TH](cross-workspace/HANDBOOK.th.md) | `bwoc peer`, A2A protocol, MQTT — agents across machines |
+| 🖥️ **Self-hosting (Harness)** | [`harness/HANDBOOK.en.md`](harness/HANDBOOK.en.md) · [TH](harness/HANDBOOK.th.md) | Run on Ollama / OpenAI-compatible via `bwoc-harness` |
+| 🛰️ **Fleet operations** | [`fleet-ops/HANDBOOK.en.md`](fleet-ops/HANDBOOK.en.md) · [TH](fleet-ops/HANDBOOK.th.md) | Run many agents: fleet health, supervise, sessions, doctor |
+| ❓ **FAQ & troubleshooting** | [`faq/HANDBOOK.en.md`](faq/HANDBOOK.en.md) · [TH](faq/HANDBOOK.th.md) | Common questions + symptom→cause→fix table |
+
 Term lookup for any reader: [`glossary.en.md`](glossary.en.md) · [TH](glossary.th.md)
 
 ---

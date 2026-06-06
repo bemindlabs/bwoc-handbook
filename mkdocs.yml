@@ -59,6 +59,9 @@ nav:
   - Why BWOC (Philosophy):
       - "English": philosophy/HANDBOOK.en.md
       - "ภาษาไทย": philosophy/HANDBOOK.th.md
+  - Quickstart:
+      - "English": quickstart/HANDBOOK.en.md
+      - "ภาษาไทย": quickstart/HANDBOOK.th.md
   - End User:
       - "English": end-user/HANDBOOK.en.md
       - "ภาษาไทย": end-user/HANDBOOK.th.md
@@ -77,6 +80,21 @@ nav:
   - Backends:
       - "English": backends/HANDBOOK.en.md
       - "ภาษาไทย": backends/HANDBOOK.th.md
+  - Self-hosting (Harness):
+      - "English": harness/HANDBOOK.en.md
+      - "ภาษาไทย": harness/HANDBOOK.th.md
+  - Cross-Workspace:
+      - "English": cross-workspace/HANDBOOK.en.md
+      - "ภาษาไทย": cross-workspace/HANDBOOK.th.md
+  - Security:
+      - "English": security/HANDBOOK.en.md
+      - "ภาษาไทย": security/HANDBOOK.th.md
+  - Fleet Operations:
+      - "English": fleet-ops/HANDBOOK.en.md
+      - "ภาษาไทย": fleet-ops/HANDBOOK.th.md
+  - FAQ:
+      - "English": faq/HANDBOOK.en.md
+      - "ภาษาไทย": faq/HANDBOOK.th.md
   - AI Search:
       - "English": ai-search/HANDBOOK.en.md
       - "ภาษาไทย": ai-search/HANDBOOK.th.md

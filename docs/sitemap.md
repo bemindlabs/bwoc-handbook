@@ -157,6 +157,60 @@ For the full freshness-signal spec see [`crawler/HANDBOOK.en.md`](crawler/HANDBO
 
 ---
 
+### Quickstart
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/quickstart/HANDBOOK.en.md` | English | Yes | Guided ~10-minute end-to-end tutorial from install to first agent and retire. |
+| `/quickstart/HANDBOOK.th.md` | Thai | Parity | Thai parity of the quickstart. |
+
+---
+
+### Security & tianting team
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/security/HANDBOOK.en.md` | English | Yes | Threat model, Five Precepts, signed inter-agent trust, and the 8-agent tianting security team. |
+| `/security/HANDBOOK.th.md` | Thai | Parity | Thai parity of the security chapter. |
+
+---
+
+### Cross-workspace & protocols
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/cross-workspace/HANDBOOK.en.md` | English | Yes | `bwoc peer`, the A2A protocol, and MQTT transport over signed envelopes. |
+| `/cross-workspace/HANDBOOK.th.md` | Thai | Parity | Thai parity of the cross-workspace chapter. |
+
+---
+
+### Self-hosting (Harness)
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/harness/HANDBOOK.en.md` | English | Yes | Running agents on Ollama / OpenAI-compatible via bwoc-harness. |
+| `/harness/HANDBOOK.th.md` | Thai | Parity | Thai parity of the harness chapter. |
+
+---
+
+### Fleet operations
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/fleet-ops/HANDBOOK.en.md` | English | Yes | Running many agents at scale: fleet health, supervise, sessions, doctor. |
+| `/fleet-ops/HANDBOOK.th.md` | Thai | Parity | Thai parity of the fleet-ops chapter. |
+
+---
+
+### FAQ & troubleshooting
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/faq/HANDBOOK.en.md` | English | Yes | Common questions + a symptom→cause→fix troubleshooting table. |
+| `/faq/HANDBOOK.th.md` | Thai | Parity | Thai parity of the FAQ chapter. |
+
+---
+
 ### Glossary
 
 | Path | Language | Canonical? | One-line description |

@@ -52,6 +52,24 @@
 
 [Handbook Glossary — Thai](glossary.th.md): Thai-language parity of the handbook glossary.
 
+[Quickstart — English](quickstart/HANDBOOK.en.md): A guided ~10-minute end-to-end tutorial: install, `bwoc init`, `bwoc new` + `bwoc check`, talk to the agent (`chat`/`run`), make a team + task, observe, and retire. The hands-on companion to the reference end-user page.
+[Quickstart — Thai](quickstart/HANDBOOK.th.md): Thai-language parity of the quickstart.
+
+[Security & tianting — English](security/HANDBOOK.en.md): Security with BWOC — the threat model (Three Cravings: manipulation/persistence/destruction), the Five Precepts safety floor, audit logging (Three Doors), inter-agent trust + ed25519 signing, fleet-health signals, and the 8-agent tianting (天庭) security team (yudi/erlang/zhongkui/yanluo/laojun/xuanwu/nezha/taibai) with the monitor→hunt→patch→report incident loop. Red-team is authorized-use only.
+[Security & tianting — Thai](security/HANDBOOK.th.md): Thai-language parity of the security chapter.
+
+[Cross-workspace — English](cross-workspace/HANDBOOK.en.md): Connecting workspaces & agents across machines — `bwoc peer` (list/status/learn/feedback) + routes.toml, the Agent2Agent (A2A) protocol via bwoc-a2a (Agent Card, JSON-RPC, HTTP), and MQTT transport via bwoc-mqtt, all over ed25519-signed envelopes.
+[Cross-workspace — Thai](cross-workspace/HANDBOOK.th.md): Thai-language parity of the cross-workspace chapter.
+
+[Self-hosting (Harness) — English](harness/HANDBOOK.en.md): Running agents on Ollama / any OpenAI-compatible model via bwoc-harness (OpenAI-compatible provider, agentic loop, core tools, tool-auth, task queue, telemetry, Sīla-5/Taṇhā-3 guardrails, Tier-2 memory, chat_proto, `bwoc chat --tui`). Covers manifest `baseUrl` and dependency quarantine.
+[Self-hosting (Harness) — Thai](harness/HANDBOOK.th.md): Thai-language parity of the harness chapter.
+
+[Fleet Operations — English](fleet-ops/HANDBOOK.en.md): Running many agents reliably — `bwoc fleet health` (seven Non-Decline signals), `bwoc supervise` (restart-on-crash + backstop), `bwoc sessions`/`list` filters/`ping`/`dashboard`/`log`/`inbox`, `bwoc doctor --auto`, `bwoc workspace validate/prune`, and bulk `stop/start --all`.
+[Fleet Operations — Thai](fleet-ops/HANDBOOK.th.md): Thai-language parity of the fleet-ops chapter.
+
+[FAQ & Troubleshooting — English](faq/HANDBOOK.en.md): Consolidated common questions (no Pali needed, backend choice, agent lifecycle, workspace resolution, memory cap, neutrality, daemon issues, versioning) plus a symptom→cause→fix table. The canonical FAQ is the GitHub FAQ.en.md.
+[FAQ & Troubleshooting — Thai](faq/HANDBOOK.th.md): Thai-language parity of the FAQ chapter.
+
 ## Canonical framework docs
 
 [ARCHITECTURE](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/ARCHITECTURE.en.md): Implementation stack — how framework repo, agent template, incarnated agents, the bwoc CLI, and backend execution fit together. Includes an ASCII layer diagram, crate map (bwoc-cli / bwoc-agent / bwoc-core / bwoc-harness), and information-flow description. Canonical for questions about component relationships and process topology. Thai: [ARCHITECTURE.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/ARCHITECTURE.th.md)

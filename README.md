@@ -16,6 +16,12 @@ The handbook pages live under [`docs/`](docs/):
 | 🧭 Why BWOC (philosophy & design) | [`docs/philosophy/`](docs/philosophy/HANDBOOK.en.md) |
 | 🤖 Agent author / operator | [`docs/agents/`](docs/agents/HANDBOOK.en.md) |
 | 🌱 Self-improvement (learning loop) | [`docs/self-improvement/`](docs/self-improvement/HANDBOOK.en.md) |
+| 🚀 Quickstart (~10 min) | [`docs/quickstart/`](docs/quickstart/HANDBOOK.en.md) |
+| 🛡️ Security & tianting team | [`docs/security/`](docs/security/HANDBOOK.en.md) |
+| 🌐 Cross-workspace & protocols | [`docs/cross-workspace/`](docs/cross-workspace/HANDBOOK.en.md) |
+| 🖥️ Self-hosting (Harness) | [`docs/harness/`](docs/harness/HANDBOOK.en.md) |
+| 🛰️ Fleet operations | [`docs/fleet-ops/`](docs/fleet-ops/HANDBOOK.en.md) |
+| ❓ FAQ & troubleshooting | [`docs/faq/`](docs/faq/HANDBOOK.en.md) |
 | ✍️ Persona · Mindsets · Skills | [`docs/slots/`](docs/slots/HANDBOOK.en.md) |
 | 🔌 Backends (drive/configure via each CLI) | [`docs/backends/`](docs/backends/HANDBOOK.en.md) |
 | 🔎 AI search / retrieval | [`docs/ai-search/`](docs/ai-search/HANDBOOK.en.md) · [`docs/llms.txt`](docs/llms.txt) |
