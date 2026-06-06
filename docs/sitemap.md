@@ -66,6 +66,32 @@ For the full freshness-signal spec see [`crawler/HANDBOOK.en.md`](crawler/HANDBO
 
 ---
 
+### Persona · Mindsets · Skills (slots) handbook
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/slots/HANDBOOK.en.md` | English | Yes | How to write an agent's slot content — persona (WHO), mindsets (HOW), skills (WHAT) — with frontmatter, tags, and maturity levels. |
+| `/slots/HANDBOOK.th.md` | Thai | Parity | Thai-language parity of the slots handbook. |
+
+**Summary — `/slots/HANDBOOK.en.md`:** The craft of authoring slot files. Covers the WHO/HOW/WHAT framing, the Obsidian slot format (frontmatter + wikilinks + callouts) versus the plain AGENTS.md rule, persona (Identity/Primary Role/Core Principles), mindsets (`principle/<pali>` tag, When/How-to-Apply), skills (`domain/<area>` tag + `maturity: L1–L7`, Domain/Inputs/Outputs), the Thai-body/English-tags/emoji convention, seeding with `bwoc new --mindsets/--skills`, and `bwoc check`. Index as canonical.
+
+**Summary — `/slots/HANDBOOK.th.md`:** Thai-language parity of `/slots/HANDBOOK.en.md`. Index as `hreflang="th"` with canonical `/slots/HANDBOOK.en.md`.
+
+---
+
+### Backends handbook
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/backends/HANDBOOK.en.md` | English | Yes | Drive & configure an agent through each backend CLI (Claude/AGY/Codex/Kimi/Copilot/Ollama/OpenAI-compatible) by prompt, after `bwoc init`. |
+| `/backends/HANDBOOK.th.md` | Thai | Parity | Thai-language parity of the backends handbook. |
+
+**Summary — `/backends/HANDBOOK.en.md`:** How to use and configure agents through any backend CLI once a workspace is initialised and agents are incarnated. Covers the AGENTS.md + symlink mechanism, vendor agentic CLIs (Claude Code, Antigravity `agy`, Codex, Kimi, GitHub Copilot) vs harness backends (Ollama, OpenAI-compatible needing `baseUrl`), launching via `bwoc spawn`/`chat`/`run` with `--backend`, configuring by natural-language prompt, persisting config in `config.manifest.json` + `bwoc check`, and adding a backend with one symlink. Index as canonical.
+
+**Summary — `/backends/HANDBOOK.th.md`:** Thai-language parity of `/backends/HANDBOOK.en.md`. Index as `hreflang="th"` with canonical `/backends/HANDBOOK.en.md`.
+
+---
+
 ### AI search / RAG handbook
 
 | Path | Language | Canonical? | One-line description |
