@@ -14,6 +14,7 @@ The handbook pages live under [`docs/`](docs/):
 | 🧑‍💻 End user | [`docs/end-user/`](docs/end-user/HANDBOOK.en.md) |
 | 🛠️ Developer | [`docs/developer/`](docs/developer/HANDBOOK.en.md) |
 | 🤖 Agent author / operator | [`docs/agents/`](docs/agents/HANDBOOK.en.md) |
+| 🔌 Backends (drive/configure via each CLI) | [`docs/backends/`](docs/backends/HANDBOOK.en.md) |
 | 🔎 AI search / retrieval | [`docs/ai-search/`](docs/ai-search/HANDBOOK.en.md) · [`docs/llms.txt`](docs/llms.txt) |
 | 🕷️ Crawler / indexer | [`docs/crawler/`](docs/crawler/HANDBOOK.en.md) · [`docs/robots.txt`](docs/robots.txt) · [`docs/sitemap.md`](docs/sitemap.md) |
 | 🧩 Ecosystem | [`docs/ecosystem/`](docs/ecosystem/HANDBOOK.en.md) |

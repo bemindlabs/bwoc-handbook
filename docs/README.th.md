@@ -15,6 +15,7 @@
 | 🧑‍💻 **ผู้ใช้งาน** — รันเอเจนต์ คุย ตั้งทีม สั่งงาน (ไม่แก้โค้ด) | [TH](end-user/HANDBOOK.th.md) · [`EN`](end-user/HANDBOOK.en.md) | ติดตั้ง สร้าง workspace สั่งงานด้วย `bwoc` |
 | 🛠️ **นักพัฒนา** — ต่อยอด/แก้ตัวเฟรมเวิร์ก (Rust, CLI, harness) | [TH](developer/HANDBOOK.th.md) · [`EN`](developer/HANDBOOK.en.md) | แผนผัง crate, build/test, hooks, เวอร์ชัน, PR gates |
 | 🤖 **ผู้สร้าง/ดูแลเอเจนต์** | [TH](agents/HANDBOOK.th.md) · [`EN`](agents/HANDBOOK.en.md) | โครงไฟล์, กฎ AGENTS.md, slot, manifest, วงจรชีวิต, `bwoc check` |
+| 🔌 **Backends** — ขับ & ตั้งค่าผ่านแต่ละ CLI | [TH](backends/HANDBOOK.th.md) · [`EN`](backends/HANDBOOK.en.md) | Claude/Codex/AGY/Kimi/Copilot/Ollama; ตั้งค่าด้วย prompt หลัง `init` |
 | 🔎 **AI search / ตัวค้นหา** | [TH](ai-search/HANDBOOK.th.md) · [`EN`](ai-search/HANDBOOK.en.md) + [`llms.txt`](llms.txt) | ข้อเท็จจริงตัวจริงอยู่ไหน อ้างอิงยังไง อย่ามั่ว |
 | 🕷️ **Crawler / ตัว index** | [TH](crawler/HANDBOOK.th.md) · [`EN`](crawler/HANDBOOK.en.md) + [`robots.txt`](robots.txt) + [`sitemap.md`](sitemap.md) | นโยบายเก็บข้อมูล สัญญาณความสด index อะไรบ้าง |
 | 🧩 **อยากเห็นภาพทั้งตระกูล** — ทุกโปรเจกต์ BWOC & `bwoc-*` | [TH](ecosystem/HANDBOOK.th.md) · [`EN`](ecosystem/HANDBOOK.en.md) | แต่ละโปรเจกต์คืออะไร ใช้ stack อะไร เชื่อมกับ core ยังไง |

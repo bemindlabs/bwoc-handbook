@@ -20,6 +20,10 @@
 
 [Agent Author & Operator Handbook — Thai](agents/HANDBOOK.th.md): Thai-language parity of the agents handbook.
 
+[Backends Handbook — English](backends/HANDBOOK.en.md): How to drive and configure an agent through each backend CLI after `bwoc init` and incarnation. Covers the AGENTS.md + symlink mechanism (CLAUDE/AGY/CODEX/KIMI/COPILOT/OLLAMA/OPENAI → AGENTS.md), vendor agentic CLIs (Claude Code, Antigravity `agy`, Codex, Kimi, GitHub Copilot) vs harness backends (Ollama, OpenAI-compatible needing `baseUrl`), launch via `bwoc spawn/chat/run` with `--backend`, configuring by natural-language prompt, persisting config in config.manifest.json + `bwoc check`, and adding a backend with one symlink.
+
+[Backends Handbook — Thai](backends/HANDBOOK.th.md): Thai-language parity of the backends handbook.
+
 [Crawler / Indexer Handbook — English](crawler/HANDBOOK.en.md): For web crawlers and documentation indexers. Defines the index-vs-skip scope, bilingual canonical/parity (hreflang) handling, freshness signals (VERSION.md fields + auto-version hook), and polite-crawl guidance. Pairs with robots.txt and sitemap.md.
 
 [Crawler / Indexer Handbook — Thai](crawler/HANDBOOK.th.md): Thai-language parity of the crawler handbook.
