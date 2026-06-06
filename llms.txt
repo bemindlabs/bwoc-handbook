@@ -1,0 +1,81 @@
+# BWOC Framework & Handbook
+
+> BWOC (Buddhist Way of Coding) is a backend-neutral framework for incarnating and orchestrating AI coding agents, driven by a single CLI (`bwoc`). It defines a three-phase lifecycle arc (uppāda/birth · ṭhiti/live · vaya/retire), a strict one-folder-one-agent layout cloned from a canonical template, a plain-Markdown agent identity file (`AGENTS.md`) with `{{camelCase}}` placeholders that work across any LLM backend (Claude, Codex, Kimi, Ollama, or any OpenAI-compatible endpoint via `bwoc-harness`), persistent memory capped at 200 lines, and multi-agent coordination through named Saṅgha teams with shared task lists. The framework is implemented in Rust (`bwoc-cli`, `bwoc-agent`, `bwoc-core`, `bwoc-harness` crates) and documented bilingually in English (canonical) and Thai (parity). Software version 2.24.0, latest release v2026.6.6-0; always re-read VERSION.md for current values. The handbook summarises; the canonical source of truth for all facts is the public repo https://github.com/bemindlabs/BWOC-Framework — on any conflict the repo wins.
+
+## Handbook (by role)
+
+[BWOC Handbook — English entry point](README.md): Role-indexed entry point for all readers. Contains a five-sentence description of BWOC, the three-phase lifecycle table, cross-handbook conventions (handbook vs repo, bilingualism, versioning), and fast-path shell commands. Links every role handbook and the glossary.
+
+[BWOC Handbook — Thai entry point](README.th.md): Thai-language parity of README.md. Identical structure; Thai is the secondary language, English is canonical on conflicts. Useful for Thai-speaking users and for verifying bilingual parity.
+
+[End-User Handbook — English](end-user/HANDBOOK.en.md): Practical guide for people who run agents without touching framework code. Covers install (Rust 1.85+), workspace init, four ways to drive an agent (chat/run/spawn/send), inbox/log/memory/health commands, team and task list management, agent lifecycle commands (new/stop/start/retire), fleet overview (dashboard/sessions/fleet/peer), document scaffolding (notes/retro/research), updating, and a troubleshooting table.
+
+[End-User Handbook — Thai](end-user/HANDBOOK.th.md): Thai-language parity of the end-user handbook. Same structure and command examples in Thai prose.
+
+[Developer Handbook — English](developer/HANDBOOK.en.md): For people building on or contributing to the Rust framework. Covers the two scopes (framework root vs agent template), the nine-crate map, build/test/install, dependency-quarantine, the hard rules (two-tier docs, backend neutrality, bilingual parity, auto-version hook, implementation logs, conventional commits, protected-main PR gates, over-engineering protection), skill/plugin development, the contribution flow, releasing, and how to publish this handbook as a GitHub Pages site.
+
+[Developer Handbook — Thai](developer/HANDBOOK.th.md): Thai-language parity of the developer handbook.
+
+[Agent Author & Operator Handbook — English](agents/HANDBOOK.en.md): For people who incarnate, configure, tune, and operate agents. Covers the one-folder-one-agent layout, the AGENTS.md backend-neutral rule vs Obsidian slot files, the full config.manifest.json field schema, slots (persona/mindsets/skills/interconnect/memories) and maturity levels, `bwoc new` with its full flag table, every `bwoc check` failure mode, trust & ed25519 signing, lifecycle (stop/start/retire), teams, and common authoring mistakes.
+
+[Agent Author & Operator Handbook — Thai](agents/HANDBOOK.th.md): Thai-language parity of the agents handbook.
+
+[Crawler / Indexer Handbook — English](crawler/HANDBOOK.en.md): For web crawlers and documentation indexers. Defines the index-vs-skip scope, bilingual canonical/parity (hreflang) handling, freshness signals (VERSION.md fields + auto-version hook), and polite-crawl guidance. Pairs with robots.txt and sitemap.md.
+
+[Crawler / Indexer Handbook — Thai](crawler/HANDBOOK.th.md): Thai-language parity of the crawler handbook.
+
+[Ecosystem / Projects Handbook — English](ecosystem/HANDBOOK.en.md): Maps every BWOC and related `bwoc-*` project — the core framework, bwoc-chat (egui desktop chat), bwoc-devices (device monorepo + ESP32 firmware), bwoc-devices-app / BWOC Monitor (Tauri macOS dashboard), bwoc-llm-pm / LLM Provider Monitor (macOS menu-bar), bwoc-mcc (SwiftUI menu-bar control center), and this handbook — with each project's stack and how it connects to the `bwoc` CLI and shared protocols.
+
+[Ecosystem / Projects Handbook — Thai](ecosystem/HANDBOOK.th.md): Thai-language parity of the ecosystem handbook.
+
+[AI-Search Handbook — English](ai-search/HANDBOOK.en.md): Guidance for AI retrieval agents ingesting this corpus. Defines the two-layer corpus architecture (handbook=summary, repo=canonical), provides a full canonical-source map table (topic to GitHub URL), citation rules (five rules including version pinning and no local paths), freshness signals, a safe-to-assert facts list, an exhaustive hallucination-traps list, and instructions for using llms.txt and the glossary.
+
+[AI-Search Handbook — Thai](ai-search/HANDBOOK.th.md): Thai-language parity of the AI-search handbook. Same structure; English is canonical on conflicts.
+
+[Handbook Glossary — English](glossary.en.md): Quick-reference one-line definitions of every term a handbook reader may encounter, including all Pali engineering labels. For full engineering treatment and framework membership, follow links to the repo GLOSSARY and PHILOSOPHY docs.
+
+[Handbook Glossary — Thai](glossary.th.md): Thai-language parity of the handbook glossary.
+
+## Canonical framework docs
+
+[ARCHITECTURE](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/ARCHITECTURE.en.md): Implementation stack — how framework repo, agent template, incarnated agents, the bwoc CLI, and backend execution fit together. Includes an ASCII layer diagram, crate map (bwoc-cli / bwoc-agent / bwoc-core / bwoc-harness), and information-flow description. Canonical for questions about component relationships and process topology. Thai: [ARCHITECTURE.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/ARCHITECTURE.th.md)
+
+[DESIGN](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/DESIGN.en.md): Design-system tokens for BWOC UIs (bwoc dashboard ratatui TUI, bwoc chat --tui, bwoc-chat egui desktop). Defines ColorToken {ansi, rgb}, glyph tokens, and spacing/layout tokens. Canonical for any question about UI consistency, colour meaning, or frontend integration. Thai: [DESIGN.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/DESIGN.th.md)
+
+[FAQ](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/FAQ.en.md): Authoritative answers to frequently asked questions about BWOC — installation, workspace setup, backend selection, agent creation, memory limits, teams, versioning, and troubleshooting. Prefer this over handbook troubleshooting sections for canonical answers. Thai: [FAQ.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/FAQ.th.md)
+
+[FLEET-GOVERNANCE](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/FLEET-GOVERNANCE.en.md): Defines the seven Aparihāniya-dhamma fleet-health signals checked by `bwoc fleet health`. Explains what each signal measures, how it maps to the Pali engineering label, and how to interpret results. Canonical for multi-agent fleet health and governance questions. Thai: [FLEET-GOVERNANCE.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/FLEET-GOVERNANCE.th.md)
+
+[GLOSSARY](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/GLOSSARY.en.md): Alphabetical table of every Pali term used in BWOC with a one-line engineering meaning. Includes a note that Pali terms are engineering labels, not religious content. For full framework membership and composition rules, links to PHILOSOPHY.en.md. Canonical for precise Pali-term definitions. Thai: [GLOSSARY.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/GLOSSARY.th.md)
+
+[HARNESS](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/HARNESS.en.md): Documents the `bwoc-harness` crate — the self-hosted OpenAI-compatible agentic loop runtime used for Ollama and other provider-neutral backends. Covers dep-quarantine design, safety guardrail layer (Sīla 5 + Taṇhā 3), Tier 2 memory integration (wake-up/search/mine), chat_proto event stream, and the TUI chat client. Canonical for self-hosted deployment questions. Thai: [HARNESS.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/HARNESS.th.md)
+
+[INCARNATION](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/INCARNATION.en.md): Single source of truth for creating a new agent from the template. Explains what incarnation means (uppāda phase), prerequisites, the canonical `bwoc new` CLI path and the legacy `incarnate.sh` shell-script path, manifest field resolution, placeholder substitution, backend symlink creation, and the post-incarnation `bwoc check` step. Thai: [INCARNATION.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/INCARNATION.th.md)
+
+[NAMING](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/NAMING.en.md): Naming conventions for everything in BWOC: agent IDs (kebab-case `agent-<name>`), workspace files, slot directory names, skill/plugin names, note slugs (`YYYY-MM-DD_<title>.md`), and the `{{camelCase}}` placeholder convention. Canonical for any naming question. Thai: [NAMING.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/NAMING.th.md)
+
+[PLUGINS](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/PLUGINS.en.md): Documents the framework plugin system — plugin manifest format, `modules/plugins/<name>/` layout, install from local path / git URL / tarball with SHA-256 trust gate, enable/disable/remove CLI (`bwoc plugin`), workspace.toml registration, and the distinction between plugins (workspace-level) and skills (agent-level). Thai: [PLUGINS.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/PLUGINS.th.md)
+
+[RELEASING](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/RELEASING.en.md): Documents the dual-version release process: CalVer Git tag (`vYYYY.M.D-<patch>`) triggers `release.yml` CI to build cross-platform binaries (Linux x86_64, macOS aarch64 + x86_64, Windows x86_64) with SHA-256 checksums. Explains the Cargo SemVer vs CalVer distinction, same-day reissue convention, and the auto-version hook that bumps patch on every edit. Thai: [RELEASING.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/RELEASING.th.md)
+
+[SIGNING](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/SIGNING.en.md): Documents ed25519 signing keypair generation (`bwoc trust --keygen`), where keys are stored (`<agent>/.bwoc/agent.key` at 0600, public key in manifest `signingPublicKey`), the Kalyāṇamitta-7 trust scoring model for inter-agent trust, and cross-workspace signed feedback envelopes (`bwoc peer feedback`). Canonical for inter-agent trust and signing questions. Thai: [SIGNING.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/SIGNING.th.md)
+
+[SKILLS](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/SKILLS.en.md): Documents the framework skills system — skill manifest format, maturity levels L1 (beginner) through L7 (mastery), `modules/skills/<name>/` layout, the `bwoc skill` CLI (list/show/verify/init/install/enable/disable/remove), the SHA-256 trust gate on install, and the `[gates].verify` static-check mechanism. Canonical for skill authoring and management. Thai: [SKILLS.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/SKILLS.th.md)
+
+[WORKSPACE](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/WORKSPACE.en.md): Documents the `.bwoc/` workspace directory layout: `workspace.toml`, `agents.toml` registry, `teams/`, `memory/`, `inbox.jsonl`, `routes.toml` (peer workspaces), `doc-kinds.toml` (custom document types). Explains `bwoc init` scaffolding, `--no-runtime` and `--single-agent` modes, `bwoc workspace` validation and prune, and workspace resolution (--workspace > BWOC_WORKSPACE env > ancestor walk). Thai: [WORKSPACE.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/WORKSPACE.th.md)
+
+## Spec & philosophy
+
+[Agent identity spec (AGENTS.md)](https://github.com/bemindlabs/BWOC-Framework/blob/main/modules/agent-template/AGENTS.md): The specification every incarnated agent's `AGENTS.md` must conform to. Plain Markdown only — no YAML frontmatter, no wikilinks, no callout blocks, no hardcoded vendor or model names. All configurable values use `{{camelCase}}` placeholders resolved at `bwoc new` time. Backend entry files (CLAUDE.md, AGY.md, CODEX.md, KIMI.md, OLLAMA.md, OPENAI.md) are symlinks to this file. Spec version 2.0.
+
+[Philosophy — 22 Buddhist-framework mappings (EN)](https://github.com/bemindlabs/BWOC-Framework/blob/main/modules/agent-template/docs/en/PHILOSOPHY.en.md): Full mapping of every Pali term to its engineering framework, design rationale, what it determines in code and process, and how it composes with related terms. Twenty-two frameworks organized by concern (architecture, lifecycle, memory, error handling, inter-agent trust, fleet governance, threat modeling, code of conduct, self-improvement). Canonical for understanding why any Pali term exists. Thai: [PHILOSOPHY.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/modules/agent-template/docs/th/PHILOSOPHY.th.md)
+
+[VERSION.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md): Auto-maintained version file. Contains Software-Version (Cargo SemVer, canonical in Cargo.toml, auto-bumped on .rs/.toml edits), Document-Version (bumped on .md edits), Phase (current implementation milestone), Latest release (CalVer tag), and Last-Updated (UTC ISO 8601 timestamp of last edit). Must be read at query time for any version-sensitive claim; never use a cached value.
+
+## Machine files
+
+[llms.txt](llms.txt): This file. Machine index of the BWOC handbook corpus following the llms.txt convention. Lists every handbook page and every canonical framework document with a one-paragraph description of each. Use as the entry point for corpus enumeration before fetching individual pages.
+
+[robots.txt](robots.txt): Crawler access policy for this handbook corpus. Specifies which paths are open to indexing and which to skip (ephemeral or private content).
+
+[sitemap.md](sitemap.md): Human- and machine-readable sitemap of the handbook. Lists every page with its path, role audience, language, and a one-line description. Complements llms.txt for crawlers that prefer Markdown over the llms.txt format.

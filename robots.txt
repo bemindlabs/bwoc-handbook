@@ -1,0 +1,96 @@
+# robots.txt — BWOC Handbook
+# Applies to the deployed documentation site for this handbook corpus.
+# Operators: replace the placeholder host in the Sitemap: line below with
+# the real deploy URL before going live.
+#
+# Documentation: crawler/HANDBOOK.en.md (crawl policy and freshness signals)
+# Sitemap:       sitemap.md (full page inventory with descriptions)
+
+User-agent: *
+
+# ---------------------------------------------------------------------------
+# ALLOW — handbook documentation corpus (index these)
+# ---------------------------------------------------------------------------
+
+Allow: /README.md
+Allow: /README.th.md
+
+Allow: /end-user/
+Allow: /developer/
+Allow: /agents/
+Allow: /ai-search/
+Allow: /crawler/
+
+Allow: /glossary.en.md
+Allow: /glossary.th.md
+Allow: /llms.txt
+Allow: /sitemap.md
+
+# ---------------------------------------------------------------------------
+# DISALLOW — paths that must not be indexed
+# ---------------------------------------------------------------------------
+
+# Build artifacts — Rust target directory (volatile, large, zero doc value)
+Disallow: /target/
+
+# Version control internals
+Disallow: /.git/
+
+# BWOC runtime workspace state (inbox.jsonl, agent.log, sessions, tasks.jsonl)
+# This path is per-run volatile; content changes every session.
+Disallow: /.bwoc/
+
+# JavaScript dependencies
+Disallow: /node_modules/
+
+# Claude Code operator-internal hooks and skills
+Disallow: /.claude/
+
+# GitHub CI workflows and PR templates (low documentation value for end users)
+Disallow: /.github/
+
+# Per-session development log files (ephemeral implementation notes)
+Disallow: /notes/
+
+# Framework test-workspace agent directories (gitignored in the framework repo;
+# not part of the public documentation corpus)
+Disallow: /agents/
+Disallow: /projects/
+
+# applications/ is an empty Phase 4 placeholder
+Disallow: /applications/
+
+# ---------------------------------------------------------------------------
+# DISALLOW — specific file patterns
+# ---------------------------------------------------------------------------
+
+# All lockfiles (machine-generated; not documentation)
+Disallow: /*.lock$
+Disallow: /Cargo.lock
+
+# All dotfiles (operator-internal by convention)
+Disallow: /.*/
+
+# The hidden CLI reference file (internal; not public documentation)
+Disallow: /.cli-reference.txt
+
+# macOS metadata artifacts
+Disallow: /.DS_Store
+
+# Intentionally malformed example files used in tests
+Disallow: /*.bad.md$
+
+# ---------------------------------------------------------------------------
+# Crawl delay — this is a small documentation corpus (under 20 pages).
+# Please respect this interval; a full sweep takes under 4 minutes.
+# ---------------------------------------------------------------------------
+
+Crawl-delay: 10
+
+# ---------------------------------------------------------------------------
+# Sitemap
+# IMPORTANT: replace example.com with your actual deploy host before going live.
+# The sitemap.md file at the repo root is the human+machine corpus map.
+# ---------------------------------------------------------------------------
+
+# Sitemap: https://example.com/sitemap.md

@@ -1,0 +1,80 @@
+site_name: BWOC Handbook
+site_description: >-
+  Backend-neutral framework for incarnating and orchestrating AI coding agents.
+
+repo_url: https://github.com/bemindlabs/BWOC-Framework
+repo_name: bemindlabs/BWOC-Framework
+
+docs_dir: .
+site_dir: _site
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - toc:
+      permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+exclude_docs: |
+  .cli-reference.txt
+  _site/
+
+nav:
+  - Home: README.md
+  - End User:
+      - "English": end-user/HANDBOOK.en.md
+      - "ภาษาไทย": end-user/HANDBOOK.th.md
+  - Developer:
+      - "English": developer/HANDBOOK.en.md
+      - "ภาษาไทย": developer/HANDBOOK.th.md
+  - Agents:
+      - "English": agents/HANDBOOK.en.md
+      - "ภาษาไทย": agents/HANDBOOK.th.md
+  - AI Search:
+      - "English": ai-search/HANDBOOK.en.md
+      - "ภาษาไทย": ai-search/HANDBOOK.th.md
+  - Crawler:
+      - "English": crawler/HANDBOOK.en.md
+      - "ภาษาไทย": crawler/HANDBOOK.th.md
+  - Ecosystem:
+      - "English": ecosystem/HANDBOOK.en.md
+      - "ภาษาไทย": ecosystem/HANDBOOK.th.md
+  - Glossary:
+      - "English": glossary.en.md
+      - "ภาษาไทย": glossary.th.md
+  - "ภาษาไทย (Thai)": README.th.md
