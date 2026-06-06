@@ -20,6 +20,10 @@
 
 [Agent Author & Operator Handbook — Thai](agents/HANDBOOK.th.md): Thai-language parity of the agents handbook.
 
+[Persona/Mindsets/Skills Handbook — English](slots/HANDBOOK.en.md): How to write an agent's slot content — persona (WHO: identity, role, core principles), mindsets (HOW: named decision frames, frontmatter `principle/<pali>` tag, When/How-to-Apply), and skills (WHAT: bounded verifiable capabilities, `domain/<area>` tag + `maturity: L1..L7`). Explains the Obsidian slot format (frontmatter + wikilinks + callouts) vs the plain AGENTS.md rule, the Thai-body/English-tags/emoji convention, seeding with `bwoc new --mindsets/--skills`, and `bwoc check`.
+
+[Persona/Mindsets/Skills Handbook — Thai](slots/HANDBOOK.th.md): Thai-language parity of the persona/mindsets/skills handbook.
+
 [Backends Handbook — English](backends/HANDBOOK.en.md): How to drive and configure an agent through each backend CLI after `bwoc init` and incarnation. Covers the AGENTS.md + symlink mechanism (CLAUDE/AGY/CODEX/KIMI/COPILOT/OLLAMA/OPENAI → AGENTS.md), vendor agentic CLIs (Claude Code, Antigravity `agy`, Codex, Kimi, GitHub Copilot) vs harness backends (Ollama, OpenAI-compatible needing `baseUrl`), launch via `bwoc spawn/chat/run` with `--backend`, configuring by natural-language prompt, persisting config in config.manifest.json + `bwoc check`, and adding a backend with one symlink.
 
 [Backends Handbook — Thai](backends/HANDBOOK.th.md): Thai-language parity of the backends handbook.

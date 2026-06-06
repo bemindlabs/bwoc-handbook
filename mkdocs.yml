@@ -65,6 +65,9 @@ nav:
   - Agents:
       - "English": agents/HANDBOOK.en.md
       - "ภาษาไทย": agents/HANDBOOK.th.md
+  - Persona · Mindsets · Skills:
+      - "English": slots/HANDBOOK.en.md
+      - "ภาษาไทย": slots/HANDBOOK.th.md
   - Backends:
       - "English": backends/HANDBOOK.en.md
       - "ภาษาไทย": backends/HANDBOOK.th.md
