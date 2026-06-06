@@ -12,6 +12,14 @@
 
 [End-User Handbook — Thai](end-user/HANDBOOK.th.md): Thai-language parity of the end-user handbook. Same structure and command examples in Thai prose.
 
+[Why BWOC / Philosophy — English](philosophy/HANDBOOK.en.md): The design-rationale chapter. Why BWOC exists, its four pillars (one-repo-one-agent, backend-neutral AGENTS.md, ≤200-line memory, multi-agent trust), where DDD/SOLID/Clean Architecture are thin (state impermanence, failure tracing, lifecycle, trust, default safety, scope discipline), the full 22-Buddhist-framework→engineering mapping table, the five governing principles, the uppāda·ṭhiti·vaya arc, who should/should not adopt it, and tradeoffs. States clearly: Pali = engineering labels, not religious instruction.
+
+[Why BWOC / Philosophy — Thai](philosophy/HANDBOOK.th.md): Thai-language parity of the philosophy chapter.
+
+[Self-Improvement — English](self-improvement/HANDBOOK.en.md): How a BWOC agent learns, reflects, and improves. Capability declaration + skill maturity L1–L7; the Three Roots of Wisdom learning loop (study/reflection/practice) with the memory artifact each writes; the Wisdom Loop; the curation pipeline (personal Tier-1 → pattern → cross-agent Tier-2 → fleet convention); memory tiers and every `bwoc memory` command; the work engine & effort discipline; the growth lifecycle (grow→mature→mentor→release); metrics, anti-patterns, and learning triggers.
+
+[Self-Improvement — Thai](self-improvement/HANDBOOK.th.md): Thai-language parity of the self-improvement chapter.
+
 [Developer Handbook — English](developer/HANDBOOK.en.md): For people building on or contributing to the Rust framework. Covers the two scopes (framework root vs agent template), the nine-crate map, build/test/install, dependency-quarantine, the hard rules (two-tier docs, backend neutrality, bilingual parity, auto-version hook, implementation logs, conventional commits, protected-main PR gates, over-engineering protection), skill/plugin development, the contribution flow, releasing, and how to publish this handbook as a GitHub Pages site.
 
 [Developer Handbook — Thai](developer/HANDBOOK.th.md): Thai-language parity of the developer handbook.

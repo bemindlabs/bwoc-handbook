@@ -12,10 +12,12 @@ This handbook is **role-indexed and bilingual**. English is primary (canonical);
 
 | You are… | Read | One-liner |
 |---|---|---|
+| 🧭 **Why BWOC** — the design, the reasoning & the dhamma mapping | [`philosophy/HANDBOOK.en.md`](philosophy/HANDBOOK.en.md) · [TH](philosophy/HANDBOOK.th.md) | Design pillars, where DDD/SOLID are thin, 22-framework mapping, why adopt it |
 | 🧑‍💻 **End user** — run agents, chat, teams, tasks (no framework code) | [`end-user/HANDBOOK.en.md`](end-user/HANDBOOK.en.md) · [TH](end-user/HANDBOOK.th.md) | Install, init a workspace, drive agents with `bwoc` |
 | 🛠️ **Developer** — build on / contribute to the framework (Rust, CLI, harness) | [`developer/HANDBOOK.en.md`](developer/HANDBOOK.en.md) · [TH](developer/HANDBOOK.th.md) | Crate map, build/test, hooks, versioning, release, PR gates |
 | 🤖 **Agent author / operator** — incarnate, tune, run agents | [`agents/HANDBOOK.en.md`](agents/HANDBOOK.en.md) · [TH](agents/HANDBOOK.th.md) | Agent layout, the AGENTS.md rule, slots, manifest, the arc, `bwoc check` |
 | ✍️ **Persona · Mindsets · Skills** — write an agent's identity & capabilities | [`slots/HANDBOOK.en.md`](slots/HANDBOOK.en.md) · [TH](slots/HANDBOOK.th.md) | WHO/HOW/WHAT slot files; frontmatter, `principle/`/`domain/` tags, maturity L1–L7 |
+| 🌱 **Self-improvement** — how an agent learns, reflects & improves | [`self-improvement/HANDBOOK.en.md`](self-improvement/HANDBOOK.en.md) · [TH](self-improvement/HANDBOOK.th.md) | Learning loop (study/reflect/practice), memory tiers, curation, maturity, metrics |
 | 🔌 **Backends** — drive & configure agents via each CLI | [`backends/HANDBOOK.en.md`](backends/HANDBOOK.en.md) · [TH](backends/HANDBOOK.th.md) | Claude/Codex/AGY/Kimi/Copilot/Ollama; prompt-driven config after `init` |
 | 🔎 **AI search / retrieval agent** — ingest this corpus to answer questions | [`ai-search/HANDBOOK.en.md`](ai-search/HANDBOOK.en.md) · [TH](ai-search/HANDBOOK.th.md) + [`llms.txt`](llms.txt) | Where canonical facts live, how to cite, what not to hallucinate |
 | 🕷️ **Web crawler / indexer** | [`crawler/HANDBOOK.en.md`](crawler/HANDBOOK.en.md) · [TH](crawler/HANDBOOK.th.md) + [`robots.txt`](robots.txt) + [`sitemap.md`](sitemap.md) | Crawl policy, freshness signals, what to index vs skip |

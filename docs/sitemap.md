@@ -53,6 +53,32 @@ For the full freshness-signal spec see [`crawler/HANDBOOK.en.md`](crawler/HANDBO
 
 ---
 
+### Why BWOC / Philosophy handbook
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/philosophy/HANDBOOK.en.md` | English | Yes | The design-rationale chapter — why BWOC, its pillars, the 22-framework engineering↔dhamma mapping, and why to adopt it. |
+| `/philosophy/HANDBOOK.th.md` | Thai | Parity | Thai-language parity of the philosophy chapter. |
+
+**Summary — `/philosophy/HANDBOOK.en.md`:** Explains BWOC's design and reasoning: the four pillars, where mainstream frameworks (DDD/SOLID/Clean) fall short for agent systems, the full 22-Buddhist-framework→engineering mapping table, the five governing principles, the uppāda·ṭhiti·vaya lifecycle, who should/should not adopt it, and design tradeoffs. States plainly that Pali terms are engineering labels, not religious instruction. Index as canonical.
+
+**Summary — `/philosophy/HANDBOOK.th.md`:** Thai-language parity of `/philosophy/HANDBOOK.en.md`. Index as `hreflang="th"` with canonical `/philosophy/HANDBOOK.en.md`.
+
+---
+
+### Self-improvement handbook
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/self-improvement/HANDBOOK.en.md` | English | Yes | How a BWOC agent learns, reflects, and improves — learning loop, memory tiers, curation pipeline, maturity, and metrics. |
+| `/self-improvement/HANDBOOK.th.md` | Thai | Parity | Thai-language parity of the self-improvement chapter. |
+
+**Summary — `/self-improvement/HANDBOOK.en.md`:** Capability declaration and skill maturity L1–L7; the three ways an agent learns (study/reflection/practice) and the memory artifacts each writes; the Wisdom Loop; the curation pipeline from personal note to fleet convention; memory tiers with every `bwoc memory` command; the work engine and effort discipline; the growth lifecycle; metrics, anti-patterns, and learning triggers. Index as canonical.
+
+**Summary — `/self-improvement/HANDBOOK.th.md`:** Thai-language parity of `/self-improvement/HANDBOOK.en.md`. Index as `hreflang="th"` with canonical `/self-improvement/HANDBOOK.en.md`.
+
+---
+
 ### Agent author / operator handbook
 
 | Path | Language | Canonical? | One-line description |

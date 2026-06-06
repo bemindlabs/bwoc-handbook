@@ -13,7 +13,9 @@ The handbook pages live under [`docs/`](docs/):
 |---|---|
 | 🧑‍💻 End user | [`docs/end-user/`](docs/end-user/HANDBOOK.en.md) |
 | 🛠️ Developer | [`docs/developer/`](docs/developer/HANDBOOK.en.md) |
+| 🧭 Why BWOC (philosophy & design) | [`docs/philosophy/`](docs/philosophy/HANDBOOK.en.md) |
 | 🤖 Agent author / operator | [`docs/agents/`](docs/agents/HANDBOOK.en.md) |
+| 🌱 Self-improvement (learning loop) | [`docs/self-improvement/`](docs/self-improvement/HANDBOOK.en.md) |
 | ✍️ Persona · Mindsets · Skills | [`docs/slots/`](docs/slots/HANDBOOK.en.md) |
 | 🔌 Backends (drive/configure via each CLI) | [`docs/backends/`](docs/backends/HANDBOOK.en.md) |
 | 🔎 AI search / retrieval | [`docs/ai-search/`](docs/ai-search/HANDBOOK.en.md) · [`docs/llms.txt`](docs/llms.txt) |

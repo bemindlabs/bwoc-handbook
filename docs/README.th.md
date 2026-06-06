@@ -12,10 +12,12 @@
 
 | คุณคือ… | เปิด | สรุปสั้น |
 |---|---|---|
+| 🧭 **ทำไมต้อง BWOC** — การออกแบบ เหตุผล & ความสัมพันธ์กับหลักธรรม | [TH](philosophy/HANDBOOK.th.md) · [`EN`](philosophy/HANDBOOK.en.md) | เสาหลักการออกแบบ, จุดที่ DDD/SOLID บาง, ตารางแมป 22 กรอบ, ทำไมควรใช้ |
 | 🧑‍💻 **ผู้ใช้งาน** — รันเอเจนต์ คุย ตั้งทีม สั่งงาน (ไม่แก้โค้ด) | [TH](end-user/HANDBOOK.th.md) · [`EN`](end-user/HANDBOOK.en.md) | ติดตั้ง สร้าง workspace สั่งงานด้วย `bwoc` |
 | 🛠️ **นักพัฒนา** — ต่อยอด/แก้ตัวเฟรมเวิร์ก (Rust, CLI, harness) | [TH](developer/HANDBOOK.th.md) · [`EN`](developer/HANDBOOK.en.md) | แผนผัง crate, build/test, hooks, เวอร์ชัน, PR gates |
 | 🤖 **ผู้สร้าง/ดูแลเอเจนต์** | [TH](agents/HANDBOOK.th.md) · [`EN`](agents/HANDBOOK.en.md) | โครงไฟล์, กฎ AGENTS.md, slot, manifest, วงจรชีวิต, `bwoc check` |
 | ✍️ **Persona · Mindsets · Skills** — เขียนตัวตน & ความสามารถของเอเจนต์ | [TH](slots/HANDBOOK.th.md) · [`EN`](slots/HANDBOOK.en.md) | slot WHO/HOW/WHAT; frontmatter, tag `principle/`/`domain/`, maturity L1–L7 |
+| 🌱 **Self-improvement** — เอเจนต์เรียนรู้ ทบทวน และพัฒนาตัวเองยังไง | [TH](self-improvement/HANDBOOK.th.md) · [`EN`](self-improvement/HANDBOOK.en.md) | learning loop (ศึกษา/ไตร่ตรอง/ลงมือ), memory tiers, curation, maturity, เมตริก |
 | 🔌 **Backends** — ขับ & ตั้งค่าผ่านแต่ละ CLI | [TH](backends/HANDBOOK.th.md) · [`EN`](backends/HANDBOOK.en.md) | Claude/Codex/AGY/Kimi/Copilot/Ollama; ตั้งค่าด้วย prompt หลัง `init` |
 | 🔎 **AI search / ตัวค้นหา** | [TH](ai-search/HANDBOOK.th.md) · [`EN`](ai-search/HANDBOOK.en.md) + [`llms.txt`](llms.txt) | ข้อเท็จจริงตัวจริงอยู่ไหน อ้างอิงยังไง อย่ามั่ว |
 | 🕷️ **Crawler / ตัว index** | [TH](crawler/HANDBOOK.th.md) · [`EN`](crawler/HANDBOOK.en.md) + [`robots.txt`](robots.txt) + [`sitemap.md`](sitemap.md) | นโยบายเก็บข้อมูล สัญญาณความสด index อะไรบ้าง |

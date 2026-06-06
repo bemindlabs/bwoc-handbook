@@ -56,6 +56,9 @@ exclude_docs: |
 
 nav:
   - Home: README.md
+  - Why BWOC (Philosophy):
+      - "English": philosophy/HANDBOOK.en.md
+      - "ภาษาไทย": philosophy/HANDBOOK.th.md
   - End User:
       - "English": end-user/HANDBOOK.en.md
       - "ภาษาไทย": end-user/HANDBOOK.th.md
@@ -68,6 +71,9 @@ nav:
   - Persona · Mindsets · Skills:
       - "English": slots/HANDBOOK.en.md
       - "ภาษาไทย": slots/HANDBOOK.th.md
+  - Self-Improvement:
+      - "English": self-improvement/HANDBOOK.en.md
+      - "ภาษาไทย": self-improvement/HANDBOOK.th.md
   - Backends:
       - "English": backends/HANDBOOK.en.md
       - "ภาษาไทย": backends/HANDBOOK.th.md
