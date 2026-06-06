@@ -28,6 +28,7 @@ More chapters:
 | Topic | Read | One-liner |
 |---|---|---|
 | 🚀 **Quickstart** — first agent in ~10 min | [`quickstart/HANDBOOK.en.md`](quickstart/HANDBOOK.en.md) · [TH](quickstart/HANDBOOK.th.md) | Guided end-to-end: install → init → new → run → team → retire |
+| 🧍 **Single-agent workspace** — one focused agent, no fleet | [`single-agent/HANDBOOK.en.md`](single-agent/HANDBOOK.en.md) · [TH](single-agent/HANDBOOK.th.md) | `bwoc init --single-agent`; when to use; grow to a fleet later |
 | 🛡️ **Security & the tianting team** | [`security/HANDBOOK.en.md`](security/HANDBOOK.en.md) · [TH](security/HANDBOOK.th.md) | Threat model, Sīla 5, signed trust, the 8-agent security team |
 | 🌐 **Cross-workspace & protocols** | [`cross-workspace/HANDBOOK.en.md`](cross-workspace/HANDBOOK.en.md) · [TH](cross-workspace/HANDBOOK.th.md) | `bwoc peer`, A2A protocol, MQTT — agents across machines |
 | 🖥️ **Self-hosting (Harness)** | [`harness/HANDBOOK.en.md`](harness/HANDBOOK.en.md) · [TH](harness/HANDBOOK.th.md) | Run on Ollama / OpenAI-compatible via `bwoc-harness` |

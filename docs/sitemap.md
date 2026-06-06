@@ -166,6 +166,15 @@ For the full freshness-signal spec see [`crawler/HANDBOOK.en.md`](crawler/HANDBO
 
 ---
 
+### Single-agent workspace
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/single-agent/HANDBOOK.en.md` | English | Yes | When/how to run a one-agent workspace (`bwoc init --single-agent`) vs the fleet. |
+| `/single-agent/HANDBOOK.th.md` | Thai | Parity | Thai parity of the single-agent chapter. |
+
+---
+
 ### Security & tianting team
 
 | Path | Language | Canonical? | One-line description |

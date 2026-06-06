@@ -17,6 +17,7 @@ The handbook pages live under [`docs/`](docs/):
 | 🤖 Agent author / operator | [`docs/agents/`](docs/agents/HANDBOOK.en.md) |
 | 🌱 Self-improvement (learning loop) | [`docs/self-improvement/`](docs/self-improvement/HANDBOOK.en.md) |
 | 🚀 Quickstart (~10 min) | [`docs/quickstart/`](docs/quickstart/HANDBOOK.en.md) |
+| 🧍 Single-agent workspace | [`docs/single-agent/`](docs/single-agent/HANDBOOK.en.md) |
 | 🛡️ Security & tianting team | [`docs/security/`](docs/security/HANDBOOK.en.md) |
 | 🌐 Cross-workspace & protocols | [`docs/cross-workspace/`](docs/cross-workspace/HANDBOOK.en.md) |
 | 🖥️ Self-hosting (Harness) | [`docs/harness/`](docs/harness/HANDBOOK.en.md) |

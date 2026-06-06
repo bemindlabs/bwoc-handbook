@@ -62,6 +62,9 @@ nav:
   - Quickstart:
       - "English": quickstart/HANDBOOK.en.md
       - "ภาษาไทย": quickstart/HANDBOOK.th.md
+  - Single-Agent Workspace:
+      - "English": single-agent/HANDBOOK.en.md
+      - "ภาษาไทย": single-agent/HANDBOOK.th.md
   - End User:
       - "English": end-user/HANDBOOK.en.md
       - "ภาษาไทย": end-user/HANDBOOK.th.md

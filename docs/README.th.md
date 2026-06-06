@@ -28,6 +28,7 @@
 | หัวข้อ | เปิด | สรุปสั้น |
 |---|---|---|
 | 🚀 **Quickstart** — สร้าง agent แรกใน ~10 นาที | [TH](quickstart/HANDBOOK.th.md) · [`EN`](quickstart/HANDBOOK.en.md) | ครบจบ: install → init → new → run → team → retire |
+| 🧍 **Single-agent workspace** — เอเจนต์เดียว ไม่ต้องมีฝูง | [TH](single-agent/HANDBOOK.th.md) · [`EN`](single-agent/HANDBOOK.en.md) | `bwoc init --single-agent`; ใช้เมื่อไหร่; โตเป็น fleet ทีหลัง |
 | 🛡️ **Security & ทีม tianting** | [TH](security/HANDBOOK.th.md) · [`EN`](security/HANDBOOK.en.md) | threat model, Sīla 5, trust ลงนาม, ทีม security 8 องค์ |
 | 🌐 **ข้าม workspace & โปรโตคอล** | [TH](cross-workspace/HANDBOOK.th.md) · [`EN`](cross-workspace/HANDBOOK.en.md) | `bwoc peer`, A2A, MQTT — เอเจนต์ข้ามเครื่อง |
 | 🖥️ **โฮสต์เอง (Harness)** | [TH](harness/HANDBOOK.th.md) · [`EN`](harness/HANDBOOK.en.md) | รันบน Ollama / OpenAI-compatible ผ่าน `bwoc-harness` |

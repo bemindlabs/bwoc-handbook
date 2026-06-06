@@ -55,6 +55,9 @@
 [Quickstart — English](quickstart/HANDBOOK.en.md): A guided ~10-minute end-to-end tutorial: install, `bwoc init`, `bwoc new` + `bwoc check`, talk to the agent (`chat`/`run`), make a team + task, observe, and retire. The hands-on companion to the reference end-user page.
 [Quickstart — Thai](quickstart/HANDBOOK.th.md): Thai-language parity of the quickstart.
 
+[Single-Agent Workspace — English](single-agent/HANDBOOK.en.md): When and how to run a one-agent workspace (`bwoc init --single-agent`) instead of the multi-agent fleet — profile differences, driving the single agent, and growing into a fleet later. Note: there is no machine-wide "global agent"; cross-machine sharing is the cross-workspace (peer/A2A) story.
+[Single-Agent Workspace — Thai](single-agent/HANDBOOK.th.md): Thai parity of the single-agent chapter.
+
 [Security & tianting — English](security/HANDBOOK.en.md): Security with BWOC — the threat model (Three Cravings: manipulation/persistence/destruction), the Five Precepts safety floor, audit logging (Three Doors), inter-agent trust + ed25519 signing, fleet-health signals, and the 8-agent tianting (天庭) security team (yudi/erlang/zhongkui/yanluo/laojun/xuanwu/nezha/taibai) with the monitor→hunt→patch→report incident loop. Red-team is authorized-use only.
 [Security & tianting — Thai](security/HANDBOOK.th.md): Thai-language parity of the security chapter.
 
