@@ -3,3 +3,13 @@ _site/
 __pycache__/
 .DS_Store
 .cli-reference.txt
+
+# Media & large binaries — videos are hosted on YouTube and embedded, never committed.
+*.mp4
+*.mov
+*.webm
+*.mkv
+*.wav
+*.m4a
+*.mp3
+*.zip
