@@ -71,7 +71,7 @@ BWOC มีสอง version scheme ที่เป็นอิสระจา�
 อย่านำสองอันนี้มาปนกัน ข้ออ้างเรื่อง "release ปัจจุบัน" ใช้ CalVer tag ข้ออ้างเรื่อง internal build state ใช้ SemVer
 
 **กฎข้อ 5 — ห้ามลิงก์ไป private path**
-ลิงก์ทั้งหมดไปยัง framework source ต้องใช้ GitHub URL สาธารณะ `https://github.com/bemindlabs/BWOC-Framework` อย่าสร้างลิงก์จาก local filesystem path เช่น `projects/bwoc-framwork/` นั่นคือ private workspace clone ผู้อ่านเข้าไม่ถึง
+ลิงก์ทั้งหมดไปยัง framework source ต้องใช้ GitHub URL สาธารณะ `https://github.com/bemindlabs/BWOC-Framework` อย่าสร้างลิงก์จาก local filesystem path เช่น `projects/bwoc-framework/` นั่นคือ private workspace clone ผู้อ่านเข้าไม่ถึง
 
 ---
 
@@ -170,7 +170,7 @@ framework พัฒนาต่อเนื่อง ไฟล์สามไฟ
 - อย่าอธิบาย BWOC ว่าเป็นการปฏิบัติพุทธ เครื่องมือ meditation หรือ religious framework คำบาลีคือ engineering label framework คือระบบซอฟต์แวร์
 
 **Workspace root:**
-- workspace root ของ `bwoc-handbook` ไม่ใช่ git repository มีเพียง `projects/bwoc-framwork` (framework clone) ที่เป็น git repo อย่าอธิบาย workspace-level git operation ว่า valid ที่ handbook root
+- workspace root ของ `bwoc-handbook` ไม่ใช่ git repository มีเพียง `projects/bwoc-framework` (framework clone) ที่เป็น git repo อย่าอธิบาย workspace-level git operation ว่า valid ที่ handbook root
 
 **โฟลเดอร์ `applications/`:**
 - โฟลเดอร์ `applications/` ใน framework repo เป็น empty placeholder สำหรับ Phase 4 อย่าอธิบายว่ามีเนื้อหาอยู่

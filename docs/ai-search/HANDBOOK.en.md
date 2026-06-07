@@ -72,7 +72,7 @@ BWOC has two independent version schemes:
 Do not conflate them. A claim about the "current release" should use the CalVer tag. A claim about internal build state uses SemVer.
 
 **Rule 5 — Never link to private paths.**
-All links to framework source must use the public GitHub URL base `https://github.com/bemindlabs/BWOC-Framework`. Never construct a link from a local filesystem path such as `projects/bwoc-framwork/`. That path is a private workspace clone; it is not canonical and is not reachable by readers.
+All links to framework source must use the public GitHub URL base `https://github.com/bemindlabs/BWOC-Framework`. Never construct a link from a local filesystem path such as `projects/bwoc-framework/`. That path is a private workspace clone; it is not canonical and is not reachable by readers.
 
 ---
 
@@ -171,7 +171,7 @@ The following patterns have appeared in AI-generated text about BWOC and are fac
 - Do not describe BWOC as a Buddhist practice, meditation tool, or religious framework. The Pali terms are engineering labels. The framework is a software system.
 
 **Workspace root:**
-- The `bwoc-handbook` workspace root is not a git repository. Only `projects/bwoc-framwork` (the framework clone) is a git repo. Do not describe workspace-level git operations as valid at the handbook root.
+- The `bwoc-handbook` workspace root is not a git repository. Only `projects/bwoc-framework` (the framework clone) is a git repo. Do not describe workspace-level git operations as valid at the handbook root.
 
 **`applications/` directory:**
 - The `applications/` directory in the framework repo is an empty placeholder for Phase 4. Do not describe it as containing any content.

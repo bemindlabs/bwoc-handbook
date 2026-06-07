@@ -54,7 +54,7 @@ If the plugin is not already installed under `modules/plugins/jira-cloud-rest/` 
 ```bash
 bwoc plugin install https://github.com/bemindlabs/BWOC-Framework.git#main
 # or from a local path if you have the framework cloned:
-bwoc plugin install ./projects/bwoc-framwork/modules/plugins/jira-cloud-rest/
+bwoc plugin install ./projects/bwoc-framework/modules/plugins/jira-cloud-rest/
 ```
 
 Then enable it by adding a block to your `workspace.toml`:

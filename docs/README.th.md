@@ -74,7 +74,7 @@
 - **ภาษาเรียบง่าย** ศัพท์เฉพาะอธิบายตอนใช้ครั้งแรก และลิงก์ไป glossary
 - **คำสั่ง** เป็นของ CLI `bwoc` — ดูของจริงล่าสุด `bwoc help getting-started` หรือ `bwoc <คำสั่ง> --help`
 - **เวอร์ชันขยับตลอด** เช็คเลขปัจจุบันที่ [`VERSION.md`](https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md)
-- **ลิงก์ห้ามชี้เข้า private workspace** ทุกการอ้างอิงซอร์สเฟรมเวิร์กชี้ไป GitHub repo สาธารณะเท่านั้น ไม่ใช้ path ในเครื่อง เช่น `projects/bwoc-framwork`
+- **ลิงก์ห้ามชี้เข้า private workspace** ทุกการอ้างอิงซอร์สเฟรมเวิร์กชี้ไป GitHub repo สาธารณะเท่านั้น ไม่ใช้ path ในเครื่อง เช่น `projects/bwoc-framework`
 
 ---
 

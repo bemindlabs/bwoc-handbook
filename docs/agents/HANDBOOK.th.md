@@ -978,7 +978,7 @@ ln -s AGENTS.md CLAUDE.md
 
 **อาการ:** Agent directory ใหม่ปรากฏที่ path ผิด (relative กับ template ไม่ใช่ workspace root)
 
-**สาเหตุ:** `--target` default เป็น `../agent-<name>/` relative กับ template directory ซึ่งอาจวาง agent ไว้ใน `projects/bwoc-framwork/modules/` แทน `agents/`
+**สาเหตุ:** `--target` default เป็น `../agent-<name>/` relative กับ template directory ซึ่งอาจวาง agent ไว้ใน `projects/bwoc-framework/modules/` แทน `agents/`
 
 **วิธีแก้ไข:** ส่ง `--target agents/agent-<name>` เสมอเมื่อรันจาก workspace root Template auto-detect เชื่อถือได้; มีเพียง `--target` เท่านั้นที่ต้องระบุอย่างชัดแจ้ง
 

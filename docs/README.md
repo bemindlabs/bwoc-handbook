@@ -74,7 +74,7 @@ Term lookup for any reader: [`glossary.en.md`](glossary.en.md) · [TH](glossary.
 - **Plain language, minimal jargon.** Specialized terms are explained on first use and link to the glossary.
 - **Commands** target the `bwoc` CLI. For the live surface run `bwoc help getting-started` or `bwoc <cmd> --help`.
 - **Versions move.** Pin claims to a version when it matters; check [`VERSION.md`](https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md) for current `Software-Version` / `Document-Version`.
-- **Links never point into a private workspace.** All references to framework source go to the public GitHub repo, never to a local path like `projects/bwoc-framwork`.
+- **Links never point into a private workspace.** All references to framework source go to the public GitHub repo, never to a local path like `projects/bwoc-framework`.
 
 ---
 

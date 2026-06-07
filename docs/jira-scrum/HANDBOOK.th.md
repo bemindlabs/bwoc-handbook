@@ -54,7 +54,7 @@ Source: [modules/plugins/jira-cloud-rest](https://github.com/bemindlabs/BWOC-Fra
 ```bash
 bwoc plugin install https://github.com/bemindlabs/BWOC-Framework.git#main
 # หรือจาก local path ถ้า clone framework ไว้แล้ว:
-bwoc plugin install ./projects/bwoc-framwork/modules/plugins/jira-cloud-rest/
+bwoc plugin install ./projects/bwoc-framework/modules/plugins/jira-cloud-rest/
 ```
 
 จากนั้นเปิดใช้งานโดยเพิ่ม block ใน `workspace.toml`:
