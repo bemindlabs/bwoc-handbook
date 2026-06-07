@@ -23,6 +23,8 @@
 [Developer Handbook — English](developer/HANDBOOK.en.md): For people building on or contributing to the Rust framework. Covers the two scopes (framework root vs agent template), the nine-crate map, build/test/install, dependency-quarantine, the hard rules (two-tier docs, backend neutrality, bilingual parity, auto-version hook, implementation logs, conventional commits, protected-main PR gates, over-engineering protection), skill/plugin development, the contribution flow, releasing, and how to publish this handbook as a GitHub Pages site.
 
 [Developer Handbook — Thai](developer/HANDBOOK.th.md): Thai-language parity of the developer handbook.
+[Plugin Authoring — English](plugin-craft/HANDBOOK.en.md): Building BWOC plugins — skill-vs-plugin, the nine plugin kinds, manifest.toml, the bwoc plugin lifecycle, normative output schemas, and the operator-confirm gate on write verbs.
+[Plugin Authoring — Thai](plugin-craft/HANDBOOK.th.md): Thai-language parity of the plugin-authoring chapter.
 
 [Agent Author & Operator Handbook — English](agents/HANDBOOK.en.md): For people who incarnate, configure, tune, and operate agents. Covers the one-folder-one-agent layout, the AGENTS.md backend-neutral rule vs Obsidian slot files, the full config.manifest.json field schema, slots (persona/mindsets/skills/interconnect/memories) and maturity levels, `bwoc new` with its full flag table, every `bwoc check` failure mode, trust & ed25519 signing, lifecycle (stop/start/retire), teams, and common authoring mistakes.
 
@@ -69,6 +71,8 @@
 
 [Fleet Operations — English](fleet-ops/HANDBOOK.en.md): Running many agents reliably — `bwoc fleet health` (seven Non-Decline signals), `bwoc supervise` (restart-on-crash + backstop), `bwoc sessions`/`list` filters/`ping`/`dashboard`/`log`/`inbox`, `bwoc doctor --auto`, `bwoc workspace validate/prune`, and bulk `stop/start --all`.
 [Fleet Operations — Thai](fleet-ops/HANDBOOK.th.md): Thai-language parity of the fleet-ops chapter.
+[Council — English](council/HANDBOOK.en.md): Structured fleet decisions via the council plugin kind — the propose → discuss → vote → resolve protocol, voting models (simple-majority / consensus / weighted / sangha), quorum, and the append-only Council Decision record with dissent preserved.
+[Council — Thai](council/HANDBOOK.th.md): Thai-language parity of the council chapter.
 
 [FAQ & Troubleshooting — English](faq/HANDBOOK.en.md): Consolidated common questions (no Pali needed, backend choice, agent lifecycle, workspace resolution, memory cap, neutrality, daemon issues, versioning) plus a symptom→cause→fix table. The canonical FAQ is the GitHub FAQ.en.md.
 [FAQ & Troubleshooting — Thai](faq/HANDBOOK.th.md): Thai-language parity of the FAQ chapter.

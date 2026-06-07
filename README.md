@@ -13,6 +13,7 @@ The handbook pages live under [`docs/`](docs/):
 |---|---|
 | 🧑‍💻 End user | [`docs/end-user/`](docs/end-user/HANDBOOK.en.md) |
 | 🛠️ Developer | [`docs/developer/`](docs/developer/HANDBOOK.en.md) |
+| 🧩 Plugin authoring | [`docs/plugin-craft/`](docs/plugin-craft/HANDBOOK.en.md) |
 | 🧭 Why BWOC (philosophy & design) | [`docs/philosophy/`](docs/philosophy/HANDBOOK.en.md) |
 | 🤖 Agent author / operator | [`docs/agents/`](docs/agents/HANDBOOK.en.md) |
 | 🌱 Self-improvement (learning loop) | [`docs/self-improvement/`](docs/self-improvement/HANDBOOK.en.md) |
@@ -22,6 +23,7 @@ The handbook pages live under [`docs/`](docs/):
 | 🌐 Cross-workspace & protocols | [`docs/cross-workspace/`](docs/cross-workspace/HANDBOOK.en.md) |
 | 🖥️ Self-hosting (Harness) | [`docs/harness/`](docs/harness/HANDBOOK.en.md) |
 | 🛰️ Fleet operations | [`docs/fleet-ops/`](docs/fleet-ops/HANDBOOK.en.md) |
+| 🏛️ Council (fleet decisions) | [`docs/council/`](docs/council/HANDBOOK.en.md) |
 | ❓ FAQ & troubleshooting | [`docs/faq/`](docs/faq/HANDBOOK.en.md) |
 | 🤖 Chat Connectors (Telegram & Discord) | [`docs/connect/`](docs/connect/HANDBOOK.en.md) |
 | 🟢 Google Workspace | [`docs/google-workspace/`](docs/google-workspace/HANDBOOK.en.md) |

@@ -46,6 +46,8 @@ For the full freshness-signal spec see [`crawler/HANDBOOK.en.md`](crawler/HANDBO
 |---|---|---|---|
 | `/developer/HANDBOOK.en.md` | English | Yes | Crate map, build/test procedures, hooks, versioning policy, release recipe, and PR gates for framework contributors. |
 | `/developer/HANDBOOK.th.md` | Thai | Parity | Thai-language parity of the developer handbook. |
+| `/plugin-craft/HANDBOOK.en.md` | English | Yes | Plugin authoring: kinds, manifest, lifecycle, schemas, the write-verb gate. |
+| `/plugin-craft/HANDBOOK.th.md` | Thai | Parity | Thai parity of the plugin-authoring chapter. |
 
 **Summary — `/developer/HANDBOOK.en.md`:** Guides contributors who work on the Rust framework itself. Covers the three-crate workspace (`bwoc-core`, `bwoc-cli`, `bwoc-agent`, `bwoc-deep-memory`), build and test commands, the auto-version hook that stamps `VERSION.md` on every edit, the dual versioning namespace (Cargo SemVer for development checkpoints; CalVer tags for public releases), the protected-branch PR discipline (four CI gates, auto-merge, one-concern-per-PR), bilingual parity rules, and implementation note conventions in `notes/`.
 
@@ -208,6 +210,8 @@ For the full freshness-signal spec see [`crawler/HANDBOOK.en.md`](crawler/HANDBO
 |---|---|---|---|
 | `/fleet-ops/HANDBOOK.en.md` | English | Yes | Running many agents at scale: fleet health, supervise, sessions, doctor. |
 | `/fleet-ops/HANDBOOK.th.md` | Thai | Parity | Thai parity of the fleet-ops chapter. |
+| `/council/HANDBOOK.en.md` | English | Yes | Structured fleet decisions: the council protocol, voting models, the decision record. |
+| `/council/HANDBOOK.th.md` | Thai | Parity | Thai parity of the council chapter. |
 
 ---
 

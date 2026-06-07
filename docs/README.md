@@ -33,6 +33,7 @@ More chapters:
 | 🌐 **Cross-workspace & protocols** | [`cross-workspace/HANDBOOK.en.md`](cross-workspace/HANDBOOK.en.md) · [TH](cross-workspace/HANDBOOK.th.md) | `bwoc peer`, A2A protocol, MQTT — agents across machines |
 | 🖥️ **Self-hosting (Harness)** | [`harness/HANDBOOK.en.md`](harness/HANDBOOK.en.md) · [TH](harness/HANDBOOK.th.md) | Run on Ollama / OpenAI-compatible via `bwoc-harness` |
 | 🛰️ **Fleet operations** | [`fleet-ops/HANDBOOK.en.md`](fleet-ops/HANDBOOK.en.md) · [TH](fleet-ops/HANDBOOK.th.md) | Run many agents: fleet health, supervise, sessions, doctor |
+| 🏛️ **Council** — structured fleet decisions | [`council/HANDBOOK.en.md`](council/HANDBOOK.en.md) · [TH](council/HANDBOOK.th.md) | propose → discuss → vote → resolve; voting models; the decision record |
 | ❓ **FAQ & troubleshooting** | [`faq/HANDBOOK.en.md`](faq/HANDBOOK.en.md) · [TH](faq/HANDBOOK.th.md) | Common questions + symptom→cause→fix table |
 
 | 🤖 **Chat Connectors (Telegram & Discord)** | [`connect/HANDBOOK.en.md`](connect/HANDBOOK.en.md) · [TH](connect/HANDBOOK.th.md) | นำเอเจนต์เข้า Telegram & Discord ผ่าน bwoc-connect |
@@ -40,6 +41,7 @@ More chapters:
 | 📋 **Jira & SCRUM** | [`jira-scrum/HANDBOOK.en.md`](jira-scrum/HANDBOOK.en.md) · [TH](jira-scrum/HANDBOOK.th.md) | plugin jira-cloud-rest + skill scrum-via-jira (sprint sync) |
 | 🛡️ **ISO Standards Audit** | [`iso-audit/HANDBOOK.en.md`](iso-audit/HANDBOOK.en.md) · [TH](iso-audit/HANDBOOK.th.md) | ตรวจ ISO 9001/27001/20000-1/29110 ด้วย audit plugins |
 | 🎯 **OKR Plugin** | [`okr/HANDBOOK.en.md`](okr/HANDBOOK.en.md) · [TH](okr/HANDBOOK.th.md) | ตั้ง/ติดตาม OKR ด้วย plugin okr (local-file) |
+| 🧩 **Plugin Authoring** | [`plugin-craft/HANDBOOK.en.md`](plugin-craft/HANDBOOK.en.md) · [TH](plugin-craft/HANDBOOK.th.md) | Build a plugin: kinds, manifest, lifecycle, schemas, the write gate |
 
 Term lookup for any reader: [`glossary.en.md`](glossary.en.md) · [TH](glossary.th.md)
 
