@@ -220,6 +220,51 @@ For the full freshness-signal spec see [`crawler/HANDBOOK.en.md`](crawler/HANDBO
 
 ---
 
+### Chat Connectors (Telegram & Discord)
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/connect/HANDBOOK.en.md` | English | Yes | Bring a BWOC agent into Telegram & Discord via the bwoc-connect crate (long-poll/gateway, DM+group, keyring secrets, daemon-supervised). |
+| `/connect/HANDBOOK.th.md` | Thai | Parity | Thai parity. |
+
+---
+
+### Google Workspace
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/google-workspace/HANDBOOK.en.md` | English | Yes | Connect BWOC to Google Workspace via the gws plugin family (auth/drive/gmail/calendar; install/enable, scoped read-mostly ops). |
+| `/google-workspace/HANDBOOK.th.md` | Thai | Parity | Thai parity. |
+
+---
+
+### Jira & SCRUM
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/jira-scrum/HANDBOOK.en.md` | English | Yes | Jira & SCRUM: the jira-cloud-rest plugin (kind jira, project-scoped JQL + gated transitions) + the scrum-via-jira skill (sprint verbs); kind-dependency model. |
+| `/jira-scrum/HANDBOOK.th.md` | Thai | Parity | Thai parity. |
+
+---
+
+### ISO Standards Audit
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/iso-audit/HANDBOOK.en.md` | English | Yes | Machine-assisted ISO audits via audit-kind plugins (ISO 9001/27001/20000-1/29110): attestations + SoA + samples, read-only findings. |
+| `/iso-audit/HANDBOOK.th.md` | Thai | Parity | Thai parity. |
+
+---
+
+### OKR Plugin
+
+| Path | Language | Canonical? | One-line description |
+|---|---|---|---|
+| `/okr/HANDBOOK.en.md` | English | Yes | Manage OKRs in BWOC via the okr plugin (objectives/key-results in local TOML; track / check-progress / report verbs; ties to fleet governance). |
+| `/okr/HANDBOOK.th.md` | Thai | Parity | Thai parity. |
+
+---
+
 ### Glossary
 
 | Path | Language | Canonical? | One-line description |

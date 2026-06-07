@@ -35,6 +35,12 @@
 | 🛰️ **ปฏิบัติการระดับฝูง** | [TH](fleet-ops/HANDBOOK.th.md) · [`EN`](fleet-ops/HANDBOOK.en.md) | รันหลายเอเจนต์: fleet health, supervise, sessions, doctor |
 | ❓ **FAQ & แก้ปัญหา** | [TH](faq/HANDBOOK.th.md) · [`EN`](faq/HANDBOOK.en.md) | คำถามบ่อย + ตาราง อาการ→สาเหตุ→วิธีแก้ |
 
+| 🤖 **Chat Connectors (Telegram & Discord)** | [TH](connect/HANDBOOK.th.md) · [`EN`](connect/HANDBOOK.en.md) | นำเอเจนต์เข้า Telegram & Discord ผ่าน bwoc-connect |
+| 🟢 **Google Workspace** | [TH](google-workspace/HANDBOOK.th.md) · [`EN`](google-workspace/HANDBOOK.en.md) | เชื่อม Gmail/Drive/Calendar ผ่าน plugin gws |
+| 📋 **Jira & SCRUM** | [TH](jira-scrum/HANDBOOK.th.md) · [`EN`](jira-scrum/HANDBOOK.en.md) | plugin jira-cloud-rest + skill scrum-via-jira (sprint sync) |
+| 🛡️ **ISO Standards Audit** | [TH](iso-audit/HANDBOOK.th.md) · [`EN`](iso-audit/HANDBOOK.en.md) | ตรวจ ISO 9001/27001/20000-1/29110 ด้วย audit plugins |
+| 🎯 **OKR Plugin** | [TH](okr/HANDBOOK.th.md) · [`EN`](okr/HANDBOOK.en.md) | ตั้ง/ติดตาม OKR ด้วย plugin okr (local-file) |
+
 เปิดหาความหมายศัพท์: [TH](glossary.th.md) · [`EN`](glossary.en.md)
 
 ---

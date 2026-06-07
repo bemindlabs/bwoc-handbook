@@ -73,6 +73,21 @@
 [FAQ & Troubleshooting — English](faq/HANDBOOK.en.md): Consolidated common questions (no Pali needed, backend choice, agent lifecycle, workspace resolution, memory cap, neutrality, daemon issues, versioning) plus a symptom→cause→fix table. The canonical FAQ is the GitHub FAQ.en.md.
 [FAQ & Troubleshooting — Thai](faq/HANDBOOK.th.md): Thai-language parity of the FAQ chapter.
 
+[Chat Connectors (Telegram & Discord) — English](connect/HANDBOOK.en.md): Bring a BWOC agent into Telegram & Discord via the bwoc-connect crate (long-poll/gateway, DM+group, keyring secrets, daemon-supervised).
+[Chat Connectors (Telegram & Discord) — Thai](connect/HANDBOOK.th.md): Thai parity.
+
+[Google Workspace — English](google-workspace/HANDBOOK.en.md): Connect BWOC to Google Workspace via the gws plugin family (auth/drive/gmail/calendar; install/enable, scoped read-mostly ops).
+[Google Workspace — Thai](google-workspace/HANDBOOK.th.md): Thai parity.
+
+[Jira & SCRUM — English](jira-scrum/HANDBOOK.en.md): Jira & SCRUM: the jira-cloud-rest plugin (kind jira, project-scoped JQL + gated transitions) + the scrum-via-jira skill (sprint verbs); kind-dependency model.
+[Jira & SCRUM — Thai](jira-scrum/HANDBOOK.th.md): Thai parity.
+
+[ISO Standards Audit — English](iso-audit/HANDBOOK.en.md): Machine-assisted ISO audits via audit-kind plugins (ISO 9001/27001/20000-1/29110): attestations + SoA + samples, read-only findings.
+[ISO Standards Audit — Thai](iso-audit/HANDBOOK.th.md): Thai parity.
+
+[OKR Plugin — English](okr/HANDBOOK.en.md): Manage OKRs in BWOC via the okr plugin (objectives/key-results in local TOML; track / check-progress / report verbs; ties to fleet governance).
+[OKR Plugin — Thai](okr/HANDBOOK.th.md): Thai parity.
+
 ## Canonical framework docs
 
 [ARCHITECTURE](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/ARCHITECTURE.en.md): Implementation stack — how framework repo, agent template, incarnated agents, the bwoc CLI, and backend execution fit together. Includes an ASCII layer diagram, crate map (bwoc-cli / bwoc-agent / bwoc-core / bwoc-harness), and information-flow description. Canonical for questions about component relationships and process topology. Thai: [ARCHITECTURE.th.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/th/ARCHITECTURE.th.md)

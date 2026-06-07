@@ -35,6 +35,12 @@ More chapters:
 | 🛰️ **Fleet operations** | [`fleet-ops/HANDBOOK.en.md`](fleet-ops/HANDBOOK.en.md) · [TH](fleet-ops/HANDBOOK.th.md) | Run many agents: fleet health, supervise, sessions, doctor |
 | ❓ **FAQ & troubleshooting** | [`faq/HANDBOOK.en.md`](faq/HANDBOOK.en.md) · [TH](faq/HANDBOOK.th.md) | Common questions + symptom→cause→fix table |
 
+| 🤖 **Chat Connectors (Telegram & Discord)** | [`connect/HANDBOOK.en.md`](connect/HANDBOOK.en.md) · [TH](connect/HANDBOOK.th.md) | นำเอเจนต์เข้า Telegram & Discord ผ่าน bwoc-connect |
+| 🟢 **Google Workspace** | [`google-workspace/HANDBOOK.en.md`](google-workspace/HANDBOOK.en.md) · [TH](google-workspace/HANDBOOK.th.md) | เชื่อม Gmail/Drive/Calendar ผ่าน plugin gws |
+| 📋 **Jira & SCRUM** | [`jira-scrum/HANDBOOK.en.md`](jira-scrum/HANDBOOK.en.md) · [TH](jira-scrum/HANDBOOK.th.md) | plugin jira-cloud-rest + skill scrum-via-jira (sprint sync) |
+| 🛡️ **ISO Standards Audit** | [`iso-audit/HANDBOOK.en.md`](iso-audit/HANDBOOK.en.md) · [TH](iso-audit/HANDBOOK.th.md) | ตรวจ ISO 9001/27001/20000-1/29110 ด้วย audit plugins |
+| 🎯 **OKR Plugin** | [`okr/HANDBOOK.en.md`](okr/HANDBOOK.en.md) · [TH](okr/HANDBOOK.th.md) | ตั้ง/ติดตาม OKR ด้วย plugin okr (local-file) |
+
 Term lookup for any reader: [`glossary.en.md`](glossary.en.md) · [TH](glossary.th.md)
 
 ---

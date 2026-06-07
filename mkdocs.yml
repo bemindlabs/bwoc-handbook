@@ -98,6 +98,21 @@ nav:
   - FAQ:
       - "English": faq/HANDBOOK.en.md
       - "ภาษาไทย": faq/HANDBOOK.th.md
+  - Chat Connectors (Telegram & Discord):
+      - "English": connect/HANDBOOK.en.md
+      - "ภาษาไทย": connect/HANDBOOK.th.md
+  - Google Workspace:
+      - "English": google-workspace/HANDBOOK.en.md
+      - "ภาษาไทย": google-workspace/HANDBOOK.th.md
+  - Jira & SCRUM:
+      - "English": jira-scrum/HANDBOOK.en.md
+      - "ภาษาไทย": jira-scrum/HANDBOOK.th.md
+  - ISO Standards Audit:
+      - "English": iso-audit/HANDBOOK.en.md
+      - "ภาษาไทย": iso-audit/HANDBOOK.th.md
+  - OKR Plugin:
+      - "English": okr/HANDBOOK.en.md
+      - "ภาษาไทย": okr/HANDBOOK.th.md
   - AI Search:
       - "English": ai-search/HANDBOOK.en.md
       - "ภาษาไทย": ai-search/HANDBOOK.th.md

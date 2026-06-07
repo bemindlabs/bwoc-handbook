@@ -23,6 +23,11 @@ The handbook pages live under [`docs/`](docs/):
 | 🖥️ Self-hosting (Harness) | [`docs/harness/`](docs/harness/HANDBOOK.en.md) |
 | 🛰️ Fleet operations | [`docs/fleet-ops/`](docs/fleet-ops/HANDBOOK.en.md) |
 | ❓ FAQ & troubleshooting | [`docs/faq/`](docs/faq/HANDBOOK.en.md) |
+| 🤖 Chat Connectors (Telegram & Discord) | [`docs/connect/`](docs/connect/HANDBOOK.en.md) |
+| 🟢 Google Workspace | [`docs/google-workspace/`](docs/google-workspace/HANDBOOK.en.md) |
+| 📋 Jira & SCRUM | [`docs/jira-scrum/`](docs/jira-scrum/HANDBOOK.en.md) |
+| 🛡️ ISO Standards Audit | [`docs/iso-audit/`](docs/iso-audit/HANDBOOK.en.md) |
+| 🎯 OKR Plugin | [`docs/okr/`](docs/okr/HANDBOOK.en.md) |
 | ✍️ Persona · Mindsets · Skills | [`docs/slots/`](docs/slots/HANDBOOK.en.md) |
 | 🔌 Backends (drive/configure via each CLI) | [`docs/backends/`](docs/backends/HANDBOOK.en.md) |
 | 🔎 AI search / retrieval | [`docs/ai-search/`](docs/ai-search/HANDBOOK.en.md) · [`docs/llms.txt`](docs/llms.txt) |
