@@ -71,6 +71,9 @@ nav:
   - Developer:
       - "English": developer/HANDBOOK.en.md
       - "ภาษาไทย": developer/HANDBOOK.th.md
+  - Plugin Authoring:
+      - "English": plugin-craft/HANDBOOK.en.md
+      - "ภาษาไทย": plugin-craft/HANDBOOK.th.md
   - Agents:
       - "English": agents/HANDBOOK.en.md
       - "ภาษาไทย": agents/HANDBOOK.th.md
@@ -95,6 +98,9 @@ nav:
   - Fleet Operations:
       - "English": fleet-ops/HANDBOOK.en.md
       - "ภาษาไทย": fleet-ops/HANDBOOK.th.md
+  - Council:
+      - "English": council/HANDBOOK.en.md
+      - "ภาษาไทย": council/HANDBOOK.th.md
   - FAQ:
       - "English": faq/HANDBOOK.en.md
       - "ภาษาไทย": faq/HANDBOOK.th.md

@@ -21,8 +21,9 @@
    - [8.1 สร้างทีม](#81-สร้างทีม)
    - [8.2 ขั้นตอนงานประจำวัน](#82-ขั้นตอนงานประจำวัน)
    - [8.3 ตรวจสอบสุขภาพ fleet](#83-ตรวจสอบสุขภาพ-fleet)
-9. [Red team ใช้ได้เฉพาะเมื่อได้รับอนุญาตเท่านั้น](#9-red-team-ใช้ได้เฉพาะเมื่อได้รับอนุญาตเท่านั้น)
-10. [ดูเพิ่มเติม](#10-ดูเพิ่มเติม)
+9. [Ingress ที่ไม่น่าเชื่อถือและขอบเขต sandbox (สังวร)](#9-ingress-ที่ไม่น่าเชื่อถือและขอบเขต-sandbox-สังวร)
+10. [Red team ใช้ได้เฉพาะเมื่อได้รับอนุญาตเท่านั้น](#10-red-team-ใช้ได้เฉพาะเมื่อได้รับอนุญาตเท่านั้น)
+11. [ดูเพิ่มเติม](#11-ดูเพิ่มเติม)
 
 ---
 
@@ -398,7 +399,27 @@ bwoc fleet health --json | jq '.findings[] | select(.severity == "error")'
 
 ---
 
-## 9. Red team ใช้ได้เฉพาะเมื่อได้รับอนุญาตเท่านั้น
+## 9. Ingress ที่ไม่น่าเชื่อถือและขอบเขต sandbox (สังวร)
+
+ก่อนที่ chat connector จะมา input ทุกอย่างที่ agent เห็นมาจาก operator ที่น่าเชื่อถือหรือ agent พี่น้องที่ผ่าน trust gate connector ของ Telegram, Discord, และ LINE เปลี่ยนสิ่งนั้น: ข้อความจากบุคคลทั่วไปคนใดก็ได้เข้าถึง runtime ของ agent โดยตรงแล้ว *สังวร* (การสำรวมระวังทวารผัสสะ) คือวินัยที่ section นี้ตั้งชื่อ — ความสำรวมที่ใช้ ณ ขอบเขตที่ input ไม่น่าเชื่อถืออาจกลายเป็นการกระทำจริง
+
+**ขอบเขตอยู่ที่ผลของ tool ไม่ใช่ที่ข้อความ** ข้อความไม่น่าเชื่อถือที่ถึง model เป็นปัญหาการบงการ (กามตัณหา) จัดการด้วยการตรวจสอบคำสั่งและกฎ scope — การอ่าน string ไม่ได้รัน code สิ่งที่ต้อง contain คือ *tool ที่มีผล* ใดๆ (การเรียก shell, การเขียนไฟล์, การร้องขอออกนอก) ที่แผนซึ่งมาจาก input ไม่น่าเชื่อถืออาจสั่งให้ทำงาน นั่นคือที่ที่ sandbox อยู่
+
+**สองกฎที่ทำให้ขอบเขตยืนได้:**
+
+- **ปฏิเสธโดยปริยายสำหรับ input ไม่น่าเชื่อถือ** conversation ที่ติดป้าย *untrusted* ไม่ได้ tool ที่มีผลใดๆ — ได้แค่การตอบคำถามแบบอ่านอย่างเดียวและ whitelist ของ tool ปลอดภัยที่ตรวจสอบแล้วอย่างชัดเจน ทุกรายการใน whitelist นั้นพิสูจน์แล้วว่าไม่มีการเรียก network ออกนอก ไม่มี DNS lookup ไม่เขียนไฟล์ และไม่รั่วผ่าน side channel ใด "อ่านอย่างเดียว" ไม่พอในตัวมันเอง: การ fetch URL หรือแม้แต่ข้อความ error ก็เป็นช่องทาง exfiltration ได้ ดังนั้น whitelist จึงว่าด้วย *ไม่มีผล* ไม่ใช่แค่ *ไม่เขียน*
+- **Trust tag ติดอยู่ (การแพร่ taint)** เมื่อ input ไม่น่าเชื่อถือผ่าน model และสร้าง output output นั้นคง tag ไม่น่าเชื่อถือไว้ capability ที่น่าเชื่อถือซึ่งรับมันไปภายหลังถูกตรวจกับ gate อีกครั้ง — ไม่ถูกเลื่อนเป็นน่าเชื่อถือเพียงเพราะ model แตะมัน นี่ปิดเส้นทาง "confused deputy" ที่ข้อมูลไม่น่าเชื่อถือถูกฟอกเป็นการกระทำที่มีสิทธิ์ใน turn ถัดมา
+
+**การแยกตัวเป็นแบบต่อ conversation** แต่ละ turn ของ `(connector, conversation)` รันใน sandbox อายุสั้นของตัวเองที่ถูกทำลายเมื่อ turn จบ แชตสาธารณะหนึ่งไม่สามารถอ่านหรือทำให้ state ของอีกแชตเป็นพิษได้ และ turn ที่ควบคุมไม่ได้ถูกจำกัดด้วย CPU, memory, file-descriptor, และ process limit จึงทำให้ runtime ที่ใช้ร่วมกันอดอยากไม่ได้
+
+posture นี้กำลังถูก harden เป็น phase เฉพาะของ framework — **Phase 5, *สังวร*** — ซึ่ง Definition of Done เป็นชุด gate ที่ทดสอบได้: การติดป้าย ingress ครบถ้วน, capability gate แบบปฏิเสธโดยปริยาย, การแพร่ taint, whitelist สะอาดจาก egress, การแยก process ต่อ turn, การจำกัดทรัพยากร, และการบล็อกการ escape จาก sandbox สู่ runtime ที่ยืนยันแล้ว การป้องกันบางอย่างถูกเลื่อนไว้โดยตั้งใจ (การกรอง syscall ระดับ kernel, filesystem jail, และ container backend) และช่องว่างเหล่านั้นถูกบันทึกไว้แทนที่จะสมมติว่าไม่มี ทีม tianting เป็นเจ้าของ threat assertion; framework เป็นเจ้าของกลไก
+
+> [!warning]
+> ถ้าคุณรัน agent ที่เปิดสู่สาธารณะวันนี้ การควบคุมระดับ operator ที่คุณมีตอนนี้คือ trust gate บวก whitelist ของ tool ปลอดภัย อย่าเปิด tool ที่มีผลให้ conversation ที่ป้อนผ่าน connector จนกว่า gate ของ Phase 5 จะบรรลุสำหรับ deployment ของคุณ
+
+---
+
+## 10. Red team ใช้ได้เฉพาะเมื่อได้รับอนุญาตเท่านั้น
 
 ทักษะของ nezha — `penetration-testing`, `adversary-emulation`, และ `exploit-poc` — ถูก scope ชัดเจนให้ใช้ได้เฉพาะกับ engagement ที่ได้รับอนุญาตเท่านั้น นี่ไม่ใช่นโยบายที่เลือกได้ แต่เป็นข้อจำกัดแข็งใน anti-scope declaration ของ nezha และบังคับใช้โดยข้อกำหนดการอนุมัติแผนของ yudi
 
@@ -413,11 +434,12 @@ bwoc fleet health --json | jq '.findings[] | select(.severity == "error")'
 
 ---
 
-## 10. ดูเพิ่มเติม
+## 11. ดูเพิ่มเติม
 
 **source framework (GitHub สาธารณะ):**
 
 - [THREAT-MODEL.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/modules/agent-template/docs/en/THREAT-MODEL.en.md) — แบบจำลองภัยคุกคามฉบับเต็มพร้อม ID ที่มีหมายเลข การบรรเทา และ severity rating
+- [ROADMAP.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/ROADMAP.en.md) — charter ของ Phase 5 (*สังวร*): สัญญา sandbox สำหรับ ingress ไม่น่าเชื่อถือและ gate ของ Definition of Done
 - [FLEET-GOVERNANCE.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/FLEET-GOVERNANCE.en.md) — อปริหานิยธรรม 7 ฉบับเต็ม และสเปค `bwoc fleet health`
 - [SIGNING.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/SIGNING.en.md) — สเปค signing ed25519 schema ของ envelope และ trust gate logic
 - [PHILOSOPHY.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/modules/agent-template/docs/en/PHILOSOPHY.en.md) — การ mapping 22 framework ฉบับเต็ม รวมถึงตัณหา 3 ศีล 5 และกรรม 3 ในบริบท

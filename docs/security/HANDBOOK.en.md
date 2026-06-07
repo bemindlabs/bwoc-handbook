@@ -21,8 +21,9 @@
    - [8.1 Create the team](#81-create-the-team)
    - [8.2 Day-to-day task flow](#82-day-to-day-task-flow)
    - [8.3 Fleet health checks](#83-fleet-health-checks)
-9. [Red team is authorized-use only](#9-red-team-is-authorized-use-only)
-10. [See also](#10-see-also)
+9. [Untrusted ingress and the sandbox boundary (saṃvara)](#9-untrusted-ingress-and-the-sandbox-boundary-saṃvara)
+10. [Red team is authorized-use only](#10-red-team-is-authorized-use-only)
+11. [See also](#11-see-also)
 
 ---
 
@@ -400,7 +401,27 @@ bwoc fleet health --json | jq '.findings[] | select(.severity == "error")'
 
 ---
 
-## 9. Red team is authorized-use only
+## 9. Untrusted ingress and the sandbox boundary (saṃvara)
+
+Until the chat connectors landed, every input an agent saw came from a trusted operator or a trust-gated sibling agent. The Telegram, Discord, and LINE connectors changed that: a message from an arbitrary member of the public now reaches the agent's runtime directly. *Saṃvara* (guarding the sense-doors) is the discipline this section names — restraint applied at the exact boundary where untrusted input could turn into a real action.
+
+**The boundary is at tool effect, not at the message.** Untrusted text reaching the model is a manipulation problem (Kāma-taṇhā), handled by instruction validation and scope rules — reading a string runs no code. What needs containment is any *effectful tool* (a shell call, a file write, an outbound request) that a plan derived from untrusted input might trigger. That is where the sandbox sits.
+
+**Two rules make the boundary hold:**
+
+- **Default-deny for untrusted input.** A conversation tagged *untrusted* gets no effectful tools — only read-only question-answering and an explicitly audited safe-tool whitelist. Every entry on that whitelist is proven to make no outbound network call, no DNS lookup, and no file write, and to leak through no side channel. "Read-only" is not enough on its own: a URL fetch or even an error message can be an exfiltration channel, so the whitelist is about *no effect*, not merely *no writes*.
+- **Trust tags stick (taint propagation).** When untrusted input passes through the model and produces an output, that output keeps the untrusted tag. A trusted capability that later consumes it is re-checked against the gate — it is not promoted to trusted just because the model touched it. This closes the "confused deputy" path, where untrusted data is laundered into a privileged action one turn later.
+
+**Isolation is per conversation.** Each `(connector, conversation)` turn runs in its own short-lived sandbox that is torn down when the turn ends. One public chat cannot read or poison the state of another, and a runaway turn is bounded by CPU, memory, file-descriptor, and process limits so it cannot starve the shared runtime.
+
+This posture is being hardened as a dedicated framework phase — **Phase 5, *saṃvara*** — whose Definition of Done is a set of testable gates: total ingress labeling, a default-deny capability gate, taint propagation, an egress-clean whitelist, per-turn process isolation, resource limits, and a verified block on sandbox-to-runtime escape. Some defenses are deliberately staged for later (kernel-level syscall filtering, filesystem jails, and container backends), and those gaps are documented rather than assumed away. The tianting team owns the threat assertions; the framework owns the mechanism.
+
+> [!warning]
+> If you operate a public-facing agent today, the operator-level control you have right now is the trust gate plus the safe-tool whitelist. Do not expose effectful tools to a connector-fed conversation until the Phase 5 gates are met for your deployment.
+
+---
+
+## 10. Red team is authorized-use only
 
 nezha's skills — `penetration-testing`, `adversary-emulation`, and `exploit-poc` — are explicitly scoped to authorized engagements only. This is not a policy preference; it is a hard constraint in nezha's anti-scope declaration and is enforced by yudi's plan-approval requirement.
 
@@ -415,11 +436,12 @@ The rationale: an authorized red team that finds real exploits and routes them t
 
 ---
 
-## 10. See also
+## 11. See also
 
 **Framework source (public GitHub):**
 
 - [THREAT-MODEL.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/modules/agent-template/docs/en/THREAT-MODEL.en.md) — full threat model with numbered IDs, mitigations, and severity ratings
+- [ROADMAP.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/ROADMAP.en.md) — Phase 5 (*saṃvara*) charter: the untrusted-ingress sandbox contract and its Definition-of-Done gates
 - [FLEET-GOVERNANCE.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/FLEET-GOVERNANCE.en.md) — the Seven Non-Decline Principles in full; `bwoc fleet health` specification
 - [SIGNING.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/SIGNING.en.md) — ed25519 signing specification; envelope schema; trust gate logic
 - [PHILOSOPHY.en.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/modules/agent-template/docs/en/PHILOSOPHY.en.md) — the full 22-framework mapping, including Taṇhā 3, Sīla 5, and Kamma 3 in context
