@@ -161,9 +161,9 @@ The BWOC family is a core framework plus a set of companion applications and dev
 
 <a id="host-adapters"></a>
 
-## Host Adapters (BWOC → external agent hosts)
+## Host Adapters (BWOC ↔ external agent hosts)
 
-Where the desktop apps and devices *consume* the fleet, the **host adapters** push it the other way: each packages the BWOC fleet as a **plugin for an external agent runtime**, so a host such as Claude Code or Hermes can drive your workspace from inside its own session. Every adapter is a thin, **generic** wrapper over the `bwoc` CLI — coordination, agents, skills, and deep-memory — that ships no agents of its own and discovers your fleet at runtime. One repo per host:
+Where the desktop apps and devices *consume* the fleet, the **host adapters** bridge it **both ways**. Each packages the BWOC fleet as a **plugin for an external agent runtime** so a host such as Claude Code or Hermes can drive your workspace from inside its own session, and the framework registers the non-native hosts as spawnable backends in return. Every adapter is a thin, **generic** wrapper over the `bwoc` CLI — coordination, agents, skills, and deep-memory — that ships no agents of its own and discovers your fleet at runtime. One repo per host:
 
 | Host | Repo | Plugin form |
 |---|---|---|
@@ -173,11 +173,13 @@ Where the desktop apps and devices *consume* the fleet, the **host adapters** pu
 | OpenClaw | [bwoc-plugin-openclaw](https://github.com/bemindlabs/bwoc-plugin-openclaw) | `openclaw.plugin.json` — Node tools + memory slot |
 | Hermes | [bwoc-plugin-hermes](https://github.com/bemindlabs/bwoc-plugin-hermes) | `plugin.yaml` — Python tools, CLI command, memory provider |
 
-**How they connect.** Like every other family member, an adapter calls `bwoc <cmd>` and never reads `.bwoc/` files directly. The surfaces it exposes to the host map one-to-one onto CLI verbs: `bwoc list / status / send / run / chat / task / team / memory`. The mechanism is shell-out — no standing server; the host only needs the `bwoc` CLI on `PATH`.
+**Two directions.** *Outbound* (the table above) puts BWOC inside the host. *Inbound* lets `bwoc spawn` target the host as a backend: `claude`, `codex`, and `antigravity` are already first-class backends and need no plugin; `openclaw` and `hermes` are registered through `llm-backend` plugin stubs in the framework (`modules/plugins/llm-backend/{openclaw,hermes}/`).
+
+**How they connect.** Like every other family member, an adapter calls `bwoc <cmd>` and never reads `.bwoc/` files directly. The surfaces it exposes map one-to-one onto CLI verbs: `bwoc list / status / send / run / chat / task / team / memory`. Beyond coordination, each adapter re-exports your installed BWOC skills (a generic generator over `bwoc skill list`) and bridges deep-memory (`bwoc memory`) — OpenClaw as a memory slot, Hermes as a `MemoryProvider`. The mechanism is shell-out — no standing server; the host only needs the `bwoc` CLI on `PATH`.
 
 **Generic by rule.** The adapters carry no workspace-specific content — no fleet rosters, team names, or local paths. Claude Code's optional sub-agent files, for example, are generated locally from *your* `.bwoc/agents.toml` and are never committed. Each repo stays a reusable, public connector.
 
-**Status.** WIP — the coordination surface is implemented and wraps the CLI; some host bindings (OpenClaw tool registration, Hermes memory provider) are being confirmed against the live hosts.
+**Status.** The coordination surface, skill re-export, and the deep-memory bridges (including the OpenClaw memory slot) are implemented across all five repos, and the inbound `llm-backend` stubs have landed in the framework. What remains is host-side verification — loading each plugin in its live host and confirming a few host-API bindings (OpenClaw tool/memory registration, Hermes `register_skill` / `MemoryProvider`).
 
 ---
 

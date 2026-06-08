@@ -161,9 +161,9 @@
 
 <a id="host-adapters"></a>
 
-## Host Adapters (BWOC → host ภายนอก)
+## Host Adapters (BWOC ↔ host ภายนอก)
 
-ในขณะที่แอปเดสก์ท็อปและอุปกรณ์ *บริโภค* fleet, **host adapters** ผลักไปอีกทาง: แต่ละตัว package BWOC fleet เป็น **plugin ของ agent runtime ภายนอก** เพื่อให้ host อย่าง Claude Code หรือ Hermes ขับ workspace ของคุณได้จากภายใน session ของมันเอง ทุก adapter เป็น wrapper บาง ๆ แบบ **generic** ครอบ `bwoc` CLI — coordination, agent, skill และ deep-memory — ที่ไม่ ship agent ของตัวเอง และค้น fleet ของคุณตอน runtime หนึ่ง repo ต่อหนึ่ง host:
+ในขณะที่แอปเดสก์ท็อปและอุปกรณ์ *บริโภค* fleet, **host adapters** เชื่อม **สองทาง**. แต่ละตัว package BWOC fleet เป็น **plugin ของ agent runtime ภายนอก** เพื่อให้ host อย่าง Claude Code หรือ Hermes ขับ workspace ของคุณได้จากภายใน session ของมันเอง และในทางกลับกัน framework ก็ลงทะเบียน host ที่ไม่ใช่ backend พื้นเมืองให้เป็น backend ที่ spawn ได้ ทุก adapter เป็น wrapper บาง ๆ แบบ **generic** ครอบ `bwoc` CLI — coordination, agent, skill และ deep-memory — ที่ไม่ ship agent ของตัวเอง และค้น fleet ของคุณตอน runtime หนึ่ง repo ต่อหนึ่ง host:
 
 | Host | Repo | รูปแบบ plugin |
 |---|---|---|
@@ -173,11 +173,13 @@
 | OpenClaw | [bwoc-plugin-openclaw](https://github.com/bemindlabs/bwoc-plugin-openclaw) | `openclaw.plugin.json` — Node tool + memory slot |
 | Hermes | [bwoc-plugin-hermes](https://github.com/bemindlabs/bwoc-plugin-hermes) | `plugin.yaml` — Python tool, CLI command, memory provider |
 
-**เชื่อมต่ออย่างไร.** เหมือนสมาชิกอื่นในครอบครัว adapter เรียก `bwoc <cmd>` และไม่อ่านไฟล์ `.bwoc/` โดยตรง surface ที่เปิดให้ host แมปหนึ่งต่อหนึ่งกับ CLI verb: `bwoc list / status / send / run / chat / task / team / memory` กลไกคือ shell-out — ไม่มี server ค้างรัน; host ต้องมีเพียง `bwoc` CLI บน `PATH`
+**สองทิศทาง.** *ขาออก* (ตารางด้านบน) เอา BWOC เข้าไปอยู่ใน host ส่วน *ขาเข้า* ทำให้ `bwoc spawn` เรียกใช้ host เป็น backend ได้: `claude`, `codex` และ `antigravity` เป็น backend พื้นเมืองอยู่แล้วจึงไม่ต้องมี plugin; ส่วน `openclaw` และ `hermes` ลงทะเบียนผ่าน `llm-backend` plugin stub ใน framework (`modules/plugins/llm-backend/{openclaw,hermes}/`)
+
+**เชื่อมต่ออย่างไร.** เหมือนสมาชิกอื่นในครอบครัว adapter เรียก `bwoc <cmd>` และไม่อ่านไฟล์ `.bwoc/` โดยตรง surface ที่เปิดให้ host แมปหนึ่งต่อหนึ่งกับ CLI verb: `bwoc list / status / send / run / chat / task / team / memory` นอกจาก coordination แต่ละ adapter ยัง re-export skill ของ BWOC ที่คุณติดตั้ง (generator แบบ generic อ่าน `bwoc skill list`) และเชื่อม deep-memory (`bwoc memory`) — OpenClaw เป็น memory slot, Hermes เป็น `MemoryProvider` กลไกคือ shell-out — ไม่มี server ค้างรัน; host ต้องมีเพียง `bwoc` CLI บน `PATH`
 
 **generic ตามกฎ.** adapter ไม่พกเนื้อหาเฉพาะ workspace — ไม่มี roster ของ fleet, ชื่อทีม หรือ path ใน local ตัวอย่างเช่นไฟล์ sub-agent (ตัวเลือก) ของ Claude Code ถูก generate ใน local จาก `.bwoc/agents.toml` ของ *คุณ* และไม่เคย commit แต่ละ repo จึงเป็น connector สาธารณะที่นำกลับมาใช้ซ้ำได้
 
-**สถานะ.** WIP — coordination surface implement แล้วและครอบ CLI; การ binding กับ host บางส่วน (การลงทะเบียน tool ของ OpenClaw, memory provider ของ Hermes) กำลังยืนยันกับ host จริง
+**สถานะ.** coordination surface, skill re-export และ deep-memory bridge (รวม memory slot ของ OpenClaw) implement ครบทั้งห้า repo แล้ว และ inbound `llm-backend` stub ก็ land เข้า framework เรียบร้อย ที่เหลือคือการ verify ฝั่ง host — โหลด plugin ในแต่ละ host จริง และยืนยัน host-API binding บางจุด (การลงทะเบียน tool/memory ของ OpenClaw, `register_skill`/`MemoryProvider` ของ Hermes)
 
 ---
 
