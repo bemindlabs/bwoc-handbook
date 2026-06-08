@@ -17,6 +17,7 @@ The BWOC family is a core framework plus a set of companion applications and dev
 | **bwoc-llm-pm** (LLM Provider Monitor) | macOS menu-bar: LLM provider auth + quota | Swift, SwiftUI, SwiftPM, macOS 13+ | [bemindlabs/LLMProviderMonitor](https://github.com/bemindlabs/LLMProviderMonitor) |
 | **bwoc-mcc** | macOS menu-bar fleet control center | Swift 5.9, SwiftUI, macOS 13+ | [bemindlabs/bwoc-mcc](https://github.com/bemindlabs/bwoc-mcc) |
 | **bwoc-devices** | Device monorepo — Rust core + multi-board firmware | Rust (4 crates), Arduino/PlatformIO C++ | [bemindlabs/bwoc-devices](https://github.com/bemindlabs/bwoc-devices) |
+| **Host Adapters** (×5) | BWOC → external agent hosts (Claude Code · Codex · Antigravity · OpenClaw · Hermes) | Markdown/JSON · TS · Python | [Host Adapters](#host-adapters) |
 
 ---
 
@@ -155,6 +156,28 @@ The BWOC family is a core framework plus a set of companion applications and dev
 ### bwoc-penlee-sc01-plus (historical)
 
 **What it is.** The earlier, single-device project that originated the SC01 Plus fleet display concept: ESP32-S3 firmware (BLE for config, WebSocket for data) plus a Tauri host app that pushed the BWOC fleet JSON to the device. The firmware and the protocol concept were generalized and absorbed into **bwoc-devices** (`firmware/esp32-sc01plus/`). The original directory remains as a regression reference while the migrated firmware stabilizes. No separate public URL — it lives inside the bwoc-devices history.
+
+---
+
+<a id="host-adapters"></a>
+
+## Host Adapters (BWOC → external agent hosts)
+
+Where the desktop apps and devices *consume* the fleet, the **host adapters** push it the other way: each packages the BWOC fleet as a **plugin for an external agent runtime**, so a host such as Claude Code or Hermes can drive your workspace from inside its own session. Every adapter is a thin, **generic** wrapper over the `bwoc` CLI — coordination, agents, skills, and deep-memory — that ships no agents of its own and discovers your fleet at runtime. One repo per host:
+
+| Host | Repo | Plugin form |
+|---|---|---|
+| Claude Code | [bwoc-plugin-claude](https://github.com/bemindlabs/bwoc-plugin-claude) | `.claude-plugin/` — commands, sub-agents, skills, hooks |
+| OpenAI Codex | [bwoc-plugin-codex](https://github.com/bemindlabs/bwoc-plugin-codex) | `.codex-plugin/` — skills, hooks, marketplace |
+| Antigravity | [bwoc-plugin-agy](https://github.com/bemindlabs/bwoc-plugin-agy) | `plugin.json` — skills, rules, hooks |
+| OpenClaw | [bwoc-plugin-openclaw](https://github.com/bemindlabs/bwoc-plugin-openclaw) | `openclaw.plugin.json` — Node tools + memory slot |
+| Hermes | [bwoc-plugin-hermes](https://github.com/bemindlabs/bwoc-plugin-hermes) | `plugin.yaml` — Python tools, CLI command, memory provider |
+
+**How they connect.** Like every other family member, an adapter calls `bwoc <cmd>` and never reads `.bwoc/` files directly. The surfaces it exposes to the host map one-to-one onto CLI verbs: `bwoc list / status / send / run / chat / task / team / memory`. The mechanism is shell-out — no standing server; the host only needs the `bwoc` CLI on `PATH`.
+
+**Generic by rule.** The adapters carry no workspace-specific content — no fleet rosters, team names, or local paths. Claude Code's optional sub-agent files, for example, are generated locally from *your* `.bwoc/agents.toml` and are never committed. Each repo stays a reusable, public connector.
+
+**Status.** WIP — the coordination surface is implemented and wraps the CLI; some host bindings (OpenClaw tool registration, Hermes memory provider) are being confirmed against the live hosts.
 
 ---
 

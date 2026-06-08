@@ -17,6 +17,7 @@
 | **bwoc-llm-pm** (LLM Provider Monitor) | macOS menu-bar: สถานะ auth + quota ของผู้ให้บริการ LLM | Swift, SwiftUI, SwiftPM, macOS 13+ | [bemindlabs/LLMProviderMonitor](https://github.com/bemindlabs/LLMProviderMonitor) |
 | **bwoc-mcc** | macOS menu-bar control center สำหรับ fleet | Swift 5.9, SwiftUI, macOS 13+ | [bemindlabs/bwoc-mcc](https://github.com/bemindlabs/bwoc-mcc) |
 | **bwoc-devices** | Monorepo อุปกรณ์ — Rust core + firmware หลายบอร์ด | Rust (4 crate), Arduino/PlatformIO C++ | [bemindlabs/bwoc-devices](https://github.com/bemindlabs/bwoc-devices) |
+| **Host Adapters** (×5) | BWOC → host agent ภายนอก (Claude Code · Codex · Antigravity · OpenClaw · Hermes) | Markdown/JSON · TS · Python | [Host Adapters](#host-adapters) |
 
 ---
 
@@ -155,6 +156,28 @@
 ### bwoc-penlee-sc01-plus (ประวัติศาสตร์)
 
 **คืออะไร.** โปรเจกต์เดิมที่เป็นต้นกำเนิดแนวคิด fleet display บน SC01 Plus: firmware ESP32-S3 (BLE สำหรับ config, WebSocket สำหรับข้อมูล) และ Tauri host app ที่ push BWOC fleet JSON ไปยังอุปกรณ์ firmware และแนวคิดโปรโตคอลถูก generalize และรับเข้าสู่ **bwoc-devices** (`firmware/esp32-sc01plus/`) directory เดิมยังคงอยู่เป็น regression reference ระหว่างที่ firmware ที่ migrate กำลังสร้างความเสถียร ไม่มี URL สาธารณะแยกต่างหาก — อยู่ภายใน history ของ bwoc-devices
+
+---
+
+<a id="host-adapters"></a>
+
+## Host Adapters (BWOC → host ภายนอก)
+
+ในขณะที่แอปเดสก์ท็อปและอุปกรณ์ *บริโภค* fleet, **host adapters** ผลักไปอีกทาง: แต่ละตัว package BWOC fleet เป็น **plugin ของ agent runtime ภายนอก** เพื่อให้ host อย่าง Claude Code หรือ Hermes ขับ workspace ของคุณได้จากภายใน session ของมันเอง ทุก adapter เป็น wrapper บาง ๆ แบบ **generic** ครอบ `bwoc` CLI — coordination, agent, skill และ deep-memory — ที่ไม่ ship agent ของตัวเอง และค้น fleet ของคุณตอน runtime หนึ่ง repo ต่อหนึ่ง host:
+
+| Host | Repo | รูปแบบ plugin |
+|---|---|---|
+| Claude Code | [bwoc-plugin-claude](https://github.com/bemindlabs/bwoc-plugin-claude) | `.claude-plugin/` — command, sub-agent, skill, hook |
+| OpenAI Codex | [bwoc-plugin-codex](https://github.com/bemindlabs/bwoc-plugin-codex) | `.codex-plugin/` — skill, hook, marketplace |
+| Antigravity | [bwoc-plugin-agy](https://github.com/bemindlabs/bwoc-plugin-agy) | `plugin.json` — skill, rule, hook |
+| OpenClaw | [bwoc-plugin-openclaw](https://github.com/bemindlabs/bwoc-plugin-openclaw) | `openclaw.plugin.json` — Node tool + memory slot |
+| Hermes | [bwoc-plugin-hermes](https://github.com/bemindlabs/bwoc-plugin-hermes) | `plugin.yaml` — Python tool, CLI command, memory provider |
+
+**เชื่อมต่ออย่างไร.** เหมือนสมาชิกอื่นในครอบครัว adapter เรียก `bwoc <cmd>` และไม่อ่านไฟล์ `.bwoc/` โดยตรง surface ที่เปิดให้ host แมปหนึ่งต่อหนึ่งกับ CLI verb: `bwoc list / status / send / run / chat / task / team / memory` กลไกคือ shell-out — ไม่มี server ค้างรัน; host ต้องมีเพียง `bwoc` CLI บน `PATH`
+
+**generic ตามกฎ.** adapter ไม่พกเนื้อหาเฉพาะ workspace — ไม่มี roster ของ fleet, ชื่อทีม หรือ path ใน local ตัวอย่างเช่นไฟล์ sub-agent (ตัวเลือก) ของ Claude Code ถูก generate ใน local จาก `.bwoc/agents.toml` ของ *คุณ* และไม่เคย commit แต่ละ repo จึงเป็น connector สาธารณะที่นำกลับมาใช้ซ้ำได้
+
+**สถานะ.** WIP — coordination surface implement แล้วและครอบ CLI; การ binding กับ host บางส่วน (การลงทะเบียน tool ของ OpenClaw, memory provider ของ Hermes) กำลังยืนยันกับ host จริง
 
 ---
 
