@@ -12,6 +12,7 @@ The BWOC family is a core framework plus a set of companion applications and dev
 |---|---|---|---|
 | **BWOC-Framework** | Core framework + `bwoc` CLI | Rust (9 crates), macOS / Linux / Windows | [bemindlabs/BWOC-Framework](https://github.com/bemindlabs/BWOC-Framework) |
 | **bwoc-handbook** | Bilingual, role-indexed documentation | Markdown (EN + TH) | this documentation set |
+| **bwoc-gateway** | Cross-place agent relay + standalone agent | Rust (axum WS relay + client) | [bemindlabs/bwoc-gateway](https://github.com/bemindlabs/bwoc-gateway) |
 | **bwoc-chat** | Native desktop chat for agents | Rust + egui | [bemindlabs/bwoc-chat](https://github.com/bemindlabs/bwoc-chat) |
 | **bwoc-devices-app** (BWOC Monitor) | Read-only macOS fleet dashboard | Rust + Tauri 2 + tokio + static HTML/JS | internal / not yet public |
 | **bwoc-llm-pm** (LLM Provider Monitor) | macOS menu-bar: LLM provider auth + quota | Swift, SwiftUI, SwiftPM, macOS 13+ | [bemindlabs/LLMProviderMonitor](https://github.com/bemindlabs/LLMProviderMonitor) |
@@ -27,7 +28,7 @@ The BWOC family is a core framework plus a set of companion applications and dev
 
 **What it is.** The foundation everything else depends on. BWOC-Framework is a backend-neutral specification and native Rust implementation for incarnating, running, and orchestrating AI coding agents. It ships as a Rust workspace of nine crates — `bwoc-cli`, `bwoc-harness`, `bwoc-core`, `bwoc-agent`, `bwoc-mqtt`, `bwoc-deep-memory`, and others — plus the `bwoc` CLI binary and the `modules/agent-template` cloneable scaffold.
 
-**Stack.** Rust 1.85+ (2024 edition), multi-target (macOS / Linux / Windows), MIT. Current version: v2.24.0.
+**Stack.** Rust 1.85+ (2024 edition), multi-target (macOS / Linux / Windows), MIT. Current version: v2.29.0.
 
 **What it provides to the ecosystem.** Every other project in the family is a consumer, not a peer:
 
@@ -49,6 +50,27 @@ The BWOC family is a core framework plus a set of companion applications and dev
 **How it connects.** The handbook references the framework repo for canonical facts and links to the public GitHub for all code. It does not embed workspace-local paths.
 
 **Link.** this documentation set — see [`../README.md`](../README.md) for the full index.
+
+---
+
+### bwoc-gateway
+
+**What it is.** An optional rendezvous + relay server that lets BWOC agents in *different places* — separate machines, networks, or organizations — message each other without direct reachability. It closes the NAT/firewall gap left by the other transports: A2A needs an inbound HTTP port, MQTT needs a shared broker, and `routes.toml` local/peer paths assume the recipient is already reachable. The gateway is the third `bwoc send` transport (`transport = "gateway"`), and it ships the **receive half** that turns a single agent into a portable, deployable unit.
+
+**Two halves.**
+
+- **The relay** (`crates/gateway-server`) — a dumb, untrusted WebSocket relay. It authenticates each connection with a signed challenge (the agent's ed25519 keypair *is* the login), keeps a presence map (`agent_id → live connection`), and routes envelopes by their cleartext `recipient` header only. It never inspects or forges bodies; durable store-and-forward holds messages for offline recipients, and gateways federate peer-to-peer (single-hop) across regions or orgs.
+- **The standalone agent** (`crates/gateway-client` + framework `bwoc-agent`) — `bwoc-gateway-send` / `bwoc-gateway-recv` are the transport binaries the framework shells out to. `bwoc-agent --serve` supervises a `bwoc-gateway-recv` bridge that dials the relay and appends each inbound envelope to the agent's inbox, where the existing trust gate verifies it against a pinned-peer keyring (`.bwoc/peers.toml`) with replay defense, and an untrusted auto-process turn replies. A `deploy/standalone-agent.Dockerfile` packages one agent plus all five runtime binaries into a container that joins a relay on `docker run`.
+
+**Stack.** Rust — `gateway-server` (axum WebSocket relay: signed-challenge auth, presence, store-and-forward, federation, `/healthz`) + `gateway-client` (WebSocket client, ed25519→x25519 `crypto_box` sealed-box e2e body encryption, the send/recv binaries). The relay deploys as one container; a standalone agent as another.
+
+**Security grain.** The relay is **untrusted by design** — it is presence, not identity. Envelopes stay end-to-end ed25519-signed so the relay cannot forge a sender, bodies may be sealed so it sees only ciphertext, and all Kalyāṇamitta-7 authorization stays in the *receiving* harness. A gateway-sourced turn runs as an untrusted principal (read-only by default, tool-approval fails closed) inside the Phase 5 *saṃvara* sandbox — it is the untrusted-ingress edge, and inherits that discipline.
+
+**How it connects to the framework.** `RouteTarget::Gateway` in `routes.toml` makes `bwoc send <peer>` route over the relay; `bwoc-core` / `bwoc-cli` never link a WebSocket/TLS client (dep-quarantine) — the network code lives only in the sibling `bwoc-gateway-{send,recv}` binaries, exactly as the MQTT transport stays in `bwoc-mqtt`.
+
+**Status.** Relay v1.0.0 — deployed and live. The standalone agent (recv bridge + pinned-peer trust + replay defense + untrusted auto-process + container image) shipped in BWOC-Framework 2.29.x. Known limitation: an agent that both receives and replies under one id contends on the relay presence map — splitting the gateway-login id from the message-signing identity is the planned fix.
+
+**Link.** [github.com/bemindlabs/bwoc-gateway](https://github.com/bemindlabs/bwoc-gateway)
 
 ---
 
@@ -203,6 +225,8 @@ bwoc-llm-pm  ── independent of bwoc CLI; complements bwoc-mcc ────�
 ```
 
 Every desktop or menu-bar app calls `bwoc` by name and parses `--json` output. No app reads `.bwoc/` files directly. No app depends on `bwoc-cli` or `bwoc-harness` at build time (except `bwoc-chat`, which depends only on `bwoc-core` for the protocol types). Device firmware consumes only the fleet JSON payload, not the CLI. This means the CLI's `--json` surface and `bwoc-device-proto` are the stability boundary for the whole family: change them carefully, version them explicitly.
+
+Separately, **bwoc-gateway** adds a second axis. Where the CLI `--json` surface fans fleet *state* out to dashboards and devices, the gateway relays *messages* between agents that cannot reach each other directly: `bwoc send` over `transport = "gateway"` on the sending side, and a supervised `bwoc-gateway-recv` bridge into the inbox on the receiving side. It rides the same signed-envelope trust contract as local delivery — the relay only sees a `recipient` header and stays untrusted — so adding a remote peer changes the *transport*, never the *trust model*.
 
 ---
 
