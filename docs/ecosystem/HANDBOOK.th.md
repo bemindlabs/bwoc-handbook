@@ -12,6 +12,7 @@
 |---|---|---|---|
 | **BWOC-Framework** | Core framework + `bwoc` CLI | Rust (9 crate), macOS / Linux / Windows | [bemindlabs/BWOC-Framework](https://github.com/bemindlabs/BWOC-Framework) |
 | **bwoc-handbook** | เอกสารสองภาษาแบ่งตามบทบาท | Markdown (EN + TH) | ชุดเอกสารนี้ |
+| **bwoc-gateway** | Relay สื่อสาร agent ข้ามที่ + standalone agent | Rust (axum WS relay + client) | [bemindlabs/bwoc-gateway](https://github.com/bemindlabs/bwoc-gateway) |
 | **bwoc-chat** | Native desktop chat สำหรับ agent | Rust + egui | [bemindlabs/bwoc-chat](https://github.com/bemindlabs/bwoc-chat) |
 | **bwoc-devices-app** (BWOC Monitor) | macOS dashboard แสดงสถานะ fleet แบบ read-only | Rust + Tauri 2 + tokio + static HTML/JS | ภายใน / ยังไม่เผยแพร่สาธารณะ |
 | **bwoc-llm-pm** (LLM Provider Monitor) | macOS menu-bar: สถานะ auth + quota ของผู้ให้บริการ LLM | Swift, SwiftUI, SwiftPM, macOS 13+ | [bemindlabs/LLMProviderMonitor](https://github.com/bemindlabs/LLMProviderMonitor) |
@@ -27,7 +28,7 @@
 
 **คืออะไร.** รากฐานที่ทุกอย่างพึ่งพา BWOC-Framework คือ specification ที่ไม่ผูกกับ backend ใด และ implementation ใน Rust สำหรับการสร้าง รัน และประสานงาน AI coding agent มาในรูป Rust workspace เก้า crate ได้แก่ `bwoc-cli`, `bwoc-harness`, `bwoc-core`, `bwoc-agent`, `bwoc-mqtt`, `bwoc-deep-memory` และอื่น ๆ พร้อม binary `bwoc` CLI และ scaffold `modules/agent-template` ที่ clone ได้
 
-**Stack.** Rust 1.85+ (edition 2024), รองรับหลายแพลตฟอร์ม (macOS / Linux / Windows), MIT. เวอร์ชันปัจจุบัน: v2.24.0.
+**Stack.** Rust 1.85+ (edition 2024), รองรับหลายแพลตฟอร์ม (macOS / Linux / Windows), MIT. เวอร์ชันปัจจุบัน: v2.29.0.
 
 **สิ่งที่มอบให้ระบบนิเวศ.** โปรเจกต์อื่น ๆ ทุกตัวในครอบครัวเป็นผู้บริโภค ไม่ใช่คู่แข่ง:
 
@@ -49,6 +50,27 @@
 **เชื่อมต่ออย่างไร.** คู่มือนี้อ้างอิง framework repo สำหรับข้อเท็จจริงและลิงก์ไปยัง GitHub สาธารณะเสมอ ไม่ฝัง path ของ workspace ใน local
 
 **ลิงก์.** ชุดเอกสารนี้ — ดู [`../README.md`](../README.md) สำหรับ index เต็ม
+
+---
+
+### bwoc-gateway
+
+**คืออะไร.** Server แบบ rendezvous + relay (ตัวเลือกเสริม) ที่ให้ BWOC agent ที่อยู่ *คนละที่* — คนละเครื่อง คนละเครือข่าย หรือคนละองค์กร — ส่งข้อความหากันได้โดยไม่ต้องเข้าถึงกันตรง ๆ ปิดช่องว่าง NAT/firewall ที่ transport อื่นทิ้งไว้: A2A ต้องมี inbound HTTP port, MQTT ต้องมี broker ร่วม และ path แบบ local/peer ของ `routes.toml` สมมติว่าผู้รับเข้าถึงได้อยู่แล้ว Gateway คือ transport ตัวที่สามของ `bwoc send` (`transport = "gateway"`) และเป็นตัวที่เพิ่ม **ครึ่งฝั่งรับ** ที่ทำให้ agent ตัวเดียวกลายเป็นหน่วย deploy แบบพกพาได้
+
+**สองครึ่ง.**
+
+- **Relay** (`crates/gateway-server`) — WebSocket relay แบบโง่และไม่ไว้ใจ authenticate แต่ละ connection ด้วย signed challenge (ed25519 keypair ของ agent *คือ* login) เก็บ presence map (`agent_id → live connection`) และ route envelope ตาม header `recipient` ที่เป็น cleartext เท่านั้น ไม่เคยอ่านหรือปลอม body; durable store-and-forward เก็บข้อความให้ผู้รับที่ offline และ gateway federate แบบ peer-to-peer (single-hop) ข้ามภูมิภาค/องค์กร
+- **Standalone agent** (`crates/gateway-client` + `bwoc-agent` ใน framework) — `bwoc-gateway-send` / `bwoc-gateway-recv` คือ binary transport ที่ framework shell out ไปหา `bwoc-agent --serve` supervise bridge `bwoc-gateway-recv` ที่ dial relay แล้ว append แต่ละ envelope ขาเข้าเข้า inbox ของ agent ซึ่ง trust gate เดิม verify เทียบกับ pinned-peer keyring (`.bwoc/peers.toml`) พร้อม replay defense แล้ว turn auto-process แบบ untrusted ตอบกลับ `deploy/standalone-agent.Dockerfile` แพ็ก agent หนึ่งตัว + binary runtime ครบทั้งห้าเป็น container ที่เข้าร่วม relay ได้ทันทีที่ `docker run`
+
+**Stack.** Rust — `gateway-server` (axum WebSocket relay: signed-challenge auth, presence, store-and-forward, federation, `/healthz`) + `gateway-client` (WebSocket client, e2e body encryption แบบ `crypto_box` sealed-box ผ่าน ed25519→x25519, binary send/recv) Relay deploy เป็น container หนึ่งตัว, standalone agent อีกตัว
+
+**แก่นความปลอดภัย.** Relay **ไม่ไว้ใจโดยดีไซน์** — มันคือ presence ไม่ใช่ identity envelope ยัง ed25519-signed แบบ end-to-end relay จึงปลอม sender ไม่ได้, body อาจถูก seal ให้เห็นแค่ ciphertext และ authorization แบบ Kalyāṇamitta-7 ทั้งหมดอยู่ที่ harness *ฝั่งรับ* turn ที่มาจาก gateway รันเป็น untrusted principal (read-only เป็นค่าตั้งต้น, tool-approval fail closed) ภายใน sandbox Phase 5 *saṃvara* — มันคือขอบ untrusted-ingress และสืบทอดวินัยนั้น
+
+**เชื่อมต่อกับ framework อย่างไร.** `RouteTarget::Gateway` ใน `routes.toml` ทำให้ `bwoc send <peer>` route ผ่าน relay; `bwoc-core` / `bwoc-cli` ไม่เคย link WebSocket/TLS client (dep-quarantine) — โค้ดเครือข่ายอยู่เฉพาะใน sibling binary `bwoc-gateway-{send,recv}` เหมือนที่ transport MQTT อยู่ใน `bwoc-mqtt`
+
+**สถานะ.** Relay v1.0.0 — deploy และใช้งานจริงแล้ว Standalone agent (recv bridge + pinned-peer trust + replay defense + untrusted auto-process + container image) ship ใน BWOC-Framework 2.29.x ข้อจำกัดที่รู้: agent ที่ทั้งรับและตอบภายใต้ id เดียวจะชนกันใน presence map ของ relay — การแยก id สำหรับ gateway-login ออกจาก identity ที่ใช้ sign ข้อความคือแผนแก้
+
+**ลิงก์.** [github.com/bemindlabs/bwoc-gateway](https://github.com/bemindlabs/bwoc-gateway)
 
 ---
 
@@ -203,6 +225,8 @@ bwoc-llm-pm  ── อิสระจาก bwoc CLI; เสริม bwoc-mcc 
 ```
 
 แอปทุกตัวบนเดสก์ท็อปหรือ menu bar เรียก `bwoc` ด้วยชื่อและ parse output แบบ `--json` ไม่มีแอปใดอ่านไฟล์ `.bwoc/` โดยตรง ไม่มีแอปใด depend on `bwoc-cli` หรือ `bwoc-harness` ตอน build (ยกเว้น `bwoc-chat` ซึ่ง depend on `bwoc-core` เฉพาะสำหรับ protocol type) Firmware อุปกรณ์รับเพียง fleet JSON payload ไม่ใช่ CLI นี่หมายความว่า CLI surface แบบ `--json` และ `bwoc-device-proto` คือ stability boundary ของครอบครัวทั้งหมด: เปลี่ยนด้วยความระมัดระวัง version อย่างชัดเจน
+
+แยกออกมาอีกแกนหนึ่ง **bwoc-gateway** เพิ่ม axis ที่สอง ในขณะที่ CLI surface แบบ `--json` กระจาย *สถานะ* fleet ออกไปยัง dashboard และอุปกรณ์ gateway relay *ข้อความ* ระหว่าง agent ที่เข้าถึงกันตรง ๆ ไม่ได้: `bwoc send` ผ่าน `transport = "gateway"` ฝั่งส่ง และ bridge `bwoc-gateway-recv` ที่ถูก supervise เข้า inbox ฝั่งรับ มันใช้ contract ความเชื่อใจแบบ signed-envelope เดียวกับการส่ง local — relay เห็นแค่ header `recipient` และยังไม่ไว้ใจ — ดังนั้นการเพิ่ม remote peer เปลี่ยนแค่ *transport* ไม่เคยเปลี่ยน *trust model*
 
 ---
 
