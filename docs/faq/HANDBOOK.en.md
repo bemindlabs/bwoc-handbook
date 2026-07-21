@@ -46,7 +46,7 @@ Rust 1.85 or later. Run `rustup update stable` if your toolchain is behind. See 
 BWOC uses two parallel versioning namespaces:
 
 - **Cargo SemVer** — the `version` field in `Cargo.toml`. This tracks the development crate version and follows conventional SemVer (`MAJOR.MINOR.PATCH`).
-- **CalVer release tags** — calendar-based tags (e.g., `v2.24.0` where `2.24` encodes the year-week or release cycle). These are what end-users and operators track.
+- **CalVer release tags** — calendar-based tags (e.g., `v2.33.0` where `2.24` encodes the year-week or release cycle). These are what end-users and operators track.
 
 The current `Software-Version` and `Document-Version` are in [VERSION.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md) in the framework repo.
 

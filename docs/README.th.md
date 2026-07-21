@@ -2,7 +2,7 @@
 
 จุดเริ่มต้นเดียวสำหรับทุกคนที่ **ใช้ สร้าง ดูแล หรือ index** **BWOC framework** — เฟรมเวิร์กสำหรับสร้างและสั่งงาน AI agent ที่ทำงานได้กับหลาย backend ผ่าน CLI ตัวเดียวคือ `bwoc`
 
-> 🇬🇧 English (ฉบับหลัก/canonical): [`README.md`](README.md) · repo เฟรมเวิร์ก: [`bemindlabs/BWOC-Framework`](https://github.com/bemindlabs/BWOC-Framework) · v2.24.0 · เอกสารต้นฉบับ (EN/TH): [`docs/`](https://github.com/bemindlabs/BWOC-Framework/tree/main/docs)
+> 🇬🇧 English (ฉบับหลัก/canonical): [`README.md`](README.md) · repo เฟรมเวิร์ก: [`bemindlabs/BWOC-Framework`](https://github.com/bemindlabs/BWOC-Framework) · v2.33.0 · เอกสารต้นฉบับ (EN/TH): [`docs/`](https://github.com/bemindlabs/BWOC-Framework/tree/main/docs)
 
 คู่มือชุดนี้ **แยกตามบทบาทและมีสองภาษา** อังกฤษเป็นฉบับหลัก (canonical) ไทยเป็นฉบับคู่ขนาน (`*.en.md` ↔ `*.th.md`) เปิดเล่มของคุณ อ่านจบในเล่มเดียว แล้วค่อยตามลิงก์เข้าไปอ่านเอกสารเฟรมเวิร์กฉบับเต็มเมื่อต้องการ
 

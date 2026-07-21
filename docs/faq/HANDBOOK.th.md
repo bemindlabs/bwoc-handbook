@@ -46,7 +46,7 @@ Rust 1.85 ขึ้นไป รัน `rustup update stable` ถ้า toolchai
 BWOC ใช้ versioning สองระบบควบคู่กัน:
 
 - **Cargo SemVer** — field `version` ใน `Cargo.toml` ติดตาม development crate version ตาม conventional SemVer (`MAJOR.MINOR.PATCH`)
-- **CalVer release tags** — tag แบบ calendar-based (เช่น `v2.24.0` ที่ `2.24` encode year-week หรือ release cycle) นี่คือสิ่งที่ end-user และ operator ติดตาม
+- **CalVer release tags** — tag แบบ calendar-based (เช่น `v2.33.0` ที่ `2.24` encode year-week หรือ release cycle) นี่คือสิ่งที่ end-user และ operator ติดตาม
 
 `Software-Version` และ `Document-Version` ปัจจุบันอยู่ใน [VERSION.md](https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md) ใน framework repo
 

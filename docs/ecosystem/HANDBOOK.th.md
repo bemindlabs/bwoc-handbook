@@ -26,9 +26,9 @@
 
 ### BWOC-Framework
 
-**คืออะไร.** รากฐานที่ทุกอย่างพึ่งพา BWOC-Framework คือ specification ที่ไม่ผูกกับ backend ใด และ implementation ใน Rust สำหรับการสร้าง รัน และประสานงาน AI coding agent มาในรูป Rust workspace เก้า crate ได้แก่ `bwoc-cli`, `bwoc-harness`, `bwoc-core`, `bwoc-agent`, `bwoc-mqtt`, `bwoc-deep-memory` และอื่น ๆ พร้อม binary `bwoc` CLI และ scaffold `modules/agent-template` ที่ clone ได้
+**คืออะไร.** รากฐานที่ทุกอย่างพึ่งพา BWOC-Framework คือ specification ที่ไม่ผูกกับ backend ใด และ implementation ใน Rust สำหรับการสร้าง รัน และประสานงาน AI coding agent มาในรูป Rust workspace สิบ crate ได้แก่ `bwoc-cli`, `bwoc-harness`, `bwoc-core`, `bwoc-agent`, `bwoc-mqtt`, `bwoc-deep-memory` และอื่น ๆ พร้อม binary `bwoc` CLI และ scaffold `modules/agent-template` ที่ clone ได้
 
-**Stack.** Rust 1.85+ (edition 2024), รองรับหลายแพลตฟอร์ม (macOS / Linux / Windows), MIT. เวอร์ชันปัจจุบัน: v2.29.0.
+**Stack.** Rust 1.85+ (edition 2024), รองรับหลายแพลตฟอร์ม (macOS / Linux / Windows), MIT. เวอร์ชันปัจจุบัน: v2.33.0.
 
 **สิ่งที่มอบให้ระบบนิเวศ.** โปรเจกต์อื่น ๆ ทุกตัวในครอบครัวเป็นผู้บริโภค ไม่ใช่คู่แข่ง:
 
