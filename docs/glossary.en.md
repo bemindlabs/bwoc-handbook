@@ -85,7 +85,7 @@ These are the concrete nouns of the BWOC system: CLI commands, files, crates, co
 | **AGENTS.md** | The single source of truth for an agent's instructions — plain Markdown, no YAML frontmatter, no wikilinks, no vendor names; parseable by any LLM backend. Backend symlinks all point here. See [framework repo](https://github.com/bemindlabs/BWOC-Framework). |
 | **AGY.md** | Symlink → `AGENTS.md`; the backend entry for the Antigravity runtime. |
 | **Arc** | The three-phase lifecycle every BWOC object follows: birth (uppāda) → live/work (ṭhiti) → retire (vaya). |
-| **Backend** | The AI runtime that executes an agent: `claude`, `antigravity`, `codex`, `kimi`, `ollama`, or any OpenAI-compatible endpoint. The agent spec is identical for all. |
+| **Backend** | The AI runtime that executes an agent: `claude`, `antigravity`, `codex`, `kimi`, `copilot`, `ollama`, `openrouter`, `litellm`, or any OpenAI-compatible endpoint. The agent spec is identical for all. |
 | **Backend-neutrality** | The rule that `AGENTS.md` and framework core docs must not reference any specific vendor, model ID, or backend name. Enforced by `bwoc check`. |
 | **Backend symlinks** | `CLAUDE.md`, `AGY.md`, `CODEX.md`, `KIMI.md`, `OLLAMA.md`, `OPENAI.md` — each is a symlink to `AGENTS.md`; adding a new backend is `ln -s AGENTS.md <BACKEND>.md`. |
 | **bwoc check** | CLI command that audits an agent directory for backend-neutrality violations, valid `config.manifest.json`, MEMORY.md line count, and other policy gates. |

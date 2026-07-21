@@ -85,7 +85,7 @@
 | **AGENTS.md** | แหล่งข้อมูลเดียวที่เป็นจริงสำหรับคำสั่งของ agent — plain Markdown ไม่มี YAML frontmatter ไม่มี wikilink ไม่มีชื่อ vendor; อ่านได้โดย LLM backend ทุกตัว ดู [framework repo](https://github.com/bemindlabs/BWOC-Framework) |
 | **AGY.md** | Symlink → `AGENTS.md`; entry สำหรับ backend Antigravity runtime |
 | **Arc** | วงจรชีวิตสามเฟสที่ BWOC object ทุกตัวปฏิบัติตาม: เกิด (uppāda) → ทำงาน (ṭhiti) → เกษียณ (vaya) |
-| **Backend** | AI runtime ที่ execute agent: `claude`, `antigravity`, `codex`, `kimi`, `ollama` หรือ OpenAI-compatible endpoint ใดก็ได้ spec ของ agent เหมือนกันทุก backend |
+| **Backend** | AI runtime ที่ execute agent: `claude`, `antigravity`, `codex`, `kimi`, `copilot`, `ollama`, `openrouter`, `litellm` หรือ OpenAI-compatible endpoint ใดก็ได้ spec ของ agent เหมือนกันทุก backend |
 | **Backend-neutrality** | กฎที่ว่า `AGENTS.md` และเอกสาร core ของ framework ต้องไม่อ้างอิง vendor model ID หรือชื่อ backend ใดๆ บังคับใช้โดย `bwoc check` |
 | **Backend symlinks** | `CLAUDE.md`, `AGY.md`, `CODEX.md`, `KIMI.md`, `OLLAMA.md`, `OPENAI.md` — แต่ละตัวเป็น symlink ไปยัง `AGENTS.md`; การเพิ่ม backend ใหม่ทำด้วย `ln -s AGENTS.md <BACKEND>.md` |
 | **bwoc check** | คำสั่ง CLI ที่ตรวจสอบ agent directory ว่าละเมิด backend-neutrality หรือไม่ `config.manifest.json` ถูกต้องหรือไม่ MEMORY.md เกินขีดจำกัดหรือไม่ และ policy gates อื่นๆ |

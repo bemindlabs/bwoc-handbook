@@ -10,7 +10,7 @@ The BWOC family is a core framework plus a set of companion applications and dev
 
 | Project | Role | Stack | Link |
 |---|---|---|---|
-| **BWOC-Framework** | Core framework + `bwoc` CLI | Rust (9 crates), macOS / Linux / Windows | [bemindlabs/BWOC-Framework](https://github.com/bemindlabs/BWOC-Framework) |
+| **BWOC-Framework** | Core framework + `bwoc` CLI | Rust (10 crates), macOS / Linux / Windows | [bemindlabs/BWOC-Framework](https://github.com/bemindlabs/BWOC-Framework) |
 | **bwoc-handbook** | Bilingual, role-indexed documentation | Markdown (EN + TH) | this documentation set |
 | **bwoc-gateway** | Cross-place agent relay + standalone agent | Rust (axum WS relay + client) | [bemindlabs/bwoc-gateway](https://github.com/bemindlabs/bwoc-gateway) |
 | **bwoc-chat** | Native desktop chat for agents | Rust + egui | [bemindlabs/bwoc-chat](https://github.com/bemindlabs/bwoc-chat) |
@@ -26,9 +26,9 @@ The BWOC family is a core framework plus a set of companion applications and dev
 
 ### BWOC-Framework
 
-**What it is.** The foundation everything else depends on. BWOC-Framework is a backend-neutral specification and native Rust implementation for incarnating, running, and orchestrating AI coding agents. It ships as a Rust workspace of nine crates — `bwoc-cli`, `bwoc-harness`, `bwoc-core`, `bwoc-agent`, `bwoc-mqtt`, `bwoc-deep-memory`, and others — plus the `bwoc` CLI binary and the `modules/agent-template` cloneable scaffold.
+**What it is.** The foundation everything else depends on. BWOC-Framework is a backend-neutral specification and native Rust implementation for incarnating, running, and orchestrating AI coding agents. It ships as a Rust workspace of ten crates — `bwoc-cli`, `bwoc-harness`, `bwoc-core`, `bwoc-agent`, `bwoc-mqtt`, `bwoc-deep-memory`, and others — plus the `bwoc` CLI binary and the `modules/agent-template` cloneable scaffold.
 
-**Stack.** Rust 1.85+ (2024 edition), multi-target (macOS / Linux / Windows), MIT. Current version: v2.29.0.
+**Stack.** Rust 1.85+ (2024 edition), multi-target (macOS / Linux / Windows), MIT. Current version: v2.33.0.
 
 **What it provides to the ecosystem.** Every other project in the family is a consumer, not a peer:
 
