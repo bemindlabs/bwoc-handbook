@@ -28,7 +28,7 @@ The BWOC family is a core framework plus a set of companion applications and dev
 
 **What it is.** The foundation everything else depends on. BWOC-Framework is a backend-neutral specification and native Rust implementation for incarnating, running, and orchestrating AI coding agents. It ships as a Rust workspace of ten crates — `bwoc-cli`, `bwoc-harness`, `bwoc-core`, `bwoc-agent`, `bwoc-mqtt`, `bwoc-deep-memory`, and others — plus the `bwoc` CLI binary and the `modules/agent-template` cloneable scaffold.
 
-**Stack.** Rust 1.85+ (2024 edition), multi-target (macOS / Linux / Windows), MIT. Current version: v2.33.0.
+**Stack.** Rust 1.85+ (2024 edition), multi-target (macOS / Linux / Windows), MIT. Current version: v2.42.0.
 
 **What it provides to the ecosystem.** Every other project in the family is a consumer, not a peer:
 

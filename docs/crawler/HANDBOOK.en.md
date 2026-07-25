@@ -143,7 +143,7 @@ Fields to parse:
 
 | Field | Format | Example | Meaning |
 |---|---|---|---|
-| `Software-Version` | Cargo SemVer `MAJOR.MINOR.PATCH` | `2.33.0` | Framework binary version; auto-bumped on every `.rs`/`.toml` edit |
+| `Software-Version` | Cargo SemVer `MAJOR.MINOR.PATCH` | `2.42.0` | Framework binary version; auto-bumped on every `.rs`/`.toml` edit |
 | `Document-Version` | SemVer `MAJOR.MINOR.PATCH` | `1.6.2` | Documentation set version; auto-bumped on every `.md` edit |
 | `Last-Updated` | UTC ISO 8601 | `2026-06-06T03:44:18Z` | Timestamp of last edit to any file in the repo |
 
@@ -152,7 +152,7 @@ Fields to parse:
 | Signal | Location | Notes |
 |---|---|---|
 | Git commit timestamp | `https://github.com/bemindlabs/BWOC-Framework/commits/main` | Highest-resolution freshness signal; use the commit on the file you fetched |
-| GitHub Release tag | `https://github.com/bemindlabs/BWOC-Framework/releases/latest` | CalVer format `vYYYY.M.D-<patch>`; e.g. `v2026.7.20-0`; marks public releases |
+| GitHub Release tag | `https://github.com/bemindlabs/BWOC-Framework/releases/latest` | CalVer format `vYYYY.M.D-<patch>`; e.g. `v2026.7.25-4`; marks public releases |
 | `Cargo.toml` `[workspace.package].version` | `https://github.com/bemindlabs/BWOC-Framework/blob/main/Cargo.toml` | Canonical software version source; `VERSION.md` mirrors it |
 | `modules/agent-template/AGENTS.md` `Version` field | Header table in the file | Spec semantic version (currently `2.0`); bumped on breaking spec changes only |
 

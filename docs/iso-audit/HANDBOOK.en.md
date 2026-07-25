@@ -12,14 +12,14 @@ counterpart: HANDBOOK.th.md
 
 # ISO Standards Auditing with BWOC
 
-BWOC ships four `audit`-kind plugins that check a workspace against four ISO standards. They run on demand via `bwoc audit run`, write no external state, and emit a structured JSON report the framework validates on every run. This chapter covers what each plugin audits, the evidence model they share, how to configure them, and how to run them.
+BWOC ships seven `audit`-kind plugins that check a workspace against ISO, ISO/IEC, ISO/IEC/IEEE, and IEEE standards. They run on demand via `bwoc audit run`, write no external state, and emit a structured JSON report the framework validates on every run. This chapter covers what each plugin audits, the evidence model they share, how to configure them, and how to run them.
 
 ---
 
 ## Contents
 
 1. [Why machine-assisted ISO audit](#1-why-machine-assisted-iso-audit)
-2. [The four audit plugins](#2-the-four-audit-plugins)
+2. [The seven audit plugins](#2-the-seven-audit-plugins)
 3. [The audit evidence model](#3-the-audit-evidence-model)
 4. [Install and enable](#4-install-and-enable)
 5. [Configure evidence in workspace.toml](#5-configure-evidence-in-workspacetoml)
@@ -41,7 +41,7 @@ The framework does not impose thresholds or make certification decisions. That r
 
 ---
 
-## 2. The four audit plugins
+## 2. The seven audit plugins
 
 | Plugin | Standard | What it audits | Evidence kinds |
 |---|---|---|---|
@@ -49,24 +49,29 @@ The framework does not impose thresholds or make certification decisions. That r
 | `audit-iso-9001` | ISO 9001:2015 (Quality Management System) | Eight headline QMS clauses — organizational context, quality policy, risk actions, competence, documented information, internal audit, management review, corrective action | `attestation` |
 | `audit-iso-20000-1` | ISO/IEC 20000-1:2018 (IT Service Management) | Eight ITSM criteria across scope, policy, service catalogue, SLA performance, change management, incident management, problem management, and continual improvement | `attestation` + `sample` |
 | `audit-iso-27001` | ISO/IEC 27001:2022 (Information Security Management System) | Five main-body ISMS clauses plus three Annex A controls, with the Statement of Applicability driving Annex A scope | `attestation` + `sample` (SoA-gated) |
+| `audit-iso-iec-ieee-29148` | ISO/IEC/IEEE 29148:2018 (Requirements Engineering) | Seven RE criteria — StRS, SyRS/SRS, individual + set requirement characteristics, verifiability, bidirectional traceability, requirements management | `attestation` |
+| `audit-iso-iec-ieee-12207` | ISO/IEC/IEEE 12207:2017 (Software Life Cycle Processes) | Nine process criteria — agreement, project planning, assessment & control, configuration management, requirements, architecture/design, implementation/integration, V&V, maintenance | `attestation` |
+| `audit-ieee-1012` | IEEE 1012:2016 (Verification & Validation) | Eight V&V criteria — integrity levels, V&V planning (SVVP), independence, and requirements/design/implementation/test V&V + anomaly reporting | `attestation` |
 
-All four plugins declare `kind = "audit"` in their manifests, carry `compat = ">=2.7.0"`, and emit findings conforming to the [framework's Audit Findings Schema](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/PLUGINS.en.md#audit-findings-schema). The `audit` kind's lifecycle owner is the `bwoc audit` CLI — plugins of this kind are never invoked automatically; they run only when the operator calls `bwoc audit run`.
+All seven plugins declare `kind = "audit"` in their manifests and emit findings conforming to the [framework's Audit Findings Schema](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/PLUGINS.en.md#audit-findings-schema). The `audit` kind's lifecycle owner is the `bwoc audit` CLI — plugins of this kind are never invoked automatically; they run only when the operator calls `bwoc audit run`.
+
+**The kind is body-agnostic.** It began with pure-**ISO** (9001) and joint **ISO/IEC** (27001, 20000-1, 29110), then added joint **ISO/IEC/IEEE** (29148 requirements, 12207 life cycle) and standalone **IEEE** (1012 V&V) — a criterion id, standard designation, and clause reference are data the runtime reads, not a constraint on which body (or how many) publishes the standard. The three software-assurance lanes form a coherent trio: 29148 asks *are the requirements right?*, 12207 *is the life cycle governed?*, and 1012 *is it verified & validated?*
 
 ### Plugin summary
 
-**audit-iso-29110** is the most straightforward of the four. It runs file-existence checks against the Basic-profile work products defined by ISO/IEC TR 29110-5-1-2. The plugin reads a `candidates` list for each criterion — alternate file paths the workspace might use — and passes the first one that exists. No configuration beyond `enabled = true` is needed.
+**audit-iso-29110** is the most straightforward of the seven. It runs file-existence checks against the Basic-profile work products defined by ISO/IEC TR 29110-5-1-2. The plugin reads a `candidates` list for each criterion — alternate file paths the workspace might use — and passes the first one that exists. No configuration beyond `enabled = true` is needed.
 
 **audit-iso-9001** checks eight headline clauses of ISO 9001:2015. None of these reduce to file-existence — "has management review been held?" is not answerable by looking at a filename. The plugin reads operator-signed attestations from `workspace.toml` and emits an attestation finding for each covered criterion, or a `fail` pointing at the uncovered one.
 
 **audit-iso-20000-1** covers both documented-artifact clauses (scope, policy, service catalogue) and operational-rate clauses (SLA, change, incident, problem, improvement). The documented-artifact criteria use attestations; the operational-rate criteria use samples — a rate the operator transcribes from their ITSM tool (`sampled_count` / `sampled_of` / optional `window`).
 
-**audit-iso-27001** is the most sophisticated of the four. Its eight criteria split across main-body attestation clauses and Annex A sample-driven controls. The Statement of Applicability (`[[plugins.audit-iso-27001.soa]]`) is machine-readable: it declares which Annex A controls are in scope (`applicable = true`) and provides justification for both inclusions and exclusions. The sampling population (`sampled_of`) for Annex A findings is derived from the SoA — the operator never types it manually.
+**audit-iso-27001** is the most sophisticated of the ISO-management-system four. Its eight criteria split across main-body attestation clauses and Annex A sample-driven controls. The Statement of Applicability (`[[plugins.audit-iso-27001.soa]]`) is machine-readable: it declares which Annex A controls are in scope (`applicable = true`) and provides justification for both inclusions and exclusions. The sampling population (`sampled_of`) for Annex A findings is derived from the SoA — the operator never types it manually.
 
 ---
 
 ## 3. The audit evidence model
 
-All four plugins share the [Audit Findings Schema](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/PLUGINS.en.md#audit-findings-schema). Every finding has a `criterion_id`, a `severity`, a `status`, and an `evidence` block. A passing finding omits `remedy`; any non-pass finding requires one.
+All seven plugins share the [Audit Findings Schema](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/PLUGINS.en.md#audit-findings-schema). Every finding has a `criterion_id`, a `severity`, a `status`, and an `evidence` block. A passing finding omits `remedy`; any non-pass finding requires one.
 
 Three evidence kinds are used by the ISO audit plugins:
 
@@ -121,7 +126,7 @@ A criterion absent from the workspace evidence emits `status = "fail"` with a `r
 
 ## 4. Install and enable
 
-The four ISO audit plugins are bundled with the framework under `modules/plugins/`. No separate install step is needed; they are present whenever the framework is available.
+The seven ISO/IEC/IEEE audit plugins are bundled with the framework under `modules/plugins/`. No separate install step is needed; they are present whenever the framework is available.
 
 To enable one, add its block to `.bwoc/workspace.toml`:
 
@@ -139,7 +144,7 @@ enabled = true
 enabled = true
 ```
 
-`enabled = true` is the only manifest-declared key for all four plugins. All evidence configuration is in per-plugin array-of-tables blocks (see the next section) — there is no `[config.schema]` in any of their manifests.
+`enabled = true` is the only manifest-declared key for all seven plugins. All evidence configuration is in per-plugin array-of-tables blocks (see the next section) — there is no `[config.schema]` in any of their manifests.
 
 To disable a plugin without removing its evidence blocks:
 
@@ -268,7 +273,7 @@ Each finding in `--json` output carries:
 
 ## 7. Governance and security integration
 
-The four plugins cover different governance layers and compose well with the rest of BWOC.
+The seven plugins cover different governance layers and compose well with the rest of BWOC.
 
 **ISO/IEC 29110** is the foundation layer for any BWOC workspace used for software development. The six work products it checks — Project Plan, SRS, Design, Test Plan, Verification Results, Construction Records — map directly onto the documentation that agents produce and reference. An `audit-iso-29110` run gives you a gap report on your project artifacts.
 
@@ -278,7 +283,7 @@ The four plugins cover different governance layers and compose well with the res
 
 **ISO/IEC 27001** is the information-security layer. Its machine-readable Statement of Applicability in `workspace.toml` is a live record of control scope decisions. Combined with the framework's agent-level threat model (see the [security chapter](../security/HANDBOOK.en.md) if present in your handbook build), it provides an integrated security posture view.
 
-Because all four plugins are read-only — they inspect the workspace and emit a report, writing nothing — they carry no operator-confirmation gate. You can run them as frequently as you like without side effects.
+Because all seven plugins are read-only — they inspect the workspace and emit a report, writing nothing — they carry no operator-confirmation gate. You can run them as frequently as you like without side effects.
 
 ---
 
