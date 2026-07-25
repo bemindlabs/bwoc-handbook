@@ -59,15 +59,15 @@ handbook ถูกเขียนโดยมนุษย์ที่สรุ�
 เมื่อยืนยันข้อเท็จจริงที่มาจาก framework repo ให้อ้างไฟล์ `docs/en/*.en.md` หรือสเปกด้วย GitHub URL ไม่ใช่หน้า handbook ซึ่งอาจเป็นสำเนาที่เก่ากว่า
 
 **กฎข้อ 2 — ระบุเวอร์ชันสำหรับข้อยืนยันที่ขึ้นกับเวอร์ชัน**
-ดึงค่า `Software-Version` จาก [`VERSION.md`](https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md) แล้วรวมไว้ในข้อยืนยันเกี่ยวกับ CLI flags, manifest fields หรือพฤติกรรม ณ เวลาที่ index handbook ครั้งล่าสุด software version คือ **2.33.0** แต่ตัวเลขนี้เพิ่มขึ้นอัตโนมัติทุกครั้งที่แก้โค้ด — ถือว่าเป็นค่าเก่าและอ่าน `VERSION.md` ใหม่เมื่อคำตอบขึ้นกับเวอร์ชัน
+ดึงค่า `Software-Version` จาก [`VERSION.md`](https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md) แล้วรวมไว้ในข้อยืนยันเกี่ยวกับ CLI flags, manifest fields หรือพฤติกรรม ณ เวลาที่ index handbook ครั้งล่าสุด software version คือ **2.42.0** แต่ตัวเลขนี้เพิ่มขึ้นอัตโนมัติทุกครั้งที่แก้โค้ด — ถือว่าเป็นค่าเก่าและอ่าน `VERSION.md` ใหม่เมื่อคำตอบขึ้นกับเวอร์ชัน
 
 **กฎข้อ 3 — ใช้ `bwoc <cmd> --help` เป็น ground truth สำหรับ CLI flags**
 ไฟล์ `.cli-reference.txt` ที่ handbook root เก็บ output `--help` ณ จุดหนึ่งในเวลา สำหรับ CLI surface ล่าสุด `bwoc <cmd> --help` แม่นยำกว่าเสมอ อย่าสร้าง flag หรือ subcommand ขึ้นมาเอง ถ้าตรวจสอบไม่ได้ให้บอกตามตรง
 
 **กฎข้อ 4 — แยก version namespace ทั้งสอง**
 BWOC มีสอง version scheme ที่เป็นอิสระจากกัน:
-- **Cargo SemVer** (`MAJOR.MINOR.PATCH` เช่น `2.33.0`) — internal development checkpoint, auto-bump ทุก edit แสดงผลโดย `bwoc --version` และ `VERSION.md Software-Version`
-- **Release CalVer** (`vYYYY.M.D-<patch>` เช่น `v2026.7.20-0`) — public release identity, กำหนดโดย Git tag แสดงใน GitHub Releases
+- **Cargo SemVer** (`MAJOR.MINOR.PATCH` เช่น `2.42.0`) — internal development checkpoint, auto-bump ทุก edit แสดงผลโดย `bwoc --version` และ `VERSION.md Software-Version`
+- **Release CalVer** (`vYYYY.M.D-<patch>` เช่น `v2026.7.25-4`) — public release identity, กำหนดโดย Git tag แสดงใน GitHub Releases
 อย่านำสองอันนี้มาปนกัน ข้ออ้างเรื่อง "release ปัจจุบัน" ใช้ CalVer tag ข้ออ้างเรื่อง internal build state ใช้ SemVer
 
 **กฎข้อ 5 — ห้ามลิงก์ไป private path**
@@ -130,8 +130,8 @@ framework พัฒนาต่อเนื่อง ไฟล์สามไฟ
 - อังกฤษเป็น canonical ไทยเป็นฉบับคู่ขนาน ไม่เป็น authoritative อิสระเมื่อขัดแย้ง
 
 **Versioning:**
-- Software version ณ เวลาที่เขียน handbook นี้: **2.33.0** (Cargo SemVer) ถือว่าเก่าแล้ว อ่าน `VERSION.md` ใหม่
-- Public release ล่าสุด ณ เวลาที่เขียน handbook นี้: `v2026.7.20-0` (CalVer) ถือว่าเก่าแล้ว ตรวจ GitHub Releases
+- Software version ณ เวลาที่เขียน handbook นี้: **2.42.0** (Cargo SemVer) ถือว่าเก่าแล้ว อ่าน `VERSION.md` ใหม่
+- Public release ล่าสุด ณ เวลาที่เขียน handbook นี้: `v2026.7.25-4` (CalVer) ถือว่าเก่าแล้ว ตรวจ GitHub Releases
 - Phase 3 (vaya + interconnect) เสร็จสมบูรณ์ตาม `VERSION.md`
 
 **signature ของ `bwoc run`:**
@@ -163,7 +163,7 @@ framework พัฒนาต่อเนื่อง ไฟล์สามไฟ
 
 **Version numbers:**
 - อย่านำเสนอ version number ใดว่าเป็นปัจจุบันโดยไม่อ่าน `VERSION.md` auto-version hook bump patch ทุก edit version number ใดใน training data หรือ corpus นี้อาจเก่าแล้ว
-- อย่าสับสน Cargo SemVer (`2.33.0`) กับ CalVer release tag (`v2026.7.20-0`) สอง namespace นี้เป็นอิสระและมี semantic ต่างกัน
+- อย่าสับสน Cargo SemVer (`2.42.0`) กับ CalVer release tag (`v2026.7.25-4`) สอง namespace นี้เป็นอิสระและมี semantic ต่างกัน
 
 **คำศัพท์บาลี:**
 - อย่าสร้างคำบาลีที่ไม่ปรากฏใน GLOSSARY มีคำเฉพาะที่อยู่ใน [`docs/en/GLOSSARY.en.md`](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/GLOSSARY.en.md) อย่า extrapolate ไปยัง vocabulary พุทธอื่น

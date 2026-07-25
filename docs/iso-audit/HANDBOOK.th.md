@@ -12,14 +12,14 @@ counterpart: HANDBOOK.en.md
 
 # การตรวจสอบมาตรฐาน ISO ด้วย BWOC
 
-BWOC มาพร้อมกับ plugin ประเภท `audit` จำนวนสี่ตัวที่ตรวจสอบ workspace เทียบกับมาตรฐาน ISO สี่ฉบับ ทำงานตามคำสั่ง `bwoc audit run` ไม่เขียนข้อมูลใดออกไปภายนอก และส่งออกรายงาน JSON แบบ structured ที่ framework ตรวจสอบความถูกต้องในทุกครั้งที่รัน บทนี้ครอบคลุมว่าแต่ละ plugin ตรวจสอบอะไร โมเดลหลักฐานที่ใช้ร่วมกัน วิธีตั้งค่า และวิธีรัน
+BWOC มาพร้อมกับ plugin ประเภท `audit` จำนวนเจ็ดตัวที่ตรวจสอบ workspace เทียบกับมาตรฐาน ISO / IEC / IEEE ทำงานตามคำสั่ง `bwoc audit run` ไม่เขียนข้อมูลใดออกไปภายนอก และส่งออกรายงาน JSON แบบ structured ที่ framework ตรวจสอบความถูกต้องในทุกครั้งที่รัน บทนี้ครอบคลุมว่าแต่ละ plugin ตรวจสอบอะไร โมเดลหลักฐานที่ใช้ร่วมกัน วิธีตั้งค่า และวิธีรัน
 
 ---
 
 ## สารบัญ
 
 1. [เหตุใดจึงใช้ machine-assisted ISO audit](#1-เหตุใดจึงใช้-machine-assisted-iso-audit)
-2. [Plugin ตรวจสอบ ISO ทั้งสี่ตัว](#2-plugin-ตรวจสอบ-iso-ทั้งสี่ตัว)
+2. [Plugin ตรวจสอบ ISO ทั้งเจ็ดตัว](#2-plugin-ตรวจสอบ-iso-ทั้งเจ็ดตัว)
 3. [โมเดลหลักฐานการตรวจสอบ](#3-โมเดลหลักฐานการตรวจสอบ)
 4. [ติดตั้งและเปิดใช้งาน](#4-ติดตั้งและเปิดใช้งาน)
 5. [ตั้งค่าหลักฐานใน workspace.toml](#5-ตั้งค่าหลักฐานใน-workspacetoml)
@@ -41,7 +41,7 @@ Framework ไม่กำหนดเกณฑ์หรือตัดสิน�
 
 ---
 
-## 2. Plugin ตรวจสอบ ISO ทั้งสี่ตัว
+## 2. Plugin ตรวจสอบ ISO ทั้งเจ็ดตัว
 
 | Plugin | มาตรฐาน | สิ่งที่ตรวจสอบ | ประเภทหลักฐาน |
 |---|---|---|---|
@@ -49,24 +49,29 @@ Framework ไม่กำหนดเกณฑ์หรือตัดสิน�
 | `audit-iso-9001` | ISO 9001:2015 (ระบบบริหารคุณภาพ) | เกณฑ์หลัก QMS แปดข้อ — บริบทองค์กร นโยบายคุณภาพ การจัดการความเสี่ยง ความสามารถ ข้อมูลที่บันทึก การตรวจสอบภายใน การทบทวนของฝ่ายบริหาร และการดำเนินการแก้ไข | `attestation` |
 | `audit-iso-20000-1` | ISO/IEC 20000-1:2018 (การบริหารจัดการบริการ IT) | เกณฑ์ ITSM แปดข้อครอบคลุม scope นโยบาย service catalogue ประสิทธิภาพ SLA การบริหารการเปลี่ยนแปลง การบริหาร incident และ problem และการปรับปรุงอย่างต่อเนื่อง | `attestation` + `sample` |
 | `audit-iso-27001` | ISO/IEC 27001:2022 (ระบบบริหารความมั่นคงปลอดภัยสารสนเทศ) | เกณฑ์ ISMS หลักห้าข้อจาก main body และ Annex A controls สามข้อ โดยใช้ Statement of Applicability กำหนด scope ของ Annex A | `attestation` + `sample` (SoA-gated) |
+| `audit-iso-iec-ieee-29148` | ISO/IEC/IEEE 29148:2018 (Requirements Engineering) | เกณฑ์ RE เจ็ดข้อ — StRS, SyRS/SRS, คุณลักษณะ requirement รายข้อ + ทั้งชุด, verifiability, traceability สองทาง, requirements management | `attestation` |
+| `audit-iso-iec-ieee-12207` | ISO/IEC/IEEE 12207:2017 (Software Life Cycle Processes) | เกณฑ์ process เก้าข้อ — agreement, project planning, assessment & control, configuration management, requirements, architecture/design, implementation/integration, V&V, maintenance | `attestation` |
+| `audit-ieee-1012` | IEEE 1012:2016 (Verification & Validation) | เกณฑ์ V&V แปดข้อ — integrity levels, V&V planning (SVVP), independence, และ requirements/design/implementation/test V&V + anomaly reporting | `attestation` |
 
-Plugin ทั้งสี่ประกาศ `kind = "audit"` ใน manifest ระบุ `compat = ">=2.7.0"` และส่งออก finding ตาม [Audit Findings Schema ของ framework](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/PLUGINS.en.md#audit-findings-schema) เจ้าของ lifecycle ของ `audit` kind คือ CLI `bwoc audit` — plugin ประเภทนี้ไม่เคยถูกเรียกใช้โดยอัตโนมัติ รันได้เฉพาะเมื่อ operator สั่ง `bwoc audit run` เท่านั้น
+Plugin ทั้งเจ็ดประกาศ `kind = "audit"` ใน manifest และส่งออก finding ตาม [Audit Findings Schema ของ framework](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/PLUGINS.en.md#audit-findings-schema) เจ้าของ lifecycle ของ `audit` kind คือ CLI `bwoc audit` — plugin ประเภทนี้ไม่เคยถูกเรียกใช้โดยอัตโนมัติ รันได้เฉพาะเมื่อ operator สั่ง `bwoc audit run` เท่านั้น
+
+**kind นี้เป็นกลางต่อองค์กรมาตรฐาน** เริ่มจาก **ISO** ล้วน (9001) และ **ISO/IEC** ร่วม (27001, 20000-1, 29110) แล้วเพิ่ม **ISO/IEC/IEEE** ร่วม (29148 requirements, 12207 life cycle) และ **IEEE** เดี่ยว (1012 V&V) — criterion id, ชื่อมาตรฐาน, clause เป็นข้อมูลที่ runtime อ่าน ไม่ใช่ข้อจำกัดว่าองค์กรไหน (หรือกี่องค์กร) ประกาศ สาม lane assurance รวมเป็นชุดที่สอดคล้อง: 29148 ถาม *requirements ถูกไหม?*, 12207 *วงจรชีวิตถูกกำกับไหม?*, 1012 *verify & validate แล้วหรือยัง?*
 
 ### สรุปแต่ละ plugin
 
-**audit-iso-29110** เป็น plugin ที่ตรงไปตรงมาที่สุดในสี่ตัว ทำการตรวจสอบการมีอยู่ของไฟล์เทียบกับ work product ของ Basic profile ตาม ISO/IEC TR 29110-5-1-2 Plugin อ่าน `candidates` list สำหรับแต่ละเกณฑ์ — เส้นทางไฟล์ทางเลือกที่ workspace อาจใช้ — และผ่านเกณฑ์เมื่อพบไฟล์แรกที่มีอยู่ ไม่ต้องตั้งค่าอะไรนอกจาก `enabled = true`
+**audit-iso-29110** เป็น plugin ที่ตรงไปตรงมาที่สุดในเจ็ดตัว ทำการตรวจสอบการมีอยู่ของไฟล์เทียบกับ work product ของ Basic profile ตาม ISO/IEC TR 29110-5-1-2 Plugin อ่าน `candidates` list สำหรับแต่ละเกณฑ์ — เส้นทางไฟล์ทางเลือกที่ workspace อาจใช้ — และผ่านเกณฑ์เมื่อพบไฟล์แรกที่มีอยู่ ไม่ต้องตั้งค่าอะไรนอกจาก `enabled = true`
 
 **audit-iso-9001** ตรวจสอบแปดข้อหลักของ ISO 9001:2015 ไม่มีข้อใดที่สามารถตรวจสอบจากการมีอยู่ของไฟล์ได้ — "มีการทบทวนของฝ่ายบริหารหรือไม่?" ไม่สามารถตอบได้จากชื่อไฟล์ Plugin อ่าน attestation ที่ operator ลงนามจาก `workspace.toml` และส่งออก attestation finding สำหรับแต่ละเกณฑ์ที่ครอบคลุม หรือ `fail` สำหรับที่ยังขาดอยู่
 
 **audit-iso-20000-1** ครอบคลุมทั้งเกณฑ์ที่เป็น documented-artifact (scope นโยบาย service catalogue) และเกณฑ์อัตราปฏิบัติการ (SLA การเปลี่ยนแปลง incident problem การปรับปรุง) เกณฑ์ documented-artifact ใช้ attestation เกณฑ์อัตราปฏิบัติการใช้ sample — อัตราที่ operator คัดลอกจากเครื่องมือ ITSM (`sampled_count` / `sampled_of` / `window` แบบ optional)
 
-**audit-iso-27001** เป็น plugin ที่ซับซ้อนที่สุดในสี่ตัว เกณฑ์แปดข้อแบ่งระหว่างข้อ attestation จาก main body clauses และ Annex A controls ที่ขับเคลื่อนด้วย sample Statement of Applicability (`[[plugins.audit-iso-27001.soa]]`) เป็น machine-readable: ประกาศว่า Annex A controls ใดอยู่ใน scope (`applicable = true`) และให้เหตุผลสำหรับทั้งที่รวมและที่ยกเว้น population ในการ sampling (`sampled_of`) สำหรับ Annex A finding ถูกคำนวณจาก SoA — operator ไม่ต้องพิมพ์ตัวเลขเอง
+**audit-iso-27001** เป็น plugin ที่ซับซ้อนที่สุดในกลุ่ม ISO management-system สี่ตัว เกณฑ์แปดข้อแบ่งระหว่างข้อ attestation จาก main body clauses และ Annex A controls ที่ขับเคลื่อนด้วย sample Statement of Applicability (`[[plugins.audit-iso-27001.soa]]`) เป็น machine-readable: ประกาศว่า Annex A controls ใดอยู่ใน scope (`applicable = true`) และให้เหตุผลสำหรับทั้งที่รวมและที่ยกเว้น population ในการ sampling (`sampled_of`) สำหรับ Annex A finding ถูกคำนวณจาก SoA — operator ไม่ต้องพิมพ์ตัวเลขเอง
 
 ---
 
 ## 3. โมเดลหลักฐานการตรวจสอบ
 
-Plugin ทั้งสี่ใช้ [Audit Findings Schema](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/PLUGINS.en.md#audit-findings-schema) ร่วมกัน ทุก finding มี `criterion_id`, `severity`, `status`, และ `evidence` block finding ที่ผ่านจะไม่มี `remedy` finding ที่ไม่ผ่านต้องมี `remedy` เสมอ
+Plugin ทั้งเจ็ดใช้ [Audit Findings Schema](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/PLUGINS.en.md#audit-findings-schema) ร่วมกัน ทุก finding มี `criterion_id`, `severity`, `status`, และ `evidence` block finding ที่ผ่านจะไม่มี `remedy` finding ที่ไม่ผ่านต้องมี `remedy` เสมอ
 
 ประเภทหลักฐานสามชนิดที่ใช้โดย ISO audit plugin:
 
@@ -121,7 +126,7 @@ Runtime เลือก route ให้แต่ละเกณฑ์ตาม `
 
 ## 4. ติดตั้งและเปิดใช้งาน
 
-Plugin ตรวจสอบ ISO ทั้งสี่มาพร้อมกับ framework ใน `modules/plugins/` ไม่จำเป็นต้องติดตั้งแยก มีอยู่พร้อมใช้ทุกครั้งที่ framework พร้อมใช้งาน
+Plugin ตรวจสอบ ISO ทั้งเจ็ดมาพร้อมกับ framework ใน `modules/plugins/` ไม่จำเป็นต้องติดตั้งแยก มีอยู่พร้อมใช้ทุกครั้งที่ framework พร้อมใช้งาน
 
 เพื่อเปิดใช้งาน plugin หนึ่ง ให้เพิ่ม block ลงใน `.bwoc/workspace.toml`:
 
@@ -139,7 +144,7 @@ enabled = true
 enabled = true
 ```
 
-`enabled = true` เป็น key เดียวที่ประกาศใน manifest สำหรับ plugin ทั้งสี่ การตั้งค่าหลักฐานทั้งหมดอยู่ใน block array-of-tables ต่อ plugin (ดูหัวข้อถัดไป) — ไม่มี `[config.schema]` ใน manifest ของ plugin เหล่านี้
+`enabled = true` เป็น key เดียวที่ประกาศใน manifest สำหรับ plugin ทั้งเจ็ด การตั้งค่าหลักฐานทั้งหมดอยู่ใน block array-of-tables ต่อ plugin (ดูหัวข้อถัดไป) — ไม่มี `[config.schema]` ใน manifest ของ plugin เหล่านี้
 
 เพื่อปิดการใช้งาน plugin โดยไม่ลบ block หลักฐาน:
 
@@ -268,7 +273,7 @@ Finding `not_applicable` และ `not_implemented` ไม่นับเป็
 
 ## 7. การเชื่อมโยงกับ governance และ security
 
-Plugin ทั้งสี่ครอบคลุม governance layer ต่างกันและทำงานร่วมกันกับ BWOC ได้ดี
+Plugin ทั้งเจ็ดครอบคลุม governance layer ต่างกันและทำงานร่วมกันกับ BWOC ได้ดี
 
 **ISO/IEC 29110** เป็น foundation layer สำหรับ workspace BWOC ที่ใช้ในการพัฒนาซอฟต์แวร์ work product หกรายการที่ตรวจสอบ — Project Plan, SRS, Design, Test Plan, Verification Results, Construction Records — map ตรงกับเอกสารที่ agent ผลิตและอ้างอิง การรัน `audit-iso-29110` ให้ gap report ของ project artifact
 
@@ -278,7 +283,7 @@ Plugin ทั้งสี่ครอบคลุม governance layer ต่า�
 
 **ISO/IEC 27001** คือ information-security layer Statement of Applicability ที่ machine อ่านได้ใน `workspace.toml` คือบันทึก live ของการตัดสินใจ scope ของ control รวมกับ threat model ระดับ agent ของ framework ให้มุมมอง security posture แบบบูรณาการ
 
-เนื่องจาก plugin ทั้งสี่เป็น read-only — ตรวจสอบ workspace และส่งออกรายงาน ไม่เขียนอะไร — จึงไม่มี operator-confirmation gate คุณสามารถรันบ่อยเท่าที่ต้องการโดยไม่มีผลข้างเคียง
+เนื่องจาก plugin ทั้งเจ็ดเป็น read-only — ตรวจสอบ workspace และส่งออกรายงาน ไม่เขียนอะไร — จึงไม่มี operator-confirmation gate คุณสามารถรันบ่อยเท่าที่ต้องการโดยไม่มีผลข้างเคียง
 
 ---
 

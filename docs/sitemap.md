@@ -301,7 +301,7 @@ These files are hosted in the public `bemindlabs/BWOC-Framework` repository. The
 
 > Freshness signal for all framework docs: check `Last-Updated` in
 > `https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md`
-> before re-fetching. Current: Software-Version `2.33.0`, Document-Version `1.6.2`, Last-Updated `2026-06-06T03:44:18Z`.
+> before re-fetching. Current: Software-Version `2.42.0`, Document-Version `1.6.2`, Last-Updated `2026-06-06T03:44:18Z`.
 
 | URL | Language | One-line description |
 |---|---|---|

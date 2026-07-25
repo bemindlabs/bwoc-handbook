@@ -6,7 +6,7 @@ language: th
 counterpart: HANDBOOK.en.md
 ---
 
-> ฉบับภาษาอังกฤษ: [HANDBOOK.en.md](HANDBOOK.en.md) — Framework repo: [bemindlabs/BWOC-Framework](https://github.com/bemindlabs/BWOC-Framework) — v2.33.0 · Rust 1.85+
+> ฉบับภาษาอังกฤษ: [HANDBOOK.en.md](HANDBOOK.en.md) — Framework repo: [bemindlabs/BWOC-Framework](https://github.com/bemindlabs/BWOC-Framework) — v2.42.0 · Rust 1.85+
 
 # คู่มือนักพัฒนา BWOC
 
@@ -66,7 +66,7 @@ artifact ที่ `bwoc new` ใช้ copy เมื่อสร้าง agen
 
 ## 2. แผนผัง Crate
 
-workspace มีสิบ crate ซึ่งความสัมพันธ์ dependency ของมันบังคับใช้หลัก quarantine ที่อธิบายใน [หัวข้อ 3](#3-หลักการ-dependency-quarantine) โดย `[workspace.package].version` ปัจจุบันคือ `2.33.0`
+workspace มีสิบ crate ซึ่งความสัมพันธ์ dependency ของมันบังคับใช้หลัก quarantine ที่อธิบายใน [หัวข้อ 3](#3-หลักการ-dependency-quarantine) โดย `[workspace.package].version` ปัจจุบันคือ `2.42.0`
 
 ### 2.1 ตารางอ้างอิงด่วน
 
@@ -836,10 +836,10 @@ Releases ใช้ CalVer tags cut โดยตรงบน `main` CI pipeline (
 ```bash
 # กำหนด CalVer tag สำหรับ release iteration วันนี้
 # Format: vYYYY.M.D-<patch> โดย patch เริ่มที่ 0
-git tag v2026.7.20-0
+git tag v2026.7.25-4
 
 # Push tag — release.yml รับช่วงต่อจากนี้
-git push origin v2026.7.20-0
+git push origin v2026.7.25-4
 ```
 
 `release.yml` build matrix (Linux x86_64, macOS aarch64 + x86_64, Windows x86_64), package แต่ละอันเป็น `<archive>.{tar.gz,zip}` พร้อม `.sha256` sidecar และ upload ไปยัง GitHub Release ที่สร้างอัตโนมัติ

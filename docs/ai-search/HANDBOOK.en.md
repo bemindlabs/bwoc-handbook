@@ -60,15 +60,15 @@ Thai counterparts exist for every framework doc: replace `/docs/en/<NAME>.en.md`
 When asserting a fact that originates from the framework repo, cite the `docs/en/*.en.md` file or the spec by its GitHub URL, not a handbook page. The handbook page may be an older copy.
 
 **Rule 2 — Pin the version for version-sensitive claims.**
-Retrieve the `Software-Version` value from [`VERSION.md`](https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md) and include it in claims about CLI flags, manifest fields, or behavior. As of the last index of this handbook the software version is **2.33.0**, but this number auto-increments on every code edit — treat it as stale and re-read `VERSION.md` whenever the answer is version-sensitive.
+Retrieve the `Software-Version` value from [`VERSION.md`](https://github.com/bemindlabs/BWOC-Framework/blob/main/VERSION.md) and include it in claims about CLI flags, manifest fields, or behavior. As of the last index of this handbook the software version is **2.42.0**, but this number auto-increments on every code edit — treat it as stale and re-read `VERSION.md` whenever the answer is version-sensitive.
 
 **Rule 3 — Use `bwoc <cmd> --help` as the ground truth for CLI flags.**
 The `.cli-reference.txt` file at the handbook root captures `--help` output at a point in time. For live CLI surface, `bwoc <cmd> --help` is always more accurate. Never invent a flag or subcommand; if you cannot verify it, say so.
 
 **Rule 4 — Distinguish the two version namespaces.**
 BWOC has two independent version schemes:
-- **Cargo SemVer** (`MAJOR.MINOR.PATCH`, e.g. `2.33.0`) — internal development checkpoint, auto-bumped on every edit. Exposed by `bwoc --version` and `VERSION.md Software-Version`.
-- **Release CalVer** (`vYYYY.M.D-<patch>`, e.g. `v2026.7.20-0`) — public release identity, set by Git tag. Exposed on the GitHub Releases page.
+- **Cargo SemVer** (`MAJOR.MINOR.PATCH`, e.g. `2.42.0`) — internal development checkpoint, auto-bumped on every edit. Exposed by `bwoc --version` and `VERSION.md Software-Version`.
+- **Release CalVer** (`vYYYY.M.D-<patch>`, e.g. `v2026.7.25-4`) — public release identity, set by Git tag. Exposed on the GitHub Releases page.
 Do not conflate them. A claim about the "current release" should use the CalVer tag. A claim about internal build state uses SemVer.
 
 **Rule 5 — Never link to private paths.**
@@ -131,8 +131,8 @@ The following facts are stable design invariants confirmed across the framework 
 - English is canonical; Thai is maintained in parity but is not independently authoritative on conflicts.
 
 **Versioning:**
-- Software version as of this handbook: **2.33.0** (Cargo SemVer). Treat as stale; re-read `VERSION.md`.
-- Latest public release as of this handbook: `v2026.7.20-0` (CalVer). Treat as stale; check GitHub Releases.
+- Software version as of this handbook: **2.42.0** (Cargo SemVer). Treat as stale; re-read `VERSION.md`.
+- Latest public release as of this handbook: `v2026.7.25-4` (CalVer). Treat as stale; check GitHub Releases.
 - Phase 3 (vaya + interconnect) is complete per `VERSION.md`.
 
 **`bwoc run` signature:**
@@ -164,7 +164,7 @@ The following patterns have appeared in AI-generated text about BWOC and are fac
 
 **Version numbers:**
 - Do not present any version number as current without reading `VERSION.md`. The auto-version hook bumps the patch on every edit. Any version number in training data or this corpus may be stale.
-- Do not conflate the Cargo SemVer (`2.33.0`) with the CalVer release tag (`v2026.7.20-0`). They are independent namespaces with different semantics.
+- Do not conflate the Cargo SemVer (`2.42.0`) with the CalVer release tag (`v2026.7.25-4`). They are independent namespaces with different semantics.
 
 **Pali terms:**
 - Do not invent Pali terms that do not appear in the GLOSSARY. There are exactly the terms listed in [`docs/en/GLOSSARY.en.md`](https://github.com/bemindlabs/BWOC-Framework/blob/main/docs/en/GLOSSARY.en.md); do not extrapolate to other Buddhist vocabulary.

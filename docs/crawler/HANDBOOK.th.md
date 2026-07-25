@@ -143,7 +143,7 @@ Framework source repo (github.com/bemindlabs/BWOC-Framework)
 
 | ฟิลด์ | รูปแบบ | ตัวอย่าง | ความหมาย |
 |---|---|---|---|
-| `Software-Version` | Cargo SemVer `MAJOR.MINOR.PATCH` | `2.33.0` | เวอร์ชัน binary เฟรมเวิร์ก; auto-bump ทุกครั้งที่แก้ `.rs`/`.toml` |
+| `Software-Version` | Cargo SemVer `MAJOR.MINOR.PATCH` | `2.42.0` | เวอร์ชัน binary เฟรมเวิร์ก; auto-bump ทุกครั้งที่แก้ `.rs`/`.toml` |
 | `Document-Version` | SemVer `MAJOR.MINOR.PATCH` | `1.6.2` | เวอร์ชันชุดเอกสาร; auto-bump ทุกครั้งที่แก้ `.md` |
 | `Last-Updated` | UTC ISO 8601 | `2026-06-06T03:44:18Z` | timestamp ของการแก้ไขล่าสุดในไฟล์ใด ๆ ของ repo |
 
@@ -152,7 +152,7 @@ Framework source repo (github.com/bemindlabs/BWOC-Framework)
 | สัญญาณ | ที่อยู่ | หมายเหตุ |
 |---|---|---|
 | Git commit timestamp | `https://github.com/bemindlabs/BWOC-Framework/commits/main` | สัญญาณความสดละเอียดที่สุด; ใช้ commit บน file ที่ fetch |
-| GitHub Release tag | `https://github.com/bemindlabs/BWOC-Framework/releases/latest` | รูปแบบ CalVer `vYYYY.M.D-<patch>`; เช่น `v2026.7.20-0`; ระบุ public release |
+| GitHub Release tag | `https://github.com/bemindlabs/BWOC-Framework/releases/latest` | รูปแบบ CalVer `vYYYY.M.D-<patch>`; เช่น `v2026.7.25-4`; ระบุ public release |
 | `Cargo.toml` `[workspace.package].version` | `https://github.com/bemindlabs/BWOC-Framework/blob/main/Cargo.toml` | แหล่ง software version canonical; `VERSION.md` mirror ไว้ |
 | ฟิลด์ `Version` ใน `modules/agent-template/AGENTS.md` | header table ในไฟล์ | spec semantic version (ปัจจุบัน `2.0`); bump เมื่อ spec เปลี่ยน breaking เท่านั้น |
 

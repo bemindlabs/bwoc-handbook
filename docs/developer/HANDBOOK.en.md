@@ -6,7 +6,7 @@ language: en
 counterpart: HANDBOOK.th.md
 ---
 
-> Thai version: [HANDBOOK.th.md](HANDBOOK.th.md) — Framework repo: [bemindlabs/BWOC-Framework](https://github.com/bemindlabs/BWOC-Framework) — v2.33.0 · Rust 1.85+
+> Thai version: [HANDBOOK.th.md](HANDBOOK.th.md) — Framework repo: [bemindlabs/BWOC-Framework](https://github.com/bemindlabs/BWOC-Framework) — v2.42.0 · Rust 1.85+
 
 # BWOC Developer Handbook
 
@@ -66,7 +66,7 @@ The template's `AGENTS.md` is the specification that incarnated agents read at r
 
 ## 2. Crate Map
 
-The workspace has ten crates. Their dependency relationships enforce the quarantine principle described in [Section 3](#3-dependency-quarantine-principle). Current `[workspace.package].version` is `2.33.0`.
+The workspace has ten crates. Their dependency relationships enforce the quarantine principle described in [Section 3](#3-dependency-quarantine-principle). Current `[workspace.package].version` is `2.42.0`.
 
 ### 2.1 Quick Reference Table
 
@@ -842,10 +842,10 @@ Releases use CalVer tags cut directly on `main`. The CI pipeline (`release.yml`)
 ```bash
 # Decide the CalVer tag for today's release iteration
 # Format: vYYYY.M.D-<patch> where patch starts at 0
-git tag v2026.7.20-0
+git tag v2026.7.25-4
 
 # Push the tag — release.yml takes over from here
-git push origin v2026.7.20-0
+git push origin v2026.7.25-4
 ```
 
 `release.yml` builds the matrix (Linux x86_64, macOS aarch64 + x86_64, Windows x86_64), packages each as `<archive>.{tar.gz,zip}` with a `.sha256` sidecar, and uploads them to the auto-created GitHub Release.

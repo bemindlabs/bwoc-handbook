@@ -2,7 +2,7 @@
 
 The single entry point for everyone who **uses, builds, operates, or indexes** the **BWOC framework** — a backend-neutral framework for incarnating and orchestrating AI coding agents, driven by one CLI: `bwoc`.
 
-> 🇹🇭 ฉบับภาษาไทย: [`README.th.md`](README.th.md) · Framework repo: [`bemindlabs/BWOC-Framework`](https://github.com/bemindlabs/BWOC-Framework) · v2.33.0 · Canonical docs (EN/TH): [`docs/`](https://github.com/bemindlabs/BWOC-Framework/tree/main/docs)
+> 🇹🇭 ฉบับภาษาไทย: [`README.th.md`](README.th.md) · Framework repo: [`bemindlabs/BWOC-Framework`](https://github.com/bemindlabs/BWOC-Framework) · v2.42.0 · Canonical docs (EN/TH): [`docs/`](https://github.com/bemindlabs/BWOC-Framework/tree/main/docs)
 
 This handbook is **role-indexed and bilingual**. English is primary (canonical); each page has a Thai counterpart (`*.en.md` ↔ `*.th.md`). Open your role, read one book, follow links into the framework docs only when you need the full treatment.
 
