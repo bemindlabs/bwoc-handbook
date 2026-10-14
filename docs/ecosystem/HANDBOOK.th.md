@@ -28,7 +28,7 @@
 
 **คืออะไร.** รากฐานที่ทุกอย่างพึ่งพา BWOC-Framework คือ specification ที่ไม่ผูกกับ backend ใด และ implementation ใน Rust สำหรับการสร้าง รัน และประสานงาน AI coding agent มาในรูป Rust workspace สิบ crate ได้แก่ `bwoc-cli`, `bwoc-harness`, `bwoc-core`, `bwoc-agent`, `bwoc-mqtt`, `bwoc-deep-memory` และอื่น ๆ พร้อม binary `bwoc` CLI และ scaffold `modules/agent-template` ที่ clone ได้
 
-**Stack.** Rust 1.85+ (edition 2024), รองรับหลายแพลตฟอร์ม (macOS / Linux / Windows), MIT. เวอร์ชันปัจจุบัน: v2.42.0.
+**Stack.** Rust 1.85+ (edition 2024), รองรับหลายแพลตฟอร์ม (macOS / Linux / Windows), MIT. software version 3.17.0 (Cargo SemVer); release tag ล่าสุด `v2026.10.14-0` (CalVer).
 
 **สิ่งที่มอบให้ระบบนิเวศ.** โปรเจกต์อื่น ๆ ทุกตัวในครอบครัวเป็นผู้บริโภค ไม่ใช่คู่แข่ง:
 
@@ -60,7 +60,7 @@
 **สองครึ่ง.**
 
 - **Relay** (`crates/gateway-server`) — WebSocket relay แบบโง่และไม่ไว้ใจ authenticate แต่ละ connection ด้วย signed challenge (ed25519 keypair ของ agent *คือ* login) เก็บ presence map (`agent_id → live connection`) และ route envelope ตาม header `recipient` ที่เป็น cleartext เท่านั้น ไม่เคยอ่านหรือปลอม body; durable store-and-forward เก็บข้อความให้ผู้รับที่ offline และ gateway federate แบบ peer-to-peer (single-hop) ข้ามภูมิภาค/องค์กร
-- **Standalone agent** (`crates/gateway-client` + `bwoc-agent` ใน framework) — `bwoc-gateway-send` / `bwoc-gateway-recv` คือ binary transport ที่ framework shell out ไปหา `bwoc-agent --serve` supervise bridge `bwoc-gateway-recv` ที่ dial relay แล้ว append แต่ละ envelope ขาเข้าเข้า inbox ของ agent ซึ่ง trust gate เดิม verify เทียบกับ pinned-peer keyring (`.bwoc/peers.toml`) พร้อม replay defense แล้ว turn auto-process แบบ untrusted ตอบกลับ `deploy/standalone-agent.Dockerfile` แพ็ก agent หนึ่งตัว + binary runtime ครบทั้งห้าเป็น container ที่เข้าร่วม relay ได้ทันทีที่ `docker run`
+- **Standalone agent** (`crates/gateway-client` + `bwoc-agent` ใน framework) — `bwoc-gateway-send` / `bwoc-gateway-recv` คือ binary transport ที่ framework shell out ไปหา `bwoc-agent --serve` supervise bridge `bwoc-gateway-recv` ที่ dial relay แล้ว append แต่ละ envelope ขาเข้าเข้า inbox ของ agent ซึ่ง trust gate เดิม verify เทียบกับ pinned-peer keyring (`.bwoc/peers.toml`) พร้อม replay defense แล้ว turn auto-process แบบ untrusted ตอบกลับ `deploy/standalone-agent.Dockerfile` ใน repo BWOC-Framework แพ็ก agent หนึ่งตัว + binary runtime ครบทั้งห้าเป็น container ที่เข้าร่วม relay ได้ทันทีที่ `docker run`
 
 **Stack.** Rust — `gateway-server` (axum WebSocket relay: signed-challenge auth, presence, store-and-forward, federation, `/healthz`) + `gateway-client` (WebSocket client, e2e body encryption แบบ `crypto_box` sealed-box ผ่าน ed25519→x25519, binary send/recv) Relay deploy เป็น container หนึ่งตัว, standalone agent อีกตัว
 

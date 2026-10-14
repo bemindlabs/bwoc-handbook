@@ -836,15 +836,15 @@ Releases ใช้ CalVer tags cut โดยตรงบน `main` CI pipeline (
 ```bash
 # กำหนด CalVer tag สำหรับ release iteration วันนี้
 # Format: vYYYY.M.D-<patch> โดย patch เริ่มที่ 0
-git tag v2026.7.25-4
+git tag v2026.10.14-0
 
 # Push tag — release.yml รับช่วงต่อจากนี้
-git push origin v2026.7.25-4
+git push origin v2026.10.14-0
 ```
 
 `release.yml` build matrix (Linux x86_64, macOS aarch64 + x86_64, Windows x86_64), package แต่ละอันเป็น `<archive>.{tar.gz,zip}` พร้อม `.sha256` sidecar และ upload ไปยัง GitHub Release ที่สร้างอัตโนมัติ
 
-Release ซ้ำวันเดียวกัน: `v2026.6.6-1`, `v2026.6.6-2`, เป็นต้น
+Release ซ้ำวันเดียวกัน: `v2026.10.14-1`, `v2026.10.14-2`, เป็นต้น
 
 การอัปเดต Homebrew formula คือ PR auto-merge แยกที่ release pipeline เปิด — ไม่ push โดยตรงไปยัง `main` เลย
 

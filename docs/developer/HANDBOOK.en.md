@@ -842,15 +842,15 @@ Releases use CalVer tags cut directly on `main`. The CI pipeline (`release.yml`)
 ```bash
 # Decide the CalVer tag for today's release iteration
 # Format: vYYYY.M.D-<patch> where patch starts at 0
-git tag v2026.7.25-4
+git tag v2026.10.14-0
 
 # Push the tag — release.yml takes over from here
-git push origin v2026.7.25-4
+git push origin v2026.10.14-0
 ```
 
 `release.yml` builds the matrix (Linux x86_64, macOS aarch64 + x86_64, Windows x86_64), packages each as `<archive>.{tar.gz,zip}` with a `.sha256` sidecar, and uploads them to the auto-created GitHub Release.
 
-Same-day reissue: `v2026.6.6-1`, `v2026.6.6-2`, etc.
+Same-day reissue: `v2026.10.14-1`, `v2026.10.14-2`, etc.
 
 The Homebrew formula update is a separate auto-merged PR opened by the release pipeline — it never pushes directly to `main`.
 

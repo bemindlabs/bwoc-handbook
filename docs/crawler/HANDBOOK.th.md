@@ -143,9 +143,9 @@ Framework source repo (github.com/bemindlabs/BWOC-Framework)
 
 | ฟิลด์ | รูปแบบ | ตัวอย่าง | ความหมาย |
 |---|---|---|---|
-| `Software-Version` | Cargo SemVer `MAJOR.MINOR.PATCH` | `2.42.0` | เวอร์ชัน binary เฟรมเวิร์ก; auto-bump ทุกครั้งที่แก้ `.rs`/`.toml` |
-| `Document-Version` | SemVer `MAJOR.MINOR.PATCH` | `1.6.2` | เวอร์ชันชุดเอกสาร; auto-bump ทุกครั้งที่แก้ `.md` |
-| `Last-Updated` | UTC ISO 8601 | `2026-06-06T03:44:18Z` | timestamp ของการแก้ไขล่าสุดในไฟล์ใด ๆ ของ repo |
+| `Software-Version` | Cargo SemVer `MAJOR.MINOR.PATCH` | `3.17.0` | เวอร์ชัน binary เฟรมเวิร์ก; auto-bump ทุกครั้งที่แก้ `.rs`/`.toml` |
+| `Document-Version` | SemVer `MAJOR.MINOR.PATCH` | `1.24.0` | เวอร์ชันชุดเอกสาร; auto-bump ทุกครั้งที่แก้ `.md` |
+| `Last-Updated` | UTC ISO 8601 | `2026-10-14T03:00:00Z` | timestamp ของการแก้ไขล่าสุดในไฟล์ใด ๆ ของ repo |
 
 ### สัญญาณความสดเพิ่มเติม
 
