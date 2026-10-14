@@ -126,7 +126,7 @@ Runtime เลือก route ให้แต่ละเกณฑ์ตาม `
 
 ## 4. ติดตั้งและเปิดใช้งาน
 
-Plugin ตรวจสอบ ISO ทั้งเจ็ดมาพร้อมกับ framework ใน `modules/plugins/` ไม่จำเป็นต้องติดตั้งแยก มีอยู่พร้อมใช้ทุกครั้งที่ framework พร้อมใช้งาน
+Plugin ตรวจสอบมาตรฐานทั้งเจ็ด (ISO, ISO/IEC, ISO/IEC/IEEE และ IEEE) มาพร้อมกับ framework ใน `modules/plugins/` ไม่จำเป็นต้องติดตั้งแยก มีอยู่พร้อมใช้ทุกครั้งที่ framework พร้อมใช้งาน
 
 เพื่อเปิดใช้งาน plugin หนึ่ง ให้เพิ่ม block ลงใน `.bwoc/workspace.toml`:
 

@@ -28,7 +28,7 @@ The BWOC family is a core framework plus a set of companion applications and dev
 
 **What it is.** The foundation everything else depends on. BWOC-Framework is a backend-neutral specification and native Rust implementation for incarnating, running, and orchestrating AI coding agents. It ships as a Rust workspace of ten crates — `bwoc-cli`, `bwoc-harness`, `bwoc-core`, `bwoc-agent`, `bwoc-mqtt`, `bwoc-deep-memory`, and others — plus the `bwoc` CLI binary and the `modules/agent-template` cloneable scaffold.
 
-**Stack.** Rust 1.85+ (2024 edition), multi-target (macOS / Linux / Windows), MIT. Current version: v2.42.0.
+**Stack.** Rust 1.85+ (2024 edition), multi-target (macOS / Linux / Windows), MIT. Software version 3.17.0 (Cargo SemVer); latest release tag `v2026.10.14-0` (CalVer).
 
 **What it provides to the ecosystem.** Every other project in the family is a consumer, not a peer:
 
@@ -60,7 +60,7 @@ The BWOC family is a core framework plus a set of companion applications and dev
 **Two halves.**
 
 - **The relay** (`crates/gateway-server`) — a dumb, untrusted WebSocket relay. It authenticates each connection with a signed challenge (the agent's ed25519 keypair *is* the login), keeps a presence map (`agent_id → live connection`), and routes envelopes by their cleartext `recipient` header only. It never inspects or forges bodies; durable store-and-forward holds messages for offline recipients, and gateways federate peer-to-peer (single-hop) across regions or orgs.
-- **The standalone agent** (`crates/gateway-client` + framework `bwoc-agent`) — `bwoc-gateway-send` / `bwoc-gateway-recv` are the transport binaries the framework shells out to. `bwoc-agent --serve` supervises a `bwoc-gateway-recv` bridge that dials the relay and appends each inbound envelope to the agent's inbox, where the existing trust gate verifies it against a pinned-peer keyring (`.bwoc/peers.toml`) with replay defense, and an untrusted auto-process turn replies. A `deploy/standalone-agent.Dockerfile` packages one agent plus all five runtime binaries into a container that joins a relay on `docker run`.
+- **The standalone agent** (`crates/gateway-client` + framework `bwoc-agent`) — `bwoc-gateway-send` / `bwoc-gateway-recv` are the transport binaries the framework shells out to. `bwoc-agent --serve` supervises a `bwoc-gateway-recv` bridge that dials the relay and appends each inbound envelope to the agent's inbox, where the existing trust gate verifies it against a pinned-peer keyring (`.bwoc/peers.toml`) with replay defense, and an untrusted auto-process turn replies. The BWOC-Framework repo's `deploy/standalone-agent.Dockerfile` packages one agent plus all five runtime binaries into a container that joins a relay on `docker run`.
 
 **Stack.** Rust — `gateway-server` (axum WebSocket relay: signed-challenge auth, presence, store-and-forward, federation, `/healthz`) + `gateway-client` (WebSocket client, ed25519→x25519 `crypto_box` sealed-box e2e body encryption, the send/recv binaries). The relay deploys as one container; a standalone agent as another.
 

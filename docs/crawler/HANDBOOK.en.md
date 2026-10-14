@@ -143,9 +143,9 @@ Fields to parse:
 
 | Field | Format | Example | Meaning |
 |---|---|---|---|
-| `Software-Version` | Cargo SemVer `MAJOR.MINOR.PATCH` | `2.42.0` | Framework binary version; auto-bumped on every `.rs`/`.toml` edit |
-| `Document-Version` | SemVer `MAJOR.MINOR.PATCH` | `1.6.2` | Documentation set version; auto-bumped on every `.md` edit |
-| `Last-Updated` | UTC ISO 8601 | `2026-06-06T03:44:18Z` | Timestamp of last edit to any file in the repo |
+| `Software-Version` | Cargo SemVer `MAJOR.MINOR.PATCH` | `3.17.0` | Framework binary version; auto-bumped on every `.rs`/`.toml` edit |
+| `Document-Version` | SemVer `MAJOR.MINOR.PATCH` | `1.24.0` | Documentation set version; auto-bumped on every `.md` edit |
+| `Last-Updated` | UTC ISO 8601 | `2026-10-14T03:00:00Z` | Timestamp of last edit to any file in the repo |
 
 ### Additional freshness signals
 

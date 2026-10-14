@@ -126,7 +126,7 @@ A criterion absent from the workspace evidence emits `status = "fail"` with a `r
 
 ## 4. Install and enable
 
-The seven ISO/IEC/IEEE audit plugins are bundled with the framework under `modules/plugins/`. No separate install step is needed; they are present whenever the framework is available.
+The seven standards audit plugins (ISO, ISO/IEC, ISO/IEC/IEEE, and IEEE) are bundled with the framework under `modules/plugins/`. No separate install step is needed; they are present whenever the framework is available.
 
 To enable one, add its block to `.bwoc/workspace.toml`:
 
